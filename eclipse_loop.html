@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<title>Dr · Guzsvinecz — Eclipse Loop</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: transparent;
+    overflow: hidden;
+  }
+  /* The stage is a square that fits the viewport. */
+  .stage {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .eclipse {
+    /* Square sized to the smaller viewport dimension */
+    width: min(100vw, 100vh);
+    height: min(100vw, 100vh);
+    position: relative;
+    /* No overflow:hidden — halo pulse needs room to breathe beyond the SVG edge */
+  }
+  .eclipse svg, .eclipse canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+  }
+
+  /* === pulsing halo === */
+  .halo {
+    animation: haloPulse 5s ease-in-out infinite;
+    transform-origin: center;
+    will-change: opacity, transform, filter;
+  }
+  @keyframes haloPulse {
+    0%   { opacity: 0.78; transform: scale(1.00); filter: blur(0px); }
+    35%  { opacity: 1.00; transform: scale(1.04); filter: blur(0.4px); }
+    55%  { opacity: 0.86; transform: scale(1.02); filter: blur(0px); }
+    75%  { opacity: 1.00; transform: scale(1.05); filter: blur(0.5px); }
+    100% { opacity: 0.78; transform: scale(1.00); filter: blur(0px); }
+  }
+
+  /* The rim has its own subtle breath */
+  .rim {
+    animation: rimPulse 5s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes rimPulse {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1.00; }
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="eclipse" id="eclipse">
+    <!-- Halo + disc + rim -->
+    <svg viewBox="-165 -165 330 330" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <radialGradient id="halo-outer" cx="50%" cy="50%" r="50%">
+          <stop offset="40%" stop-color="#e6a84a" stop-opacity="0"/>
+          <stop offset="56%" stop-color="#e6a84a" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#e6a84a" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="halo-inner" cx="50%" cy="50%" r="50%">
+          <stop offset="55%" stop-color="#ffd58a" stop-opacity="0"/>
+          <stop offset="58%" stop-color="#ffd58a" stop-opacity="0.55"/>
+          <stop offset="66%" stop-color="#e6a84a" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#e6a84a" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#ffd58a" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#ffd58a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Protractor: tick-marked arcs left & right (scientific-instrument vibe) -->
+      <g class="protractor">
+      <path d="M 34.20 -93.97 A 100 100 0 0 1 34.20 93.97" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.35" fill="none"/>
+      <path d="M -34.20 93.97 A 100 100 0 0 1 -34.20 -93.97" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.35" fill="none"/>
+      <line x1="34.20" y1="-93.97" x2="35.40" y2="-97.26" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="42.26" y1="-90.63" x2="43.74" y2="-93.80" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="50.00" y1="-86.60" x2="53.75" y2="-93.10" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="57.36" y1="-81.92" x2="59.37" y2="-84.78" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="64.28" y1="-76.60" x2="66.53" y2="-79.29" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="70.71" y1="-70.71" x2="76.01" y2="-76.01" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="76.60" y1="-64.28" x2="79.29" y2="-66.53" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="81.92" y1="-57.36" x2="84.78" y2="-59.37" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="86.60" y1="-50.00" x2="93.10" y2="-53.75" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="90.63" y1="-42.26" x2="93.80" y2="-43.74" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="93.97" y1="-34.20" x2="97.26" y2="-35.40" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="96.59" y1="-25.88" x2="103.84" y2="-27.82" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="98.48" y1="-17.36" x2="101.93" y2="-17.97" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="99.62" y1="-8.72" x2="103.11" y2="-9.02" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="100.00" y1="0.00" x2="111.00" y2="0.00" stroke="#e6a84a" stroke-width="0.9" stroke-opacity="1" stroke-linecap="round"/>
+      <line x1="99.62" y1="8.72" x2="103.11" y2="9.02" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="98.48" y1="17.36" x2="101.93" y2="17.97" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="96.59" y1="25.88" x2="103.84" y2="27.82" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="93.97" y1="34.20" x2="97.26" y2="35.40" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="90.63" y1="42.26" x2="93.80" y2="43.74" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="86.60" y1="50.00" x2="93.10" y2="53.75" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="81.92" y1="57.36" x2="84.78" y2="59.37" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="76.60" y1="64.28" x2="79.29" y2="66.53" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="70.71" y1="70.71" x2="76.01" y2="76.01" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="64.28" y1="76.60" x2="66.53" y2="79.29" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="57.36" y1="81.92" x2="59.37" y2="84.78" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="50.00" y1="86.60" x2="53.75" y2="93.10" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="42.26" y1="90.63" x2="43.74" y2="93.80" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="34.20" y1="93.97" x2="35.40" y2="97.26" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-34.20" y1="93.97" x2="-35.40" y2="97.26" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-42.26" y1="90.63" x2="-43.74" y2="93.80" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-50.00" y1="86.60" x2="-53.75" y2="93.10" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-57.36" y1="81.92" x2="-59.37" y2="84.78" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-64.28" y1="76.60" x2="-66.53" y2="79.29" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-70.71" y1="70.71" x2="-76.01" y2="76.01" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-76.60" y1="64.28" x2="-79.29" y2="66.53" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-81.92" y1="57.36" x2="-84.78" y2="59.37" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-86.60" y1="50.00" x2="-93.10" y2="53.75" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-90.63" y1="42.26" x2="-93.80" y2="43.74" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-93.97" y1="34.20" x2="-97.26" y2="35.40" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-96.59" y1="25.88" x2="-103.84" y2="27.82" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-98.48" y1="17.36" x2="-101.93" y2="17.97" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-99.62" y1="8.72" x2="-103.11" y2="9.02" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-100.00" y1="0.00" x2="-111.00" y2="0.00" stroke="#e6a84a" stroke-width="0.9" stroke-opacity="1" stroke-linecap="round"/>
+      <line x1="-99.62" y1="-8.72" x2="-103.11" y2="-9.02" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-98.48" y1="-17.36" x2="-101.93" y2="-17.97" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-96.59" y1="-25.88" x2="-103.84" y2="-27.82" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-93.97" y1="-34.20" x2="-97.26" y2="-35.40" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-90.63" y1="-42.26" x2="-93.80" y2="-43.74" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-86.60" y1="-50.00" x2="-93.10" y2="-53.75" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-81.92" y1="-57.36" x2="-84.78" y2="-59.37" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-76.60" y1="-64.28" x2="-79.29" y2="-66.53" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-70.71" y1="-70.71" x2="-76.01" y2="-76.01" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-64.28" y1="-76.60" x2="-66.53" y2="-79.29" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-57.36" y1="-81.92" x2="-59.37" y2="-84.78" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-50.00" y1="-86.60" x2="-53.75" y2="-93.10" stroke="#e6a84a" stroke-width="0.7" stroke-opacity="0.9" stroke-linecap="round"/>
+      <line x1="-42.26" y1="-90.63" x2="-43.74" y2="-93.80" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      <line x1="-34.20" y1="-93.97" x2="-35.40" y2="-97.26" stroke="#e6a84a" stroke-width="0.4" stroke-opacity="0.45" stroke-linecap="round"/>
+      </g>
+
+      <!-- Pulsing halo -->
+      <g class="halo">
+        <circle cx="0" cy="0" r="150" fill="url(#halo-outer)"/>
+        <circle cx="0" cy="0" r="130" fill="url(#halo-inner)"/>
+      </g>
+
+      <!-- Dark disc -->
+      <circle cx="0" cy="0" r="78" fill="#050403"/>
+      <!-- Gold rim -->
+      <g class="rim">
+        <circle cx="0" cy="0" r="80" fill="none" stroke="#e6a84a" stroke-width="1.8"/>
+        <circle cx="0" cy="0" r="85" fill="none" stroke="#e6a84a" stroke-width="0.6" stroke-opacity="0.4"/>
+      </g>
+
+      <!-- Controller, centered (no glow filter — handled via shadow drop on canvas) -->
+      <g transform="scale(0.78) translate(-50 -31)">
+        <path d="M22 8 L78 8 Q92 8 95 24 Q97 36 92 48 Q88 56 80 56 Q72 56 68 50 L62 42 L38 42 L32 50 Q28 56 20 56 Q12 56 8 48 Q3 36 5 24 Q8 8 22 8 Z"
+              stroke="#f0b96a" stroke-width="3" stroke-linejoin="round" fill="none"/>
+        <line x1="22" y1="24" x2="22" y2="36" stroke="#f0b96a" stroke-width="3" stroke-linecap="round"/>
+        <line x1="16" y1="30" x2="28" y2="30" stroke="#f0b96a" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="77" cy="24" r="3.2" fill="#f0b96a"/>
+        <circle cx="85" cy="30" r="3.2" fill="#f0b96a"/>
+        <circle cx="77" cy="36" r="3.2" fill="#f0b96a"/>
+        <circle cx="69" cy="30" r="3.2" fill="#f0b96a"/>
+      </g>
+    </svg>
+
+    <!-- Particle canvas on top -->
+    <canvas id="emberCanvas"></canvas>
+  </div>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('emberCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // DPR-aware sizing
+  let W = 0, H = 0, DPR = 1;
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W * DPR);
+    canvas.height = Math.round(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize();
+  new ResizeObserver(resize).observe(canvas);
+
+  // Loop duration in ms; everything is phase-locked so the loop is seamless.
+  const LOOP_MS = 5000;
+
+  // Disc + ring radii are defined in the SVG viewBox of [-165,165].
+  // The viewBox maps onto min(W,H). So in canvas pixels:
+  function getMetrics() {
+    const size = Math.min(W, H);
+    const scale = size / 330;            // viewBox 330 wide
+    const cx = W / 2, cy = H / 2;
+    return {
+      cx, cy, scale, size,
+      ringR: 80 * scale,
+      hazeR: 130 * scale,
+      outerR: 165 * scale,
+    };
+  }
+
+  // Embers: small particles that drift outward from just outside the rim
+  // and fade out. Phase-locked so the whole field repeats every LOOP_MS.
+  const EMBER_COUNT = 40;
+  const embers = [];
+  for (let i = 0; i < EMBER_COUNT; i++) {
+    embers.push({
+      // Each ember has a unique phase in [0,1) and its own angle/lifetime
+      phase: i / EMBER_COUNT,                  // start offset within the loop
+      angle: Math.random() * Math.PI * 2,
+      // Drift distance (in viewBox units) the particle travels from rim
+      drift: 28 + Math.random() * 50,
+      // Lifetime as fraction of LOOP — short so multiple cycles fit
+      life: 0.35 + Math.random() * 0.35,
+      size: 0.6 + Math.random() * 1.6,
+      hue: Math.random() < 0.3 ? '#ffd58a' : '#e6a84a',
+    });
+  }
+
+  // A few slow-floating dust motes far from the eclipse
+  const DUST_COUNT = 22;
+  const dust = [];
+  for (let i = 0; i < DUST_COUNT; i++) {
+    dust.push({
+      phase: Math.random(),
+      // Polar coords for starting position — kept within viewBox radius of 150
+      r: 90 + Math.random() * 45,      // viewBox units (max 135, well inside 150)
+      angle: Math.random() * Math.PI * 2,
+      angSpeed: (Math.random() - 0.5) * 0.0008,  // radians per ms
+      size: 0.4 + Math.random() * 0.8,
+      twinkleOffset: Math.random(),
+    });
+  }
+
+  const start = performance.now();
+
+  function frame(now) {
+    const t = ((now - start) % LOOP_MS) / LOOP_MS;  // 0..1, loops every 5s
+    const m = getMetrics();
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.translate(m.cx, m.cy);
+    ctx.scale(m.scale, m.scale);
+    // Clip particles to a circle matching the content radius (not viewBox edge)
+    ctx.beginPath();
+    ctx.arc(0, 0, 148, 0, Math.PI * 2);
+    ctx.clip();
+
+    // --- DUST MOTES (background sparkle, far from disc) ---
+    for (const d of dust) {
+      // Position drifts slowly tangentially
+      const ang = d.angle + d.angSpeed * (now - start);
+      const x = Math.cos(ang) * d.r;
+      const y = Math.sin(ang) * d.r;
+      // Twinkle on the global loop
+      const tw = 0.5 + 0.5 * Math.sin((t + d.twinkleOffset) * Math.PI * 2);
+      ctx.globalAlpha = 0.25 + tw * 0.5;
+      ctx.fillStyle = '#f0b96a';
+      ctx.beginPath();
+      ctx.arc(x, y, d.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // --- EMBERS (drift outward from rim) ---
+    for (const e of embers) {
+      // Local phase: how far through THIS ember's life are we?
+      // shifted by ember.phase so they're spread across the loop.
+      const local = ((t + e.phase) % 1) / e.life;     // can exceed 1 = dead
+      if (local > 1) continue;  // not visible this part of the loop
+
+      // Eased outward motion
+      const easeOut = 1 - Math.pow(1 - local, 2);
+      const dist = 84 + e.drift * easeOut;     // start just outside ring (80) → drift
+      const x = Math.cos(e.angle) * dist;
+      const y = Math.sin(e.angle) * dist;
+
+      // Fade: bright at birth, fades to nothing
+      const alpha = (1 - local) * (local < 0.15 ? local / 0.15 : 1);
+
+      // Soft glow via radial gradient
+      const g = ctx.createRadialGradient(x, y, 0, x, y, e.size * 4);
+      g.addColorStop(0, e.hue);
+      g.addColorStop(1, 'rgba(230,168,74,0)');
+      ctx.globalAlpha = alpha * 0.85;
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(x, y, e.size * 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Hot core
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = e.hue;
+      ctx.beginPath();
+      ctx.arc(x, y, e.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // --- LENS FLARE (brief diamond-ring style sparkle, twice per loop) ---
+    // Two flare bursts at t=0.3 and t=0.75, locked into the halo pulse.
+    function flareAt(centerT, durFrac, angle) {
+      const dt = ((t - centerT) + 1) % 1;
+      // Dt close to 0 OR close to 1 — pick smaller distance
+      const phaseDist = Math.min(dt, 1 - dt);
+      if (phaseDist > durFrac) return;
+      const k = 1 - phaseDist / durFrac;  // 1 at peak → 0 at edge
+      const peak = k * k;                 // ease
+      const x = Math.cos(angle) * 80;
+      const y = Math.sin(angle) * 80;
+      // Bright core
+      ctx.globalAlpha = peak * 0.95;
+      ctx.fillStyle = '#fff4d6';
+      ctx.beginPath(); ctx.arc(x, y, 2.4, 0, Math.PI*2); ctx.fill();
+      // Soft halo
+      const g = ctx.createRadialGradient(x, y, 0, x, y, 14);
+      g.addColorStop(0, 'rgba(255,213,138,0.7)');
+      g.addColorStop(1, 'rgba(255,213,138,0)');
+      ctx.globalAlpha = peak * 0.7;
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI*2); ctx.fill();
+      // Streak (horizontal)
+      ctx.globalAlpha = peak * 0.55;
+      ctx.strokeStyle = '#fff4d6';
+      ctx.lineWidth = 0.4;
+      ctx.beginPath();
+      ctx.moveTo(x - 22, y); ctx.lineTo(x + 22, y); ctx.stroke();
+    }
+    flareAt(0.30, 0.10, -Math.PI / 4);   // upper-right
+    flareAt(0.78, 0.08,  Math.PI * 0.8); // lower-left
+
+    ctx.globalAlpha = 1;
+    ctx.restore();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Respect prefers-reduced-motion
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.halo, .rim').forEach(el => {
+      el.style.animation = 'none';
+    });
+  }
+})();
+</script>
+</body>
+</html>

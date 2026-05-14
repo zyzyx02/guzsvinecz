@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Dr. Tibor Guzsvinecz — Associate Professor, University of Pannonia. Researcher in game studies, HCI, VR, and data science."/>
+  <title>Dr. Tibor Guzsvinecz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#about"><span data-en>About</span><span data-hu>Rólam</span></a></li>
+    <li><a href="#featured-pubs"><span data-en>Highlights</span><span data-hu>Kiemelt művek</span></a></li>
+    <li><a href="#fun"><span data-en>Beyond Research</span><span data-hu>Kutatáson túl</span></a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#publications"><span data-en>Publications</span><span data-hu>Publikációk</span></a></li>
+    <li><a href="#editorship"><span data-en>Editorship</span><span data-hu>Szerkesztés</span></a></li>
+    <li><a href="#talks"><span data-en>Talks</span><span data-hu>Előadások</span></a></li>
+    <li><a href="#contact"><span data-en>Contact</span><span data-hu>Kapcsolat</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctrl-btn" onclick="toggleLang()" id="lang-btn">HU</button>
+    <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">☀</button>
+    <a class="nav-cta" href="#contact"><span data-en>Collaborate →</span><span data-hu>Együttműködés →</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-tag"><span data-en>University of Pannonia · Veszprém, HU</span><span data-hu>Pannon Egyetem · Veszprém</span></div>
+    <h1 class="hero-name">
+      <span class="dr">Dr.</span>
+      <span data-en>TIBOR<br>GUZSVINECZ</span>
+      <span data-hu>GUZSVINECZ<br>TIBOR</span>
+    </h1>
+    <div class="hero-roles">
+      <span class="hero-role active"><span data-en>Associate Professor</span><span data-hu>Egyetemi docens</span></span>
+      <span class="hero-role"><span data-en>Games Researcher</span><span data-hu>Játékkutató</span></span>
+      <span class="hero-role">HCI &amp; VR</span>
+      <span class="hero-role"><span data-en>Data Science</span><span data-hu>Adattudomány</span></span>
+      <span class="hero-role">IEEE Member</span>
+    </div>
+    <blockquote class="hero-quote">"Science isn't about why, it's about why not!"<cite>— Cave Johnson · Portal 2</cite></blockquote>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="pub-stat-hero">—</span><span class="stat-label"><span data-en>Publications</span><span data-hu>Publikáció</span></span></div>
+      <div class="stat"><span class="stat-num">12</span><span class="stat-label">H-index</span></div>
+      <div class="stat"><span class="stat-num">769<span>+</span></span><span class="stat-label"><span data-en>Citations</span><span data-hu>Hivatkozás</span></span></div>
+      <div class="stat"><span class="stat-num">54</span><span class="stat-label"><span data-en>Graduates</span><span data-hu>Végzett hallg.</span></span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-eclipse">
+      <iframe src="eclipse_loop.html" loading="lazy" title="Dr. Guzsvinecz logo animation" allowtransparency="true"></iframe>
+      <div class="hero-eclipse-label">HOMO · LUDENS · QUAERIT</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="sw">
+  <div class="sh"><span class="sn">01</span><h2 class="st"><span data-en>ABOUT</span><span data-hu>RÓLAM</span></h2><div class="sl"></div></div>
+  <div class="about-grid">
+    <div class="ab">
+      <span data-en>
+        <p>Video games have held me captive since I was a kid. I made up my mind early that I'd work with them professionally — and I did.</p>
+        <p>I'm an <strong>Associate Professor</strong> at the Faculty of Information Technology, University of Pannonia (Veszprém, Hungary), where I earned my <strong>PhD in Information Science</strong> in 2021.</p>
+        <p>My research sits at the intersection of <strong>game studies, human-computer interaction, and data science</strong>. On the games side I analyze large-scale player behavior and review data — 36M+ Steam reviews, Soulslike mechanics, toxicity patterns, progression systems, and VR cybersickness. On the HCI side I develop and evaluate tools for assessing <strong>spatial ability in virtual reality</strong>.</p>
+        <p>I teach <strong>Data Science Basics, Programming</strong>, and <strong>Computer Game Design and Development</strong>. Currently co-supervising <strong>3 PhD students</strong>; have supervised <strong>54 graduated students</strong> and <strong>9 TDK participants</strong>.</p>
+        <p>I serve on the organizing and program committees of multiple IEEE conferences and am a member of the Virtual Environments and Applied Multimedia Research Laboratory. I've been an <strong>IEEE member</strong> since 2023.</p>
+      </span>
+      <span data-hu>
+        <p>Gyerekkoromtól lekötöttek a videojátékok. Hamar eldöntöttem, hogy ezzel akarok foglalkozni professzionálisan — és sikerült.</p>
+        <p>Egyetemi docens vagyok a Pannon Egyetem Műszaki Informatikai Karán (Veszprém), ahol 2021-ben szereztem <strong>a PhD fokozatom az informatikai tudományokból</strong>.</p>
+        <p>Kutatásaim a <strong>játéktudomány, az ember-számítógép interakció és az adattudomány</strong> metszéspontján helyezkednek el. Játékok oldalán nagy adathalmazokat elemzek — 36M+ Steam értékelés, Soulslike mechanikák, toxicitásminták, progressziós rendszerek, VR cybersickness. HCI oldalán <strong>virtuális valóságban mért térbeli képességeket</strong> vizsgálok.</p>
+        <p>Oktatott tárgyaim: <strong>Adattudomány alapjai, Programozás</strong>, és <strong>Számítógépes játék tervezés és fejlesztés</strong>. Jelenleg <strong>3 PhD hallgató</strong> társtémavezetője vagyok; eddig <strong>54 végzett hallgatóm</strong> és <strong>9 TDK-zó hallgatóm</strong> volt.</p>
+        <p>Több IEEE konferencia szervező- és programbizottságának tagja vagyok, és a Virtuális Környezetek és Alkalmazott Multimédia Kutatólaboratórium tagja. <strong>IEEE tag</strong>vagyok 2023 óta.</p>
+      </span>
+      <div class="tags">
+        <span class="tag">Video Games</span><span class="tag">VR / AR</span><span class="tag">HCI</span><span class="tag">Spatial Ability</span><span class="tag">Data Science</span><span class="tag">Gamification</span><span class="tag">Sentiment Analysis</span><span class="tag">Topic Modeling</span><span class="tag">BERTopic</span><span class="tag">LDA</span><span class="tag">Steam Reviews</span><span class="tag">Cybersickness</span><span class="tag">Toxicity</span><span class="tag">IEEE</span>
+      </div>
+    </div>
+    <div class="aside">
+      <img class="about-photo" src="GT.jpg" alt="Dr. Tibor Guzsvinecz"/>
+      <div class="ai"><div class="ai-l"><span data-en>Position</span><span data-hu>Beosztás</span></div><div class="ai-v"><span data-en>Associate Professor (2024–)</span><span data-hu>Egyetemi docens (2024–)</span></div></div>
+      <div class="ai"><div class="ai-l"><span data-en>Institution</span><span data-hu>Intézmény</span></div><div class="ai-v">University of Pannonia, Veszprém</div></div>
+      <div class="ai"><div class="ai-l"><span data-en>Faculty</span><span data-hu>Kar</span></div><div class="ai-v"><span data-en>Faculty of Information Technology</span><span data-hu>Műszaki Informatikai Kar</span></div></div>
+      <div class="ai"><div class="ai-l"><span data-en>Department</span><span data-hu>Tanszék</span></div><div class="ai-v"><span data-en>Department of Information Technology and its Applications</span><span data-hu>Informatikai Rendszerek és Alkalmazásai Tanszék</span></div></div>
+      <div class="ai"><div class="ai-l">PhD</div><div class="ai-v"><span data-en>Information Science, 2021</span><span data-hu>Informatikai tudományok, 2021</span></div></div>
+      <div class="ai"><div class="ai-l"><span data-en>Supervision</span><span data-hu>Témavezetés</span></div><div class="ai-v"><span data-en>3 PhD · 54 graduates · 9 TDK</span><span data-hu>3 PhD · 54 végzett · 9 TDK</span></div></div>
+      <div class="ai"><div class="ai-l">Lab</div><div class="ai-v"><span data-en>Virtual Environments &amp; Applied Multimedia Research Laboratory</span><span data-hu>Virtuális Környezetek és Alkalmazott Multimédia Kutatólaboratórium</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURED PUBLICATIONS -->
+<section id="featured-pubs" class="sw">
+  <div class="sh"><span class="sn">02</span><h2 class="st"><span data-en>FEATURED PUBLICATIONS</span><span data-hu>KIEMELT PUBLIKÁCIÓK</span></h2><div class="sl"></div></div>
+  <div class="fp-grid">
+
+    <div class="fp-card">
+      <span class="fp-number">01</span>
+      <div class="fp-meta">
+        <span class="fp-year">2025</span>
+        <span class="fp-venue">Multimedia Tools and Applications</span>
+      </div>
+      <div class="fp-title">The Soulsification of Video Games</div>
+      <div class="fp-authors"><strong>Guzsvinecz, Tibor</strong></div>
+      <div class="fp-tags">
+        <span class="pt games">Games</span>
+        <span class="pt oa">Open Access</span>
+        <span class="pt vs">▶ Video</span>
+      </div>
+      <div class="fp-actions">
+        <a class="fp-read" href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank">Read Paper →</a>
+        <a class="fp-yt" href="#" target="_blank"><span data-en>VIDEO SUMMARY</span><span data-hu>VIDEÓ ÖSSZEFOGLALÓ</span></a>
+      </div>
+    </div>
+
+    <div class="fp-card">
+      <span class="fp-number">02</span>
+      <div class="fp-meta">
+        <span class="fp-year">2023</span>
+        <span class="fp-venue">Computers in Human Behavior</span>
+      </div>
+      <div class="fp-title">Length and sentiment analysis of reviews about top-level video game genres on the Steam platform</div>
+      <div class="fp-authors"><strong>Guzsvinecz, Tibor</strong>; Szűcs, Judit</div>
+      <div class="fp-tags">
+        <span class="pt games">Games</span>
+        <span class="pt data">Data Science</span>
+        <span class="pt oa">Open Access</span>
+        <span class="pt vs">▶ Video</span>
+      </div>
+      <div class="fp-actions">
+        <a class="fp-read" href="https://doi.org/10.1016/j.chb.2023.107955" target="_blank">Read Paper →</a>
+        <a class="fp-yt" href="#" target="_blank"><span data-en>VIDEO SUMMARY</span><span data-hu>VIDEÓ ÖSSZEFOGLALÓ</span></a>
+      </div>
+    </div>
+
+    <div class="fp-card">
+      <span class="fp-number">03</span>
+      <div class="fp-meta">
+        <span class="fp-year">2025</span>
+        <span class="fp-venue">Universal Access in the Information Society</span>
+      </div>
+      <div class="fp-title">Video game accessibility in the top-level genres</div>
+      <div class="fp-authors"><strong>Guzsvinecz, Tibor</strong></div>
+      <div class="fp-tags">
+        <span class="pt games">Games</span>
+        <span class="pt accessibility">Accessibility</span>
+        <span class="pt hci">HCI</span>
+        <span class="pt oa">Open Access</span>
+        <span class="pt vs">▶ Video</span>
+      </div>
+      <div class="fp-actions">
+        <a class="fp-read" href="https://link.springer.com/article/10.1007/s10209-024-01154-7" target="_blank">Read Paper →</a>
+        <a class="fp-yt" href="#" target="_blank"><span data-en>VIDEO SUMMARY</span><span data-hu>VIDEÓ ÖSSZEFOGLALÓ</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BEYOND RESEARCH -->
+<div id="fun" class="swf"><div class="inner">
+  <div class="sh"><span class="sn">03</span><h2 class="st"><span data-en>BEYOND RESEARCH</span><span data-hu>KUTATÁSON TÚL</span></h2><div class="sl"></div></div>
+  <p style="color:var(--muted);font-size:.84rem;max-width:580px;margin-bottom:1.8rem;line-height:1.85">
+    <span data-en>There's more to a researcher than their h-index. A few things that make me <em style="font-family:'Instrument Serif',serif;color:var(--text)">actually</em> interesting:</span>
+    <span data-hu>Egy kutatónál több van, mint az h-indexe. Néhány dolog, ami <em style="font-family:'Instrument Serif',serif;color:var(--text)">valóban</em> érdekessé tesz:</span>
+  </p>
+  <div class="fun-grid">
+    <div class="fun-card">
+      <div class="fun-icon">🎮</div>
+      <div class="fun-label"><span data-en>Top 5 Favorite Games</span><span data-hu>Top 5 kedvenc játék</span></div>
+      <div class="fun-sub"><span data-en>In alphabetical order:</span><span data-hu>ABC sorrendben:</span></div>
+      <ul class="fun-list"><li>Bloodborne</li><li>Clair Obscur: Expedition 33</li><li>Doom Eternal</li><li>God of War (2018)</li><li>Half-Life</li></ul>
+    </div>
+    <div class="fun-card">
+      <div class="fun-icon">🎬</div>
+      <div class="fun-label"><span data-en>Favorite Films</span><span data-hu>Kedvenc filmek</span></div>
+      <div class="fun-sub"><span data-en>In alphabetical order:</span><span data-hu>ABC sorrendben:</span></div>
+      <ul class="fun-list"><li>Avengers: Infinity War</li><li>Back to the Future (trilogy)</li><li>Evil Dead (trilogy)</li><li>Indiana Jones (trilogy)</li><li>The World's End</li></ul>
+    </div>
+    <div class="fun-card">
+      <div class="fun-icon">📺</div>
+      <div class="fun-label"><span data-en>Top 5 Favorite Series</span><span data-hu>Top 5 kedvenc sorozat</span></div>
+      <div class="fun-sub"><span data-en>In alphabetical order:</span><span data-hu>ABC sorrendben:</span></div>
+      <ul class="fun-list"><li>Attack on Titan</li><li>Fullmetal Alchemist: Brotherhood</li><li>Stargate SG-1 &amp; Atlantis</li><li>The Big Bang Theory</li><li>What We Do in the Shadows</li></ul>
+    </div>
+    <div class="fun-card">
+      <div class="fun-icon">🎵</div>
+      <div class="fun-label"><span data-en>Favorite Music</span><span data-hu>Kedvenc zene</span></div>
+      <div class="fun-sub"><span data-en>In alphabetical order:</span><span data-hu>ABC sorrendben:</span></div>
+      <ul class="fun-list"><li>Alestorm</li><li>Babymetal</li><li>Beast in Black</li><li>Electric Callboy</li><li>Powerwolf</li></ul>
+    </div>
+    <div class="fun-card">
+      <div class="fun-icon">🎲</div>
+      <div class="fun-label"><span data-en>Side Quests</span><span data-hu>Melléküldetések</span></div>
+      <ul class="fun-list">
+        <li><span data-en>Filmmaking</span><span data-hu>Filmkészítés</span></li>
+        <li><span data-en>Story writing</span><span data-hu>Történetírás</span></li>
+        <li><span data-en>Game development</span><span data-hu>Játékfejlesztés</span></li>
+        <li><span data-en>Mentoring students (Univ. Days)</span><span data-hu>Hallgatók mentorálása (Egyetemi Napok)</span></li>
+      </ul>
+    </div>
+    <div class="fun-card">
+      <div class="fun-icon">🕹️</div>
+      <div class="fun-label"><span data-en>Other facts about me</span><span data-hu>Más tények rólam</span></div>
+      <ul class="fun-list">
+        <li><span data-en>I actually play what I research.</span><span data-hu>Valójában játszom azokkal, amiket kutatok.</span></li>
+        <li><span data-en>100%'d Elden Ring — all achievements unlocked.</span><span data-hu>100%-os Elden Ring — minden achievement megszerezve.</span></li>
+        <li>Story &gt; Gameplay &gt; Graphics</li>
+        <li><span data-en>Still waiting for Half-Life 3 and the Bloodborne PC port &amp; remake.</span><span data-hu>Még mindig várok a Half-Life 3-ra és a Bloodborne PC portra &amp; remake-re.</span></li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+
+<!-- CV -->
+<section id="cv" class="sw">
+  <div class="sh"><span class="sn">04</span><h2 class="st"><span data-en>CURRICULUM VITAE</span><span data-hu>ÖNÉLETRAJZ</span></h2><div class="sl"></div></div>
+  <div class="cv-grid">
+    <div class="cv-block">
+      <div class="cv-bt"><span data-en>Academic Positions</span><span data-hu>Akadémiai pozíciók</span></div>
+      <div class="cv-e"><div class="cv-y">2024–</div><div><div class="cv-et"><span data-en>Associate Professor</span><span data-hu>Egyetemi docens</span></div><div class="cv-es"><span data-en>Department of Information Technology and its Applications, University of Pannonia</span><span data-hu>Informatikai Rendszerek és Alkalmazásai Tanszék, Pannon Egyetem</span></div></div></div>
+      <div class="cv-e"><div class="cv-y">2021–2024</div><div><div class="cv-et"><span data-en>Assistant Professor</span><span data-hu>Adjunktus</span></div><div class="cv-es"><span data-en>Department of Information Technology and its Applications, University of Pannonia</span><span data-hu>Informatikai Rendszerek és Alkalmazásai Tanszék, Pannon Egyetem</span></div></div></div>
+    </div>
+    <div class="cv-block">
+      <div class="cv-bt"><span data-en>Education</span><span data-hu>Végzettség</span></div>
+      <div class="cv-e"><div class="cv-y">2021</div><div><div class="cv-et">PhD · <span data-en>Information Science</span><span data-hu>Informatikai tudományok</span></div><div class="cv-es"><span data-en>University of Pannonia</span><span data-hu>Pannon Egyetem</span></div></div></div>
+	  <div class="cv-e"><div class="cv-y">2017</div><div><div class="cv-et">MSc · <span data-en>Computer Science Engineering</span><span data-hu>Okleveles mérnökinformatikus</span></div><div class="cv-es"><span data-en>University of Pannonia</span><span data-hu>Pannon Egyetem</span></div></div></div>
+	  <div class="cv-e"><div class="cv-y">2015</div><div><div class="cv-et">BSc · <span data-en>Computer Science Engineering</span><span data-hu>Mérnökinformatikus</span></div><div class="cv-es"><span data-en>University of Pannonia</span><span data-hu>Pannon Egyetem</span></div></div></div>
+    </div>
+    <div class="cv-block">
+      <div class="cv-bt"><span data-en>Awards &amp; Recognition</span><span data-hu>Díjak &amp; elismerések</span></div>
+      <div class="cv-aw">
+        <div class="cv-aw-i"><span data-en>VEAB Outstanding Young Researcher (2025)</span><span data-hu>VEAB Kiemelkedő Ifjú Kutatója (2025)</span></div>
+        <div class="cv-aw-i"><span data-en>Dean's Commendation for Outstanding Faculty Activity (2024)</span><span data-hu>Dékáni dicséret kiemelkedő kari tevékenységéért (2024)</span></div>
+        <div class="cv-aw-i"><span data-en>Best Section Paper Award — Multimedia in Education Conference (2023)</span><span data-hu>Legjobb szekciócikk díj — Multimédia az Oktatásban Konferencia (2023)</span></div>
+        <div class="cv-aw-i"><span data-en>IEEE Section Chair Award (2023)</span><span data-hu>IEEE Section Chair Award (2023)</span></div>
+        <div class="cv-aw-i"><span data-en>8× Scholarships</span><span data-hu>8× Ösztöndíj</span></div>
+      </div>
+    </div>
+    <div class="cv-block">
+      <div class="cv-bt"><span data-en>Teaching &amp; Supervision</span><span data-hu>Oktatás &amp; témavezetés</span></div>
+      <div class="cv-e"><div class="cv-y"><span data-en>Courses</span><span data-hu>Tárgyak</span></div><div><div class="cv-et"><span data-en>Data Science Basics · Programming · Computer Game Design &amp; Development</span><span data-hu>Adattudomány alapjai · Programozás · Számítógépes játék tervezés és fejlesztés</span></div></div></div>
+      <div class="cv-e"><div class="cv-y">PhD</div><div><div class="cv-et"><span data-en>3 current PhD co-supervisees</span><span data-hu>3 aktív PhD társtémavezetett</span></div></div></div>
+      <div class="cv-e"><div class="cv-y">BSc/MSc</div><div><div class="cv-et"><span data-en>54 graduated students · 9 TDK participants</span><span data-hu>54 végzett hallgató · 9 TDK-zó</span></div></div></div>
+    </div>
+    <div class="cv-block cv-block-wide">
+      <div class="cv-bt"><span data-en>Research Output</span><span data-hu>Tudományos teljesítmény</span></div>
+      <div class="cv-aw">
+        <div class="cv-aw-i" id="cv-sci-works"><span data-en>— scientific works</span><span data-hu>— tudományos mű</span></div>
+        <div class="cv-aw-i" id="cv-pub-breakdown"><span data-en>— journal articles · — conference papers · — editorials</span><span data-hu>— folyóiratcikk · — konferenciacikk · — szerkesztői</span></div>
+        <div class="cv-aw-i" id="cv-edited-works"><span data-en>— edited books · — proceedings · — special issues</span><span data-hu>— szerk. könyv · — konferenciakötet · — különszám</span></div>
+        <div class="cv-aw-i" id="cv-talks-count"><span data-en>— conference presentations</span><span data-hu>— konferencia-előadás</span></div>
+        <div class="cv-aw-i">H-index 12 · 769+ <span data-en>citations</span><span data-hu>hivatkozás</span></div>
+      </div>
+    </div>
+    <div class="cv-block cv-block-wide">
+      <div class="cv-bt"><span data-en>Scientific Memberships &amp; Bodies</span><span data-hu>Tudományos testületek &amp; tagságok</span></div>
+      <div class="cv-two-col">
+        <div class="cv-e"><div class="cv-y">2025–</div><div><div class="cv-et"><span data-en>Vice-President</span><span data-hu>Alelnök</span></div><div class="cv-es"><span data-en>HAS Veszprém Regional Committee (VEAB) — Working Committee on Informatics and Computer Science</span><span data-hu>MTA VEAB Informatikai és Számítástudományi Munkabizottság</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et">IEEE Member</div><div class="cv-es">Institute of Electrical and Electronics Engineers</div></div></div>
+        <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>HAS Veszprém Regional Committee (VEAB) — Health Informatics Working Committee</span><span data-hu>MTA VEAB Egészségügyi Informatika Munkabizottság</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>ZEK (Zalaegerszeg University Centre) — Committee for International Affairs</span><span data-hu>ZEK Külügyi és Nemzetközi Bizottság</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2022–</div><div><div class="cv-et"><span data-en>Member of the Public Body of the Hungarian Academy of Sciences</span><span data-hu>MTA köztestületi tag</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2018–2020, 2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>John von Neumann Computer Society (NJSZT)</span><span data-hu>Neumann János Számítógéptudományi Társaság (NJSZT)</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2019–</div><div><div class="cv-et">DOSZ <span data-en>— Doctoral Students National Association</span><span data-hu>Doktoranduszok Országos Szövetsége</span></div><div class="cv-es"><span data-en>Dept. of Mathematics &amp; Informatics — Active member (2019–2021) · Supporting member (2021–)</span><span data-hu>Matematikai és Informatikai Tudományok Osztálya – aktív tag (2019–2021), pártoló tag (2021–)</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2018–2021</div><div><div class="cv-et"><span data-en>PhD Student Representative, Faculty of Information Technology — University of Pannonia</span><span data-hu>MIK PhD képviselő — Pannon Egyetem Doktorandusz Önkormányzat</span></div><div class="cv-es"><span data-en>Faculty Council &amp; Doctoral School Council member</span><span data-hu>Kari Tanács és Doktori Iskola Tanács tagja</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS (rendered by JS from publications.json) -->
+<div id="publications" class="swf"><div class="inner">
+  <div class="sh"><span class="sn">05</span><h2 class="st"><span data-en>PUBLICATIONS</span><span data-hu>PUBLIKÁCIÓK</span></h2><div class="sl"></div></div>
+
+  <div class="pub-bar" id="bar-topic">
+    <span class="pb-label"><span data-en>Topic:</span><span data-hu>Téma:</span></span>
+    <button class="fb active" data-ft="all"><span data-en>All</span><span data-hu>Összes</span></button>
+    <button class="fb" data-ft="accessibility"><span data-en>Accessibility</span><span data-hu>Akadálymentesség</span></button>
+    <button class="fb" data-ft="data"><span data-en>Data Science</span><span data-hu>Adattudomány</span></button>
+    <button class="fb" data-ft="gamification">Gamification</button>
+    <button class="fb" data-ft="games"><span data-en>Games</span><span data-hu>Játékok</span></button>
+    <button class="fb" data-ft="hci">HCI</button>
+    <button class="fb" data-ft="ml">ML / AI</button>
+    <button class="fb" data-ft="sg"><span data-en>Serious Games</span><span data-hu>Fejlesztő játékok</span></button>
+    <button class="fb" data-ft="spatial"><span data-en>Spatial Ability</span><span data-hu>Térbeli képesség</span></button>
+    <button class="fb" data-ft="vr">VR / AR</button>
+  </div>
+
+  <div class="pub-bar" id="bar-year">
+    <span class="pb-label"><span data-en>Year:</span><span data-hu>Év:</span></span>
+    <button class="fb active" data-fy="all"><span data-en>All</span><span data-hu>Összes</span></button>
+    <button class="fb" data-fy="2026">2026</button>
+    <button class="fb" data-fy="2025">2025</button>
+    <button class="fb" data-fy="2024">2024</button>
+    <button class="fb" data-fy="2023">2023</button>
+    <button class="fb" data-fy="2022">2022</button>
+    <button class="fb" data-fy="2021">2021</button>
+    <button class="fb" data-fy="older">≤2020</button>
+  </div>
+
+  <div class="pub-bar-oa">
+    <span class="pb-label-oa">⬡ Open Access:</span>
+    <button class="fb oa-btn active" data-fo="all"><span data-en>Show all</span><span data-hu>Összes</span></button>
+    <button class="fb oa-btn" data-fo="oa"><span data-en>Open Access only</span><span data-hu>Csak Open Access</span></button>
+  </div>
+  <div class="pub-bar-oa">
+    <span class="pb-label-oa">▶ Video Summary:</span>
+    <button class="fb oa-btn active" data-fv="all"><span data-en>Show all</span><span data-hu>Összes</span></button>
+    <button class="fb oa-btn" data-fv="vs"><span data-en>Has video only</span><span data-hu>Csak videóval</span></button>
+  </div>
+  <div class="pub-bar-oa">
+    <span class="pb-label-oa">◈ <span data-en>Type:</span><span data-hu>Típus:</span></span>
+    <button class="fb oa-btn active" data-ftype="all"><span data-en>All</span><span data-hu>Összes</span></button>
+    <button class="fb oa-btn" data-ftype="book"><span data-en>Book</span><span data-hu>Könyv</span></button>
+    <button class="fb oa-btn" data-ftype="incollection"><span data-en>Book Chapter</span><span data-hu>Könyvfejezet</span></button>
+    <button class="fb oa-btn" data-ftype="inproceedings"><span data-en>Conference Paper</span><span data-hu>Konferenciaközlemény</span></button>
+    <button class="fb oa-btn" data-ftype="editorial"><span data-en>Editorial / Preface</span><span data-hu>Szerkesztői Cikk / Előszó</span></button>
+    <button class="fb oa-btn" data-ftype="article"><span data-en>Journal Article</span><span data-hu>Folyóiratcikk</span></button>
+    <button class="fb oa-btn" data-ftype="misc"><span data-en>Other</span><span data-hu>Egyéb</span></button>
+    <button class="fb oa-btn" data-ftype="mastersthesis"><span data-en>Thesis</span><span data-hu>Dolgozat</span></button>
+  </div>
+
+  <div class="pub-search-wrap">
+    <label for="pub-search"><span data-en>Search:</span><span data-hu>Keresés:</span></label>
+    <input class="pub-search" id="pub-search" type="search" placeholder="Filter by title…" autocomplete="off" spellcheck="false"/>
+    <button class="pub-search-clear" id="pub-search-clear" aria-label="Clear search">✕ clear</button>
+  </div>
+  <div class="pub-count" id="pub-count"></div>
+  <div class="pub-list" id="pub-list"><p style="color:var(--muted);padding:1rem">Loading publications…</p></div>
+
+  <div class="pub-footer">
+    <a class="pfl" href="https://www.researchgate.net/profile/Tibor-Guzsvinecz" target="_blank">→ Full list on ResearchGate</a>
+    <a class="pfl alt" href="https://m2.mtmt.hu/api/author/10060181" target="_blank">→ MTMT</a>
+    <a class="pfl alt" href="https://scholar.google.com/citations?user=03Sg_PgAAAAJ" target="_blank">→ Google Scholar</a>
+  </div>
+  <div class="updated">
+    <span data-en>Publication data last updated: 12 May 2026. For the full list, see ResearchGate or MTMT.</span>
+    <span data-hu>A publikációs adatok utolsó frissítése: 2026. május 12. A teljes listáért lásd a ResearchGate-et vagy az MTMT-t.</span>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+
+<!-- EDITORSHIP -->
+<section id="editorship" class="sw">
+  <div class="sh"><span class="sn">06</span><h2 class="st"><span data-en>EDITORSHIP</span><span data-hu>SZERKESZTŐI TEVÉKENYSÉG</span></h2><div class="sl"></div></div>
+  <div class="eseclabel"><span data-en>Books &amp; Proceedings</span><span data-hu>Könyvek &amp; konferenciakötetetek</span></div>
+  <div class="edit-grid">
+    <div class="ec"><div class="etype">Book · IntechOpen</div><div class="etitle">Fundamentals and Future Trends of Image and Video Coding</div><div class="eyear">2026 · <span data-en>In preparation</span><span data-hu>Előkészületben</span></div><a class="elink" href="https://www.intechopen.com/welcome/1005629" target="_blank"><span data-en>Call for Chapters →</span><span data-hu>Fejezetek várhatók →</span></a></div>
+    <div class="ec"><div class="etype">Book · IntechOpen</div><div class="etitle">From Pixels to Play — The Art and Science of Video Games</div><div class="eyear">2026</div><a class="elink" href="https://www.intechopen.com/books/1004656" target="_blank">Open Access →</a></div>
+    <div class="ec"><div class="etype">Book · IntechOpen</div><div class="etitle">Game Theory — Computational Aspects and Applications</div><div class="eyear">2025</div><a class="elink" href="https://www.intechopen.com/books/1003417" target="_blank">View book →</a></div>
+    <div class="ec"><div class="etype">Book · IntechOpen</div><div class="etitle">Level Up! Exploring Gamification's Impact on Research and Innovation</div><div class="eyear">2024</div><a class="elink" href="https://www.intechopen.com/books/1003441" target="_blank">Open Access →</a></div>
+    <div class="ec"><div class="etype"><span data-en>Proceedings</span><span data-hu>Konferenciakötet</span></div><div class="etitle">WSPS 12 — 12th Winter School of PhD Students in Informatics and Mathematics</div><div class="eyear">2026</div><a class="elink" href="https://www.doszmito.hu/wp-content/uploads/2026/02/WSPS_12_online.pdf" target="_blank">Download PDF →</a></div>
+    <div class="ec"><div class="etype"><span data-en>Proceedings</span><span data-hu>Konferenciakötet</span></div><div class="etitle">WSPS 11 — 11th Winter School of PhD Students in Informatics and Mathematics</div><div class="eyear">2025</div><a class="elink" href="http://doszmito.hu/wsps11.pdf" target="_blank">Download PDF →</a></div>
+    <div class="ec"><div class="etype"><span data-en>Proceedings</span><span data-hu>Konferenciakötet</span></div><div class="etitle">WSPS 10 — 10th Winter School of PhD Students in Informatics and Mathematics</div><div class="eyear">2024</div><a class="elink" href="https://www.doszmito.hu/wp-content/uploads/2024/03/WSPS_X_online.pdf" target="_blank">Download PDF →</a></div>
+    <div class="ec"><div class="etype"><span data-en>Proceedings</span><span data-hu>Konferenciakötet</span></div><div class="etitle">2nd PE-ZEK Professional E-Sports Days</div><div class="evenue">University of Pannonia, Zalaegerszeg</div><div class="eyear">2023</div><a class="elink" href="https://zek.uni-pannon.hu/images/doku_zek/pe_zek_esport_szakmai_napok_kiadvany_2023.pdf" target="_blank">Download PDF →</a></div>
+  </div>
+  <div class="eseclabel" style="margin-top:2.2rem"><span data-en>Special Issues &amp; Journals</span><span data-hu>Különszámok &amp; folyóiratok</span></div>
+  <div class="edit-grid">
+    <div class="ec"><div class="etype"><span data-en>Journal · Guest Editor</span><span data-hu>Folyóirat · Vendégszerkesztő</span></div><div class="etitle">Discover Computing (Springer)</div><div class="eyear">2025–</div><a class="elink" href="https://link.springer.com/journal/10791/editorial-board" target="_blank">Editorial board →</a></div>
+    <div class="ec"><div class="etype">Special Issue · Applied Sciences (2nd Ed.)</div><div class="etitle">Emerging Technologies of Human-Computer Interaction — 2nd Edition</div><div class="eyear">2025 · <span data-en>Open for submissions</span><span data-hu>Beküldés nyitva</span></div><a class="elink" href="https://www.mdpi.com/journal/applsci/special_issues/77U210K264" target="_blank">Submit a paper →</a></div>
+    <div class="ec"><div class="etype">Special Issue · Applied Sciences</div><div class="etitle">Emerging Technologies of Human-Computer Interaction</div><div class="eyear">2025 · <span data-en>Closed</span><span data-hu>Lezárva</span></div><a class="elink" href="https://www.mdpi.com/journal/applsci/special_issues/627T226B9S" target="_blank">View issue →</a></div>
+    <div class="ec"><div class="etype">Special Issue · Infocommunications Journal</div><div class="etitle">Cognitive Infocommunications and Cognitive Aspects of Virtual Reality</div><div class="eyear">2024</div><a class="elink" href="https://www.infocommunications.hu/special-issue" target="_blank">Read issue →</a></div>
+    <div class="ec"><div class="etype">Special Issue · Sustainability</div><div class="etitle">Artificial Intelligence Applications for Industry 4.0</div><div class="eyear">2023</div><a class="elink" href="https://www.mdpi.com/journal/sustainability/special_issues/DX549NE43W" target="_blank">Read issue →</a></div>
+    <div class="ec"><div class="etype">Special Issue · Electronics</div><div class="etitle">Software and Hardware Aspects of Human-Computer Interaction</div><div class="eyear">2022</div></div>
+  </div>
+  <div class="eseclabel" style="margin-top:2.2rem"><span data-en>Conference Organization</span><span data-hu>Konferenciaszervezés</span></div>
+  <div class="conf-list">
+    <div class="ci"><div><div class="ci-name">17th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2026)</div><div class="ci-role"><span data-en>Organizing &amp; Program Committee</span><span data-hu>Szervező- és programbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/coginfocom26/?page_id=32" target="_blank">Conference →</a></div><div class="ci-year">2026</div></div>
+    <div class="ci"><div><div class="ci-name">16th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2025)</div><div class="ci-role"><span data-en>Organizing &amp; Program Committee</span><span data-hu>Szervező- és programbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/coginfocom25/?page_id=32" target="_blank">Conference →</a></div><div class="ci-year">2025</div></div>
+    <div class="ci"><div><div class="ci-name">15th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2024)</div><div class="ci-role"><span data-en>Organizing &amp; Program Committee</span><span data-hu>Szervező- és programbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/coginfocom24/?page_id=32" target="_blank">Conference →</a></div><div class="ci-year">2024</div></div>
+    <div class="ci"><div><div class="ci-name">Applied Information Science Conference (AINF 2023)</div><div class="ci-role"><span data-en>Program Committee</span><span data-hu>Programbizottsági tag</span></div><a class="ci-link" href="https://www.uniduna.hu/2-uncategorised/3217-applied_information_science" target="_blank">Conference →</a></div><div class="ci-year">2023</div></div>
+    <div class="ci"><div><div class="ci-name">2nd IEEE International Conference on Cognitive Aspects of Virtual Reality (CVR 2023)</div><div class="ci-role"><span data-en>Organizing Committee</span><span data-hu>Szervezőbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/cvr23/" target="_blank">Conference →</a></div><div class="ci-year">2023</div></div>
+    <div class="ci"><div><div class="ci-name">II. PE-ZEK E-sport Szakmai Napok</div><div class="ci-role"><span data-en>Co-organizer · University of Pannonia, Zalaegerszeg</span><span data-hu>Társszervező · Pannon Egyetem ZEK</span></div></div><div class="ci-year">2023</div></div>
+    <div class="ci"><div><div class="ci-name">14th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2023)</div><div class="ci-role"><span data-en>Organizing &amp; Program Committee</span><span data-hu>Szervező- és programbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/coginfocom23/" target="_blank">Conference →</a></div><div class="ci-year">2023</div></div>
+    <div class="ci"><div><div class="ci-name">13th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2022)</div><div class="ci-role"><span data-en>Organizing &amp; Program Committee</span><span data-hu>Szervező- és programbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/coginfocom22/" target="_blank">Conference →</a></div><div class="ci-year">2022</div></div>
+    <div class="ci"><div><div class="ci-name">1st IEEE International Conference on Internet of Digital Reality (IOD 2022)</div><div class="ci-role"><span data-en>Organizing Committee</span><span data-hu>Szervezőbizottsági tag</span></div><a class="ci-link" href="https://scitope.com/iod22/" target="_blank">Conference →</a></div><div class="ci-year">2022</div></div>
+    <div class="ci"><div><div class="ci-name">7th Winter School of PhD Students in Informatics and Mathematics (WSPS 7)</div><div class="ci-role"><span data-en>Organization support</span><span data-hu>Szervezésben való közreműködés</span></div><a class="ci-link" href="https://www.doszmito.hu/wsps-7/" target="_blank">Event →</a></div><div class="ci-year">2021</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TALKS -->
+<div id="talks" class="swf"><div class="inner">
+  <div class="sh"><span class="sn">07</span><h2 class="st"><span data-en>CONFERENCE PRESENTATIONS</span><span data-hu>KONFERENCIA-ELŐADÁSOK</span></h2><div class="sl"></div></div>
+  <div id="talks-list"></div>
+</div></div>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="sw">
+  <div class="sh"><span class="sn">08</span><h2 class="st"><span data-en>CONTACT</span><span data-hu>KAPCSOLAT</span></h2><div class="sl"></div></div>
+  <div class="cg">
+    <div class="cl">
+      <p data-en>Available for research collaborations, conference contributions, book chapter invitations, special issue proposals, and general academic mischief. Response may take a few days.</p>
+      <p data-hu>Kutatási együttműködések, konferenciabeküldések, könyvfejezet-meghívások, különszám-javaslatok és egyéb tudományos kalandok ügyében kereshetsz. Válasz néhány napon belül.</p>
+      <a class="cem" id="contact-email" href="#">guzsvinecz.tibor [at]<br>zek.uni-pannon.hu</a>
+      <p class="cnote" data-en>University of Pannonia · Faculty of Information Technology · Veszprém<br><br><em>P.S. Include a joke in your email — at least I'll know you're not a bot. 🤖</em></p>
+      <p class="cnote" data-hu>Pannon Egyetem · Műszaki Informatikai Kar · Veszprém<br><br><em>U.i. Írj egy viccet az e-mailbe — legalább tudom, hogy nem spam. 🤖</em></p>
+    </div>
+    <div>
+      <div style="font-size:.59rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem"><span data-en>Scientific Profiles</span><span data-hu>Tudományos profilok</span></div>
+      <div class="pg">
+        <a class="plink" href="https://m2.mtmt.hu/api/author/10060181" target="_blank">MTMT <span class="parr">→</span></a>
+        <a class="plink" href="https://scholar.google.com/citations?user=03Sg_PgAAAAJ" target="_blank">Google Scholar <span class="parr">→</span></a>
+        <a class="plink" href="https://doktori.hu/doktori-kepzes/szemelyek/24626/" target="_blank">Doktori.hu <span class="parr">→</span></a>
+        <a class="plink" href="https://www.researchgate.net/profile/Tibor-Guzsvinecz" target="_blank">ResearchGate <span class="parr">→</span></a>
+        <a class="plink" href="https://www.scopus.com/authid/detail.uri?authorId=57024002200" target="_blank">Scopus <span class="parr">→</span></a>
+        <a class="plink" href="https://publons.com/researcher/AAK-5708-2021" target="_blank">Publons <span class="parr">→</span></a>
+        <a class="plink" href="https://orcid.org/0000-0003-3273-313X" target="_blank">ORCID <span class="parr">→</span></a>
+        <a class="plink" href="https://www.intechopen.com/profiles/530382" target="_blank">IntechOpen <span class="parr">→</span></a>
+        <a class="plink" href="https://dblp.org/pid/182/6084.html" target="_blank">DBLP <span class="parr">→</span></a>
+        <a class="plink" href="https://www.linkedin.com/in/tibor-guzsvinecz-3756172a2/" target="_blank">LinkedIn <span class="parr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">© 2026 Dr. Tibor Guzsvinecz <span>·</span> University of Pannonia</div>
+  <div class="fc"><span data-en>Last updated: 12 May 2026</span><span data-hu>Utolsó frissítés: 2026. május 12.</span></div>
+</footer>
+
+<script>
+// ── THEME & LANG ──
+function toggleTheme(){
+  const r=document.documentElement,b=document.getElementById('theme-btn');
+  r.getAttribute('data-theme')==='dark'?(r.setAttribute('data-theme','light'),b.textContent='☾'):(r.setAttribute('data-theme','dark'),b.textContent='☀');
+}
+function toggleLang(){
+  const r=document.documentElement,b=document.getElementById('lang-btn');
+  r.getAttribute('data-lang')==='en'?(r.setAttribute('data-lang','hu'),b.textContent='EN'):(r.setAttribute('data-lang','en'),b.textContent='HU');
+}
+
+// ── TAG LABELS ──
+const TAG_LABEL={vr:'VR',games:'Games',hci:'HCI',data:'Data Science',spatial:'Spatial Ability',
+  gamification:'Gamification',accessibility:'Accessibility',ml:'ML / AI',sg:'Serious Games',editorial:'Editorial'};
+const TAG_CLASS={vr:'vr',games:'games',hci:'hci',data:'data',spatial:'spatial',
+  gamification:'gamification',accessibility:'accessibility',ml:'ml',sg:'sg',editorial:'editorial'};
+
+// ── PUB TYPE LABELS ──
+const TYPE_LABEL={
+  article:'Journal Article', inproceedings:'Conference Paper',
+  incollection:'Book Chapter', book:'Book', chapter:'Book Chapter',
+  misc:'Other', mastersthesis:'Thesis', other:'Other'
+};
+const TYPE_LABEL_HU={
+  article:'Folyóiratcikk', inproceedings:'Konferenciaközlemény',
+  incollection:'Könyvfejezet', book:'Könyv', chapter:'Könyvfejezet',
+  misc:'Egyéb', mastersthesis:'Dolgozat', other:'Egyéb'
+};
+
+
+// ── HIGHLIGHT AUTHOR ──
+function hilite(s){
+  return s.replace(/Guzsvinecz, Tibor/g,'<strong>Guzsvinecz, Tibor</strong>');
+}
+
+// ── BUILD PUBLICATION HTML ──
+function buildPub(p){
+  const tags = (p.tags||[]).map(t=>`<span class="pt ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+  const oa = p.oa ? '<span class="pt oa">Open Access</span>' : '';
+  const vs = p.video_summary ? '<span class="pt vs">▶ Video Summary</span>' : '';
+  const typeLabelEn = (p.tags||[]).includes('editorial') ? 'Editorial / Preface' : (TYPE_LABEL[p.type] || p.type);
+  const typeLabelHu = (p.tags||[]).includes('editorial') ? 'Szerkesztői Cikk / Előszó' : (TYPE_LABEL_HU[p.type] || p.type);
+  const typeBadge = `<span class="pt tbadge"><span data-en>${typeLabelEn}</span><span data-hu>${typeLabelHu}</span></span>`;
+  const badges = [typeBadge, oa, vs].filter(Boolean).join('');
+  const badgesRow = badges ? `<div class="pm pm-badges">${badges}</div>` : '';
+  const doi = p.doi ? `<div class="pdoi">DOI: <a href="https://doi.org/${p.doi}" target="_blank">${p.doi}</a></div>` : '';
+  const url = p.read_url || (p.doi ? `https://doi.org/${p.doi}` : null);
+  const btn = url ? `<a class="pl" href="${url}" target="_blank">Read Paper →</a>` : '';
+  const ytBtn = p.video_summary ? `<a class="pl" href="${p.video_summary}" target="_blank" style="background:transparent;color:#ff4444;border-color:#ff4444;margin-left:.4rem">▶ Video →</a>` : '';
+  const ptype = (p.tags||[]).includes('editorial') ? 'editorial' :
+    p.type==='article'       ? 'article' :
+    p.type==='inproceedings' ? 'inproceedings' :
+    (p.type==='incollection'||p.type==='chapter') ? 'incollection' :
+    p.type==='book'          ? 'book' :
+    p.type==='mastersthesis' ? 'mastersthesis' : 'misc';
+  return `<div class="pub-item" data-t="${(p.tags||[]).join(' ')}" data-y="${p.year>2020?p.year:'older'}" data-ptype="${ptype}" ${p.oa?'data-oa="1"':''} ${p.video_summary?'data-vs="1"':''}>
+  <div class="pm">${tags}</div>
+  ${badgesRow}
+  <div class="ptitle">${p.title}</div>
+  <div class="pauth">${hilite(p.authors)}</div>
+  <div class="pven">${p.venue}</div>
+  ${doi}
+  <div class="pyr">${p.year}</div>
+  ${btn}${ytBtn}
+</div>`;
+}
+
+// ── FILTER STATE ──
+let aT=new Set(['all']), aY='all', aO='all', aV='all', aPt='all', aQ='', allPubs=[];
+
+function applyF(){
+  let visible=0;
+  document.querySelectorAll('.pub-item').forEach(el=>{
+    const tOk = aT.has('all') ? true : Array.from(aT).some(t=>(el.dataset.t||'').split(' ').includes(t));
+    const yOk = aY==='all'||el.dataset.y===aY;
+    const oOk = aO==='all'||(aO==='oa'&&el.dataset.oa==='1');
+    const vOk = aV==='all'||(aV==='vs'&&el.dataset.vs==='1');
+    const ptOk = aPt==='all'||el.dataset.ptype===aPt;
+    const qOk = aQ===''||(el.querySelector('.ptitle')||{textContent:''}).textContent.toLowerCase().includes(aQ);
+    const show = tOk&&yOk&&oOk&&vOk&&ptOk&&qOk;
+    el.style.display = show?'':'none';
+    if(show) visible++;
+  });
+  const tot=allPubs.length;
+  document.getElementById('pub-count').innerHTML =
+    `Showing <span>${visible}</span> of <span>${tot}</span> publications`;
+}
+
+// ── WIRE FILTERS ──
+function wireFilters(){
+  // Topic: multi-select
+  document.querySelectorAll('[data-ft]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const val=btn.dataset.ft;
+      if(val==='all'){
+        aT=new Set(['all']);
+        document.querySelectorAll('[data-ft]').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+      } else {
+        aT.delete('all');
+        document.querySelector('[data-ft="all"]').classList.remove('active');
+        if(aT.has(val)){aT.delete(val);btn.classList.remove('active');}
+        else{aT.add(val);btn.classList.add('active');}
+        if(aT.size===0){aT=new Set(['all']);document.querySelector('[data-ft="all"]').classList.add('active');}
+      }
+      applyF();
+    });
+  });
+  // Year: single select
+  document.querySelectorAll('[data-fy]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-fy]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); aY=btn.dataset.fy; applyF();
+    });
+  });
+  // Open Access: single select
+  document.querySelectorAll('[data-fo]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-fo]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); aO=btn.dataset.fo; applyF();
+    });
+  });
+  // Video Summary: single select
+  document.querySelectorAll('[data-fv]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-fv]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); aV=btn.dataset.fv; applyF();
+    });
+  });
+  // Type: single select
+  document.querySelectorAll('[data-ftype]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-ftype]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); aPt=btn.dataset.ftype; applyF();
+    });
+  });
+  // Search by title
+  const searchEl=document.getElementById('pub-search');
+  const clearBtn=document.getElementById('pub-search-clear');
+  if(searchEl){
+    searchEl.addEventListener('input',()=>{
+      aQ=searchEl.value.trim().toLowerCase();
+      clearBtn.classList.toggle('visible',aQ!=='');
+      applyF();
+    });
+    clearBtn.addEventListener('click',()=>{
+      searchEl.value=''; aQ='';
+      clearBtn.classList.remove('visible');
+      applyF();
+    });
+  }
+}
+
+// ── TALKS DATA ──
+const talks = [
+  {yr:2026, items:[
+    {t:"Genre Matters: Analyzing Toxicity Patterns in Steam Game Reviews",a:"<strong>Guzsvinecz, T.</strong> and Szűcs, J.",c:"2026 IEEE 24th World Symposium on Applied Machine Intelligence and Informatics (SAMI 2026)",l:"Stará Lesná, Slovakia"},
+  ]},
+  {yr:2025, items:[
+    {t:"Comparison of Performance on MRT, MCT, PSVT and HSVT Spatial Ability Tests between Paper and Desktop Display",a:"<strong>Guzsvinecz, T.</strong>, Orbán-Mihálykó, É., Sik-Lányi, C., Szűcs, J. and Perge, E.",c:"2025 IEEE 23rd World Symposium on Applied Machine Intelligence and Informatics (SAMI 2025)",l:"Stará Lesná, Slovakia"},
+    {t:"An Interactive Educational Platform for E-Sports: Development and Future Perspectives",a:"Szűcs, J., Németh, K., Dávid, L. and <strong>Guzsvinecz, T.</strong>",c:"5th International Conference on Applied Mathematics &amp; Computer Science",l:"Venice, Italy"},
+	{t:"Toxicitás elemzése videojátékok értékelésében HCI és digitális jóllét szempontjából",a:"<strong>Guzsvinecz T.</strong> and Szűcs J.",c:"XXXVIII. Neumann Kollokvium",l:"Budapest, Hungary"},
+  ]},
+  {yr:2024, items:[
+    {t:"Development of a Virtual Reality Application for Neck Exercises",a:"Kertész, D., Szűcs, J. and <strong>Guzsvinecz, T.</strong>",c:"2024 IEEE 7th Cando-EPE",l:"Budapest, Hungary"},
+    {t:"Investigation of Sentiments in Virtual Reality Game Reviews",a:"<strong>Guzsvinecz, T.</strong> and Szűcs, J.",c:"15th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2024)",l:"Tokyo, Japan"},
+    {t:"Towards Understanding Player Experience between Classic and Unfair 2D Platform Video Games",a:"Csali, T., Szűcs, J. and <strong>Guzsvinecz, T.</strong>",c:"15th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2024)",l:"Tokyo, Japan"},
+    {t:"A Preliminary Analysis of E-sports Game Reviews",a:"Szűcs, J. and <strong>Guzsvinecz, T.</strong>",c:"18th IEEE International Symposium on Applied Computational Intelligence and Informatics (SACI 2024)",l:"Timisoara, Romania"},
+    {t:"Towards Understanding Exocentric Distance Estimation Skills of University Students in VR",a:"<strong>Guzsvinecz, T.</strong>, Szűcs, J. and Perge, E.",c:"2024 IEEE 22nd World Symposium on Applied Machine Intelligence and Informatics (SAMI 2024)",l:"Stará Lesná, Slovakia"},
+  ]},
+  {yr:2023, items:[
+    {t:"Egocentrikus és Exocentrikus Távolságok Vizsgálata Virtuális Környezetben",a:"<strong>Guzsvinecz T.</strong>, Szűcs J., Perge E.",c:"XXXVI. Neumann Kollokvium",l:"Veszprém, Hungary"},
+    {t:"Virtuális Valóság Alapú Játék Fejlesztése Nyakrehabilitációs Célra",a:"Kertész D., Szűcs J., <strong>Guzsvinecz T.</strong>",c:"XXXVI. Neumann Kollokvium",l:"Veszprém, Hungary"},
+    {t:"Hanghatás Alapú Akadálymentesítési Vizsgálat Virtuális Környezetben",a:"Szelinger A., <strong>Guzsvinecz T.</strong>",c:"XXXVI. Neumann Kollokvium",l:"Veszprém, Hungary"},
+    {t:"How Egocentric Distance Estimation Changes in VR by Using a Desktop Display or the Gear VR",a:"<strong>Guzsvinecz, T.</strong>, Szűcs, J. and Perge, E.",c:"12th International Conference on Applied Informatics (ICAI 2023)",l:"Eger, Hungary"},
+    {t:"An Overview of Display Parameters and Devices that Affect Egocentric Distance Estimation in VR",a:"<strong>Guzsvinecz, T.</strong>, Szűcs, J. and Perge, E.",c:"9th Winter School for PhD Students in Informatics and Mathematics (WSPS IX)",l:"Zalaegerszeg, Hungary"},
+	{t:"Az egocentrikus és exocentrikus távolságok kapcsolata az e-sporttal",a:"<strong>Guzsvinecz T.</strong> and Szűcs J.",c:"II. PE ZEK E-Sport Szakmai Napok",l:"2024"},
+  ]},
+  {yr:2022, items:[
+    {t:"Psychophysical Examination of Memory Colors using a Web Application — A Pilot Study",a:"Sik-Lanyi, C., Domotor, A., Halmosi, B., Szűcs, J. and <strong>Guzsvinecz, T.</strong>",c:"2022 13th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2022)",l:"Online"},
+    {t:"An Overview of Received Results on MRT, MCT, and PSVT Spatial Ability Tests in Virtual Environments",a:"<strong>Guzsvinecz, T.</strong>, Orbán-Mihálykó, É., Sik-Lanyi, C. and Perge, E.",c:"2022 IEEE 1st International Conference on Internet of Digital Reality (IoD 2022)",l:"Online"},
+    {t:"Development of a Negotiation-based Serious Game in VR to Help Teach Responsible Consumption and Production",a:"Gyetvai, L. et al. (incl. <strong>Guzsvinecz, T.</strong>)",c:"2022 1st IEEE International Conference on Cognitive Aspects of Virtual Reality (CVR 2022)",l:"Online"},
+  ]},
+  {yr:2021, items:[
+    {t:"The Virtual Reality Sound-based Spatial Orientation Project",a:"<strong>Guzsvinecz, T.</strong>, Szabó, M., Halmosi, B. and Sikné Lányi, C.",c:"12th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2021)",l:"Online"},
+    {t:"Overtaker — A VR-Based Serious Game for Practicing Distance Estimation",a:"Rethalmi, D., Elgendy, M., Sik-Lanyi, C. and <strong>Guzsvinecz, T.</strong>",c:"12th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2021)",l:"Online"},
+    {t:"A térbeli készséget fejlesztő virtuális valóság alapú teszteken töltött idők meghatározása",a:"<strong>Guzsvinecz T.</strong>, Orbán-Mihálykó É., Sikné Lányi C., Perge E.",c:"XXXIV. Neumann Kollokvium",l:"Online"},
+  ]},
+  {yr:2020, items:[
+    {t:"Preliminary Results of Evaluating a Prediction-Based Algorithm for Movement Pattern Recognition and Classification",a:"<strong>Guzsvinecz, T.</strong>, Szűcs, V. and Magyar, A.",c:"2020 11th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2020)",l:"Online"},
+    {t:"Test Software Development of Size and Contrast Effect Research",a:"Sik-Lanyi, C., <strong>Guzsvinecz, T.</strong>, Doszkocs, N., Meszaros, I. M. and Somogyi, G. L.",c:"2020 11th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2020)",l:"Online"},
+    {t:"Háromdimenziós virtuális környezet fejlesztése hanghatás alapú HCI és akadálymentesítési vizsgálatra",a:"<strong>Guzsvinecz T.</strong>, Szabó M., Sikné Lányi C.",c:"XXXIII. Neumann Kollokvium",l:"Online"},
+    {t:"Comparing the Reflection and Refraction of Light Phenomena in Reality to their Counterparts in a VR Environment Rendered by Cycles",a:"<strong>Guzsvinecz, T.</strong> and Medvegy, T.",c:"Pannonian Conference on Advances in Information Technology (PCIT 2020)",l:"Veszprém, Hungary"},
+    {t:"Improvements on Spatial Ability Tests Using Virtual Reality",a:"<strong>Guzsvinecz, T.</strong>, Sikné Lányi, C., Orbán-Mihálykó, É. and Perge, E.",c:"7th Winter School of PhD Students in Informatics and Mathematics (WSPS 7)",l:"Veszprém, Hungary"},
+  ]},
+  {yr:2019, items:[
+    {t:"Indoor Navigation for People with Visual Impairment using Augmented Reality Markers",a:"Elgendy, M., Herperger, M., <strong>Guzsvinecz, T.</strong> and Sikné Lányi, C.",c:"2019 10th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2019)",l:"Naples, Italy"},
+    {t:"Preparing Spatial Ability Tests in a Virtual Reality Application",a:"<strong>Guzsvinecz, T.</strong>, Szeles, M., Perge, E. and Sik-Lanyi, C.",c:"2019 10th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2019)",l:"Naples, Italy"},
+    {t:"Development of Colour Vision Test Game for Android Devices",a:"Szűcs, V., <strong>Guzsvinecz, T.</strong>, Bor, D. and Sik-Lanyi, C.",c:"12th International Conference on Disability, Virtual Reality and Associated Technologies with ITAG (ICCHP/ITAG 2019)",l:"Nottingham, UK"},
+    {t:"Open World Memory Game",a:"<strong>Guzsvinecz, T.</strong>, Ruzsonyi, B., Szűcs, V. and Sikné Lányi, C.",c:"12th International Conference on Disability, Virtual Reality and Associated Technologies with ITAG (ICCHP/ITAG 2019)",l:"Nottingham, UK"},
+    {t:"Designing Gamified Virtual Reality Applications with Sensors — A Gamification Study",a:"<strong>Guzsvinecz, T.</strong>, Szűcs, V. and Sik-Lanyi, C.",c:"Pannonian Conference on Advances in Information Technology (PCIT 2019)",l:"Veszprém, Hungary"},
+    {t:"A Brief Review on the Challenges of Internet of Things and their Solutions",a:"<strong>Guzsvinecz, T.</strong>, Medvegy, T. and Szűcs, V.",c:"Pannonian Conference on Advances in Information Technology (PCIT 2019)",l:"Veszprém, Hungary"},
+  ]},
+  {yr:2018, items:[
+    {t:"Developing a Virtual Reality Application for the Improvement of Depth Perception",a:"<strong>Guzsvinecz, T.</strong>, Kovacs, C., Reich, D., Szucs, V. and Sik-Lanyi, C.",c:"2018 IEEE 9th International Conference on Cognitive Infocommunications (CogInfoCom 2018)",l:"Budapest, Hungary"},
+    {t:"Development of a Wingsuit-style Gamified Application",a:"<strong>Guzsvinecz, T.</strong>, Jandas, B., Szucs, V. and Sik-Lanyi, C.",c:"XXXI. Neumann Kollokvium",l:"Szeged, Hungary"},
+    {t:"Serious Games in Movement Rehabilitation and in the Diagnosis of Visual Problems",a:"<strong>Guzsvinecz, T.</strong>, Szucs, V., Elgendy, M. and Sik-Lanyi, C.",c:"5th Winter School of PhD Students in Informatics and Mathematics (WSPS 5)",l:"Debrecen, Hungary"},
+  ]},
+  {yr:2017, items:[
+    {t:'"Sliders" Android Game — Improving Logical Skills of People with Disabilities',a:"<strong>Guzsvinecz, T.</strong>, Koszegi-Vigh, D., Szucs, V. and Sik-Lanyi, C.",c:"14th Association for the Advancement of Assistive Technology in Europe (AAATE) Conference",l:"Sheffield, UK"},
+    {t:"Development of Mathematical Skills Developing Game Software",a:"Hajdics, G., <strong>Guzsvinecz, T.</strong>, Szucs, V. and Sik-Lanyi, C.",c:"14th Association for the Advancement of Assistive Technology in Europe (AAATE) Conference",l:"Sheffield, UK",l:"Sheffield, UK"},
+  ]},
+  {yr:2016, items:[
+    {t:"Android Games for Developing Fine Coordination of Movement Skills",a:"<strong>Guzsvinecz, T.</strong>, Szucs, V., Paxian, S. and Sik-Lanyi, C.",c:"International Conference on Computers Helping People with Special Needs (ICCHP 2016)",l:"Linz, Austria"},
+    {t:"Adaptív szabályozó interfész tervezése Kinect szenzoros mozgásrehabilitációs alkalmazáshoz",a:"<strong>Guzsvinecz T.</strong>, Magyar A., Sikné Lányi C., Szücs V.",c:"XXIX. Neumann Kollokvium",l:"Szeged, Hungary"},
+  ]},
+  {yr:2015, items:[
+    {t:"Developing Movement Recognition Application with the Use of Shimmer Sensor and Microsoft Kinect Sensor",a:"<strong>Guzsvinecz, T.</strong>, Szücs, V. and Sikné Lányi, C.",c:"13th Association for the Advancement of Assistive Technology in Europe (AAATE) Conference",l:"Budapest, Hungary"},
+    {t:"Developing Algorithmic Thinking — Learning Techniques via Visualization Methods",a:"<strong>Guzsvinecz, T.</strong>, Galgoczy, A. and Szücs, V.",c:"TIIKM 1st Annual International Conference on Education",l:"Beijing, China"},
+    {t:"Mozgásfelismerő alkalmazás Shimmer- és Microsoft Kinect szenzor vezérléssel",a:"Szücs V., <strong>Guzsvinecz T.</strong>, Paxián Sz., Sikné Lányi C.",c:"XXVIII. Neumann Kollokvium",l:"Veszprém, Hungary"},
+    {t:"Világítástechnikai kutatások és fejlesztések a támogató technológiákban",a:"<strong>Guzsvinecz T.</strong>, Szücs V., Sikné Lányi C.",c:"XIV. Lux et Color Vesprimiensis Szimpózium",l:"Veszprém, Hungary"},
+  ]},
+];
+
+// ── RENDER TALKS ──
+function renderTalks(){
+  const container = document.getElementById('talks-list');
+  container.innerHTML = talks.map(({yr,items})=>`
+    <div class="tyg">
+      <div class="tyl">${yr}</div>
+      ${items.map(({t,a,c,l})=>`
+      <div class="ti">
+        <div><div class="ti-t">${t}</div><div class="ti-a">${a}</div></div>
+        <div class="ti-vw"><div class="ti-c">${c}</div><div class="ti-l">${l}</div></div>
+      </div>`).join('')}
+    </div>`).join('');
+}
+
+// ── CV DYNAMIC STATS ──
+function updateCVStats(){
+  const nArticles    = allPubs.filter(p=>p.type==='article').length;
+  const nProceedings = allPubs.filter(p=>p.type==='inproceedings').length;
+  const nEditorial   = allPubs.filter(p=>(p.tags||[]).includes('editorial')).length;
+
+  // Count from editorship DOM
+  let nBooks=0, nEProcs=0, nSpecialIssues=0;
+  const editGrids = document.querySelectorAll('.edit-grid');
+  if(editGrids[0]) editGrids[0].querySelectorAll('.ec').forEach(ec=>{
+    const t = ec.querySelector('.etype')?.textContent||'';
+    if(/Book/i.test(t)) nBooks++;
+    else if(/Proceedings|Konferenciakötet/i.test(t)) nEProcs++;
+  });
+  if(editGrids[1]) editGrids[1].querySelectorAll('.ec').forEach(ec=>{
+    const t = ec.querySelector('.etype')?.textContent||'';
+    if(/Special Issue/i.test(t)) nSpecialIssues++;
+  });
+
+  // Count talks
+  const nTalks = talks.reduce((s,yr)=>s+yr.items.length, 0);
+
+  const lang = document.documentElement.getAttribute('data-lang')||'en';
+  const set = (id, en, hu) => {
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = `<span data-en>${en}</span><span data-hu>${hu}</span>`;
+  };
+
+  set('cv-sci-works',
+    `${allPubs.length}+ scientific works`,
+    `${allPubs.length}+ tudományos mű`);
+  set('cv-pub-breakdown',
+    `${nArticles} journal articles · ${nProceedings} conference papers · ${nEditorial} editorials/prefaces`,
+    `${nArticles} folyóiratcikk · ${nProceedings} konferenciacikk · ${nEditorial} szerkesztői/előszó`);
+  set('cv-edited-works',
+    `${nBooks} edited books · ${nEProcs} edited proceedings · ${nSpecialIssues} special issues`,
+    `${nBooks} szerk. könyv · ${nEProcs} konferenciakötet · ${nSpecialIssues} különszám`);
+  set('cv-talks-count',
+    `${nTalks} conference presentations`,
+    `${nTalks} konferencia-előadás`);
+}
+
+// ── MAIN INIT ──
+// ── EMAIL OBFUSCATION ──
+(function(){
+  const eU='guzsvinecz.tibor', eD='zek.uni-pannon.hu';
+  const el=document.getElementById('contact-email');
+  if(el){ el.href='mailto:'+eU+'@'+eD; }
+})();
+
+async function init(){
+  renderTalks();
+  wireFilters();
+  if(window.PUBS_DATA){
+    allPubs = window.PUBS_DATA;
+    document.getElementById('pub-list').innerHTML = allPubs.map(buildPub).join('');
+    applyF();
+    document.getElementById('pub-stat-hero').innerHTML = allPubs.length+'<span>+</span>';
+    updateCVStats();
+  } else {
+    try {
+      const res = await fetch('publications.json');
+      allPubs = await res.json();
+      document.getElementById('pub-list').innerHTML = allPubs.map(buildPub).join('');
+      applyF();
+      document.getElementById('pub-stat-hero').innerHTML = allPubs.length+'<span>+</span>';
+      updateCVStats();
+    } catch(e){
+      document.getElementById('pub-list').innerHTML =
+        '<p style="color:var(--muted);padding:1rem">Could not load publications. Make sure publications.json is in the same folder.</p>';
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
