@@ -124,7 +124,7 @@
         <span class="pt vs">▶ Video</span>
       </div>
       <div class="fp-actions">
-        <a class="fp-read" href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank">Read Paper →</a>
+        <a class="fp-read" href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>
         <a class="fp-yt" href="https://youtu.be/UKjXXJNndeM"><span data-en>VIDEO SUMMARY</span><span data-hu>VIDEÓ ÖSSZEFOGLALÓ</span></a>
       </div>
     </div>
@@ -144,7 +144,7 @@
         <span class="pt vs">▶ Video</span>
       </div>
       <div class="fp-actions">
-        <a class="fp-read" href="https://doi.org/10.1016/j.chb.2023.107955" target="_blank">Read Paper →</a>
+        <a class="fp-read" href="https://doi.org/10.1016/j.chb.2023.107955" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>
         <a class="fp-yt" href="https://youtu.be/QFf3oisQnmM"><span data-en>VIDEO SUMMARY</span><span data-hu>VIDEÓ ÖSSZEFOGLALÓ</span></a>
       </div>
     </div>
@@ -165,7 +165,7 @@
         <span class="pt vs">▶ Video</span>
       </div>
       <div class="fp-actions">
-        <a class="fp-read" href="https://link.springer.com/article/10.1007/s10209-024-01154-7" target="_blank">Read Paper →</a>
+        <a class="fp-read" href="https://link.springer.com/article/10.1007/s10209-024-01154-7" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>
         <a class="fp-yt" href="https://youtu.be/GNatiTuoQNI"><span data-en>VIDEO SUMMARY</span><span data-hu>VIDEÓ ÖSSZEFOGLALÓ</span></a>
       </div>
     </div>
@@ -280,9 +280,9 @@
         <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et">IEEE Member</div><div class="cv-es">Institute of Electrical and Electronics Engineers</div></div></div>
         <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>HAS Veszprém Regional Committee (VEAB) — Health Informatics Working Committee</span><span data-hu>MTA VEAB Egészségügyi Informatika Munkabizottság</span></div></div></div>
         <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>ZEK (Zalaegerszeg University Centre) — Committee for International Affairs</span><span data-hu>ZEK Külügyi és Nemzetközi Bizottság</span></div></div></div>
-        <div class="cv-e"><div class="cv-y">2022–</div><div><div class="cv-et"><span data-en>Member of the Public Body of the Hungarian Academy of Sciences</span><span data-hu>MTA köztestületi tag</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2022–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Köztestületi tag</span></div><div class="cv-es"><span data-en>Public Body of the Hungarian Academy of Sciences</span><span data-hu>MTA</span></div></div></div>
         <div class="cv-e"><div class="cv-y">2018–2020, 2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>John von Neumann Computer Society (NJSZT)</span><span data-hu>Neumann János Számítógéptudományi Társaság (NJSZT)</span></div></div></div>
-        <div class="cv-e"><div class="cv-y">2019–</div><div><div class="cv-et">DOSZ <span data-en>— Doctoral Students National Association</span><span data-hu>Doktoranduszok Országos Szövetsége</span></div><div class="cv-es"><span data-en>Dept. of Mathematics &amp; Informatics — Active member (2019–2021) · Supporting member (2021–)</span><span data-hu>Matematikai és Informatikai Tudományok Osztálya – aktív tag (2019–2021), pártoló tag (2021–)</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2019–</div><div><div class="cv-et">DOSZ <span data-en>— Doctoral Students National Association</span><span data-hu>Doktoranduszok Országos Szövetsége</span></div><div class="cv-es"><span data-en>Section of Mathematical and Information Sciences — Active member (2019–2021) · Supporting member (2021–)</span><span data-hu>Matematikai és Informatikai Tudományok Osztálya – aktív tag (2019–2021), pártoló tag (2021–)</span></div></div></div>
         <div class="cv-e"><div class="cv-y">2018–2021</div><div><div class="cv-et"><span data-en>PhD Student Representative, Faculty of Information Technology — University of Pannonia</span><span data-hu>MIK PhD képviselő — Pannon Egyetem Doktorandusz Önkormányzat</span></div><div class="cv-es"><span data-en>Faculty Council &amp; Doctoral School Council member</span><span data-hu>Kari Tanács és Doktori Iskola Tanács tagja</span></div></div></div>
       </div>
     </div>
@@ -493,7 +493,7 @@ function buildPub(p){
   const badgesRow = badges ? `<div class="pm pm-badges">${badges}</div>` : '';
   const doi = p.doi ? `<div class="pdoi">DOI: <a href="https://doi.org/${p.doi}" target="_blank">${p.doi}</a></div>` : '';
   const url = p.read_url || (p.doi ? `https://doi.org/${p.doi}` : null);
-  const btn = url ? `<a class="pl" href="${url}" target="_blank">Read Paper →</a>` : '';
+  const btn = url ? `<a class="pl" href="${url}" target="_blank"><span data-en><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></span><span data-hu>Cikk olvasása →</span></a>` : '';
   const ytBtn = p.video_summary ? `<a class="pl" href="${p.video_summary}" target="_blank" style="background:transparent;color:#ff4444;border-color:#ff4444;margin-left:.4rem">▶ Video →</a>` : '';
   const ptype = (p.tags||[]).includes('editorial') ? 'editorial' :
     p.type==='article'       ? 'article' :
