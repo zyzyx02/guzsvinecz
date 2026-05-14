@@ -177,7 +177,7 @@ window.PUBS_DATA = [
       "games"
     ],
     "read_url": "https://www.mdpi.com/10.1007/s11042-024-19628-4",
-    "video_summary": "#"
+    "video_summary": "https://youtu.be/UKjXXJNndeM"
   },
   {
     "id": "35427456",
@@ -194,7 +194,7 @@ window.PUBS_DATA = [
       "hci"
     ],
     "read_url": "https://link.springer.com/article/10.1007/s10209-024-01154-7",
-    "video_summary": "#"
+    "video_summary": "https://youtu.be/GNatiTuoQNI"
   },
   {
     "id": "35641137",
@@ -980,7 +980,7 @@ window.PUBS_DATA = [
       "data"
     ],
     "read_url": "https://doi.org/10.1016/j.chb.2023.107955",
-    "video_summary": "#"
+    "video_summary": "https://youtu.be/QFf3oisQnmM"
   },
   {
     "id": "34718686",
