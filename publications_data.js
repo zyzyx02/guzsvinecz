@@ -1935,8 +1935,8 @@ window.PUBS_DATA = [
     "oa": true,
     "title": "Intelligent Serious Games for Learning in Informal Learning Environments",
     "authors": "Abersek, Metka; Abersek, Boris; Dolenc, Kosta; Sikné Lányi, Cecília; Shirmohammadi, Shervin; Van Isacker, Karel; Grudeva, Petya; Szücs, Veronika; Guzsvinecz, Tibor",
-    "venue": "2018",
-    "doi": "2nd International Scientific Conference on Philosophy of Mind and Cognitive Modelling in Education, Maribor, Slovenia, May 7-8, 2018.",
+    "venue": "2nd International Scientific Conference on Philosophy of Mind and Cognitive Modelling in Education, Maribor, Slovenia, 2018.",
+    "doi": "",
     "tags": [
       "sg",
       "accessibility"
