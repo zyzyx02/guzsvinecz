@@ -1527,21 +1527,6 @@ window.PUBS_DATA = [
     "read_url": "https://doi.org/10.1109/CogInfoCom50765.2020.9237820"
   },
   {
-    "id": "pcit2020",
-    "year": 2020,
-    "type": "inproceedings",
-    "oa": true,
-    "title": "Comparing the Reflection and Refraction of Light Phenomena in Reality to their Counterparts in a Virtual Environment Rendered by Cycles",
-    "authors": "Guzsvinecz, Tibor; Medvegy, Tibor",
-    "venue": "Pannonian Conference on Advances in Information Technology (PCIT 2020), Veszprém, Hungary",
-    "doi": null,
-    "tags": [
-      "vr",
-      "hci"
-    ],
-    "read_url": null
-  },
-  {
     "id": "wsps7",
     "year": 2020,
     "type": "inproceedings",
