@@ -27,11 +27,24 @@
     <li><a href="#contact"><span data-en>Contact</span><span data-hu>Kapcsolat</span></a></li>
   </ul>
   <div class="nav-right">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">☰</button>
     <button class="ctrl-btn" onclick="toggleLang()" id="lang-btn">HU</button>
     <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">☀</button>
     <a class="nav-cta" href="#contact"><span data-en>Collaborate →</span><span data-hu>Együttműködés →</span></a>
   </div>
 </nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel">
+  <ul>
+    <li><a href="#about" class="nav-mp-link"><span data-en>About</span><span data-hu>Rólam</span></a></li>
+    <li><a href="#featured-pubs" class="nav-mp-link"><span data-en>Highlights</span><span data-hu>Kiemelt művek</span></a></li>
+    <li><a href="#fun" class="nav-mp-link"><span data-en>Beyond Research</span><span data-hu>Kutatáson túl</span></a></li>
+    <li><a href="#cv" class="nav-mp-link">CV</a></li>
+    <li><a href="#publications" class="nav-mp-link"><span data-en>Publications</span><span data-hu>Publikációk</span></a></li>
+    <li><a href="#editorship" class="nav-mp-link"><span data-en>Editorship</span><span data-hu>Szerkesztés</span></a></li>
+    <li><a href="#talks" class="nav-mp-link"><span data-en>Talks</span><span data-hu>Előadások</span></a></li>
+    <li><a href="#contact" class="nav-mp-link"><span data-en>Contact</span><span data-hu>Kapcsolat</span></a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section id="home">
@@ -287,7 +300,7 @@
         <div class="cv-e"><div class="cv-y">2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>ZEK (Zalaegerszeg University Centre) — Committee for International Affairs</span><span data-hu>ZEK Külügyi és Nemzetközi Bizottság</span></div></div></div>
         <div class="cv-e"><div class="cv-y">2022–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Köztestületi tag</span></div><div class="cv-es"><span data-en>Public Body of the Hungarian Academy of Sciences</span><span data-hu>MTA</span></div></div></div>
         <div class="cv-e"><div class="cv-y">2018–2020, 2023–</div><div><div class="cv-et"><span data-en>Member</span><span data-hu>Tag</span></div><div class="cv-es"><span data-en>John von Neumann Computer Society (NJSZT)</span><span data-hu>Neumann János Számítógéptudományi Társaság (NJSZT)</span></div></div></div>
-        <div class="cv-e"><div class="cv-y">2019–</div><div><div class="cv-et">DOSZ <span data-en>— Doctoral Students National Association</span><span data-hu>Doktoranduszok Országos Szövetsége</span></div><div class="cv-es"><span data-en>Section of Mathematical and Information Sciences — Active member (2019–2021) · Supporting member (2021–)</span><span data-hu>Matematikai és Informatikai Tudományok Osztálya – aktív tag (2019–2021), pártoló tag (2021–)</span></div></div></div>
+        <div class="cv-e"><div class="cv-y">2019–</div><div><div class="cv-et">DOSZ <span data-en>— Association of Hungarian PhD and DLA Students</span><span data-hu>Doktoranduszok Országos Szövetsége</span></div><div class="cv-es"><span data-en>Section of Mathematical and Information Sciences — Active member (2019–2021) · Supporting member (2021–)</span><span data-hu>Matematikai és Informatikai Tudományok Osztálya – aktív tag (2019–2021), pártoló tag (2021–)</span></div></div></div>
         <div class="cv-e"><div class="cv-y">2018–2021</div><div><div class="cv-et"><span data-en>PhD Student Representative, Faculty of Information Technology — University of Pannonia</span><span data-hu>MIK PhD képviselő — Pannon Egyetem Doktorandusz Önkormányzat</span></div><div class="cv-es"><span data-en>Faculty Council &amp; Doctoral School Council member</span><span data-hu>Kari Tanács és Doktori Iskola Tanács tagja</span></div></div></div>
       </div>
     </div>
@@ -422,8 +435,8 @@
   <div class="sh"><span class="sn">08</span><h2 class="st"><span data-en>CONTACT</span><span data-hu>KAPCSOLAT</span></h2><div class="sl"></div></div>
   <div class="cg">
     <div class="cl">
-      <p data-en>Available for research collaborations, conference contributions, book chapter invitations, special issue proposals, and general academic mischief. Response may take a few days.</p>
-      <p data-hu>Kutatási együttműködések, konferenciabeküldések, könyvfejezet-meghívások, különszám-javaslatok és egyéb tudományos kalandok ügyében kereshetsz. Válasz néhány napon belül.</p>
+      <p data-en>Available for research collaborations, conference contributions, book chapter invitations, special issue proposals, and general academic mischief. Also open to game development projects. Response may take a few days.</p>
+      <p data-hu>Kutatási együttműködések, konferenciabeküldések, könyvfejezet-meghívások, különszám-javaslatok és egyéb tudományos kalandok ügyében kereshetsz. Játékfejlesztési projektekre is nyitott vagyok. Valószínűleg csak néhány nap múlva válaszok a levelekre.</p>
       <a class="cem" id="contact-email" href="#">guzsvinecz.tibor [at]<br>zek.uni-pannon.hu</a>
       <p class="cnote" data-en>University of Pannonia · Faculty of Information Technology · Veszprém<br><br><em>P.S. Include a joke in your email — at least I'll know you're not a bot. 🤖</em></p>
       <p class="cnote" data-hu>Pannon Egyetem · Műszaki Informatikai Kar · Veszprém<br><br><em>U.i. Írj egy viccet az e-mailbe — legalább tudom, hogy nem spam. 🤖</em></p>
@@ -763,7 +776,34 @@ async function init(){
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+// ── MOBILE MENU ──
+(function(){
+  const ham=document.getElementById('nav-hamburger');
+  const panel=document.getElementById('nav-mobile-panel');
+  if(!ham||!panel) return;
+  ham.addEventListener('click',e=>{e.stopPropagation();panel.classList.toggle('open');ham.textContent=panel.classList.contains('open')?'✕':'☰';});
+  document.querySelectorAll('.nav-mp-link').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');ham.textContent='☰';}));
+  document.addEventListener('click',e=>{if(!panel.contains(e.target)&&e.target!==ham){panel.classList.remove('open');ham.textContent='☰';}});
+})();
+
+// ── COLLAPSIBLE SECTIONS ──
+function initCollapsible(){
+  document.querySelectorAll('.sh').forEach(sh=>{
+    const btn=document.createElement('button');
+    btn.className='collapse-btn';
+    btn.setAttribute('aria-label','Toggle section');
+    btn.textContent='▼';
+    sh.appendChild(btn);
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const parent=sh.parentElement;
+      const collapsed=parent.classList.toggle('sec-collapsed');
+      btn.textContent=collapsed?'▶':'▼';
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{init();initCollapsible();});
 </script>
 </body>
 </html>
