@@ -106,7 +106,7 @@
     <div class="aside">
       <img class="about-photo" src="GT.jpg" alt="Dr. Tibor Guzsvinecz"/>
       <div class="ai"><div class="ai-l"><span data-en>Position</span><span data-hu>Beosztás</span></div><div class="ai-v"><span data-en>Associate Professor (2024–)</span><span data-hu>Egyetemi docens (2024–)</span></div></div>
-      <div class="ai"><div class="ai-l"><span data-en>Institution</span><span data-hu>Intézmény</span></div><div class="ai-v">University of Pannonia, Veszprém</div></div>
+      <div class="ai"><div class="ai-l"><span data-en>Institution</span><span data-hu>Intézmény</span></div><div class="ai-v"><span data-en>University of Pannonia, Veszprém</span><span data-hu>Pannon Egyetem, Veszprém</span></div></div>
       <div class="ai"><div class="ai-l"><span data-en>Faculty</span><span data-hu>Kar</span></div><div class="ai-v"><span data-en>Faculty of Information Technology</span><span data-hu>Műszaki Informatikai Kar</span></div></div>
       <div class="ai"><div class="ai-l"><span data-en>Department</span><span data-hu>Tanszék</span></div><div class="ai-v"><span data-en>Department of Information Technology and its Applications</span><span data-hu>Informatikai Rendszerek és Alkalmazásai Tanszék</span></div></div>
       <div class="ai"><div class="ai-l">PhD</div><div class="ai-v"><span data-en>Information Science, 2021</span><span data-hu>Informatikai tudományok, 2021</span></div></div>
@@ -121,6 +121,7 @@
 <!-- FEATURED PUBLICATIONS -->
 <section id="featured-pubs" class="sw">
   <div class="sh"><span class="sn">02</span><h2 class="st"><span data-en>FEATURED PUBLICATIONS</span><span data-hu>KIEMELT PUBLIKÁCIÓK</span></h2><div class="sl"></div></div>
+  <div class="fp-sublabel"><span data-en>Featured</span><span data-hu>Kiemelt</span></div>
   <div class="fp-grid">
 
     <div class="fp-card">
@@ -184,6 +185,8 @@
     </div>
 
   </div>
+  <div class="fp-sublabel"><span data-en>Newest</span><span data-hu>Legújabb</span></div>
+  <div class="fp-grid" id="newest-pub-list"></div>
 </section>
 
 <div class="divider"></div>
@@ -375,8 +378,8 @@
     <a class="pfl alt" href="https://scholar.google.com/citations?user=03Sg_PgAAAAJ" target="_blank">→ Google Scholar</a>
   </div>
   <div class="updated">
-    <span data-en>Publication data last updated: 12 May 2026. For the full list, see ResearchGate or MTMT.</span>
-    <span data-hu>A publikációs adatok utolsó frissítése: 2026. május 12. A teljes listáért lásd a ResearchGate-et vagy az MTMT-t.</span>
+    <span data-en>Publication data last updated: 17 May 2026. For the full list, see ResearchGate or MTMT.</span>
+    <span data-hu>A publikációs adatok utolsó frissítése: 2026. május 17. A teljes listáért lásd a ResearchGate-et vagy az MTMT-t.</span>
   </div>
 </div></div>
 
@@ -460,8 +463,8 @@
 </section>
 
 <footer>
-  <div class="fc">© 2026 Dr. Tibor Guzsvinecz <span>·</span> University of Pannonia</div>
-  <div class="fc"><span data-en>Last updated: 12 May 2026</span><span data-hu>Utolsó frissítés: 2026. május 12.</span></div>
+  <div class="fc"><span data-en>© 2026 Dr. Tibor Guzsvinecz <span>·</span> University of Pannonia</span><span data-hu>© 2026 Dr. Guzsvinecz Tibor <span>·</span> Pannon Egyetem</span></div>
+  <div class="fc"><span data-en>Last updated: 17 May 2026</span><span data-hu>Utolsó frissítés: 2026. május 17.</span></div>
 </footer>
 
 <script>
@@ -501,7 +504,7 @@ function hilite(s){
 
 // ── BUILD PUBLICATION HTML ──
 function buildPub(p){
-  const tags = (p.tags||[]).map(t=>`<span class="pt ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+  const tags = (p.tags||[]).filter(t=>t!=='editorial').map(t=>`<span class="pt ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
   const oa = p.oa ? '<span class="pt oa">Open Access</span>' : '';
   const vs = p.video_summary ? '<span class="pt vs">▶ Video Summary</span>' : '';
   const typeLabelEn = (p.tags||[]).includes('editorial') ? 'Editorial / Preface' : (TYPE_LABEL[p.type] || p.type);
@@ -753,12 +756,37 @@ function updateCVStats(){
   if(el){ el.href='mailto:'+eU+'@'+eD; }
 })();
 
+// ── NEWEST PUBLICATIONS ──
+function buildNewestCard(p){
+  const tags=(p.tags||[]).filter(t=>t!=='editorial').map(t=>`<span class="pt ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+  const oa=p.oa?'<span class="pt oa">Open Access</span>':'';
+  const typeLabelEn=(p.tags||[]).includes('editorial')?'Editorial / Preface':(TYPE_LABEL[p.type]||p.type);
+  const typeLabelHu=(p.tags||[]).includes('editorial')?'Szerkesztői Cikk / Előszó':(TYPE_LABEL_HU[p.type]||p.type);
+  const typeBadge=`<span class="pt tbadge"><span data-en>${typeLabelEn}</span><span data-hu>${typeLabelHu}</span></span>`;
+  const url=p.read_url||(p.doi?`https://doi.org/${p.doi}`:null);
+  const auth=p.authors.replace(/Guzsvinecz, Tibor/g,'<strong>Guzsvinecz, Tibor</strong>');
+  const venueShort=p.venue.split(',')[0];
+  return `<div class="fp-card">
+    <div class="fp-meta"><span class="fp-year">${p.year}</span><span class="fp-venue">${venueShort}</span></div>
+    <div class="fp-title">${p.title}</div>
+    <div class="fp-authors">${auth}</div>
+    <div class="fp-tags">${tags}${oa}${typeBadge}</div>
+    ${url?`<div class="fp-actions"><a class="fp-read" href="${url}" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a></div>`:''}
+  </div>`;
+}
+function renderNewest(pubs){
+  const el=document.getElementById('newest-pub-list');
+  if(!el) return;
+  el.innerHTML=pubs.slice(0,3).map(buildNewestCard).join('');
+}
+
 async function init(){
   renderTalks();
   wireFilters();
   if(window.PUBS_DATA){
     allPubs = window.PUBS_DATA;
     document.getElementById('pub-list').innerHTML = allPubs.map(buildPub).join('');
+    renderNewest(allPubs);
     applyF();
     document.getElementById('pub-stat-hero').innerHTML = allPubs.length+'<span>+</span>';
     updateCVStats();
@@ -767,6 +795,7 @@ async function init(){
       const res = await fetch('publications.json');
       allPubs = await res.json();
       document.getElementById('pub-list').innerHTML = allPubs.map(buildPub).join('');
+      renderNewest(allPubs);
       applyF();
       document.getElementById('pub-stat-hero').innerHTML = allPubs.length+'<span>+</span>';
       updateCVStats();

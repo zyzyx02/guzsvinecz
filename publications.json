@@ -1,5 +1,50 @@
 [
   {
+    "id": "FIXME_app2026_4990",
+    "year": 2026,
+    "type": "article",
+    "oa": true,
+    "title": "AI, Avatars, and Affective Touch: Emerging Frontiers in Human–Computer Interaction",
+    "authors": "Guzsvinecz, Tibor",
+    "venue": "Applied Sciences-Basel, vol. 16, p. 4990, 2026",
+    "doi": "10.3390/app16104990",
+    "tags": [
+      "hci",
+      "editorial"
+    ],
+    "read_url": "https://doi.org/10.3390/app16104990"
+  },
+  {
+    "id": "37082262",
+    "year": 2026,
+    "type": "article",
+    "oa": true,
+    "title": "Machine Learning in Psychological Drawing Analysis: Shapes, Colors and Symmetry",
+    "authors": "Szűcs, Judit; Németh, Krisztián; Jambrits, Szilárd; Guzsvinecz, Tibor",
+    "venue": "International Journal of Education and Information Technologies, vol. 20, p. 55, 2026",
+    "doi": "10.46300/9109.2026.20.7",
+    "tags": [
+      "ml",
+      "data"
+    ],
+    "read_url": "https://doi.org/10.46300/9109.2026.20.7"
+  },
+  {
+    "id": "37082629",
+    "year": 2026,
+    "type": "article",
+    "oa": false,
+    "title": "Deep Learning-Based Domain-Specific Object Detection in a 3D Virtual Tour",
+    "authors": "Szűcs, Judit; Gaál, Tibor; Németh, Krisztián; Guzsvinecz, Tibor",
+    "venue": "Lecture Notes in Computer Science, vol. 15985, pp. 214–229, 2026",
+    "doi": "10.1007/978-3-032-19347-6_14",
+    "tags": [
+      "vr",
+      "ml"
+    ],
+    "read_url": null
+  },
+  {
     "id": "37010353",
     "year": 2026,
     "type": "article",
@@ -59,36 +104,6 @@
       "gamification"
     ],
     "read_url": "https://doi.org/10.3390/app16073300"
-  },
-  {
-    "id": "37082262",
-    "year": 2026,
-    "type": "article",
-    "oa": true,
-    "title": "Machine Learning in Psychological Drawing Analysis: Shapes, Colors and Symmetry",
-    "authors": "Szűcs, Judit; Németh, Krisztián; Jambrits, Szilárd; Guzsvinecz, Tibor",
-    "venue": "International Journal of Education and Information Technologies, vol. 20, p. 55, 2026",
-    "doi": "10.46300/9109.2026.20.7",
-    "tags": [
-      "ml",
-      "data"
-    ],
-    "read_url": "https://doi.org/10.46300/9109.2026.20.7"
-  },
-  {
-    "id": "37082629",
-    "year": 2026,
-    "type": "article",
-    "oa": false,
-    "title": "Deep Learning-Based Domain-Specific Object Detection in a 3D Virtual Tour",
-    "authors": "Szűcs, Judit; Gaál, Tibor; Németh, Krisztián; Guzsvinecz, Tibor",
-    "venue": "Lecture Notes in Computer Science, vol. 15985, pp. 214–229, 2026",
-    "doi": "10.1007/978-3-032-19347-6_14",
-    "tags": [
-      "vr",
-      "ml"
-    ],
-    "read_url": null
   },
   {
     "id": "36460969",
@@ -691,7 +706,7 @@
     "tags": [
       "vr",
       "hci",
-	  "editorial"
+      "editorial"
     ],
     "read_url": "https://www.infocommunications.hu/en/2024_spec_0"
   },

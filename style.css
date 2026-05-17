@@ -94,6 +94,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .fp-title{font-family:'Instrument Serif',serif;font-size:1.05rem;color:var(--white);line-height:1.4;flex:1}
 .fp-authors{font-size:.65rem;color:var(--muted)}
 .fp-authors strong{color:var(--text)}
+.fp-sublabel{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.fp-sublabel+.fp-grid{margin-bottom:2.8rem}
 .fp-tags{display:flex;flex-wrap:wrap;gap:.35rem}
 .fp-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:auto;padding-top:.5rem}
 .fp-read{display:inline-flex;align-items:center;gap:.3rem;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--accent);padding:.28rem .85rem;border:1px solid var(--accent);font-family:'DM Mono',monospace;font-weight:600;transition:background .2s,color .2s}
