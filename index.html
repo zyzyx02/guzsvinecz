@@ -360,14 +360,18 @@
     <button class="fb oa-btn" data-ftype="inproceedings"><span data-en>Conference Paper</span><span data-hu>Konferenciaközlemény</span></button>
     <button class="fb oa-btn" data-ftype="editorial"><span data-en>Editorial / Preface</span><span data-hu>Szerkesztői Cikk / Előszó</span></button>
     <button class="fb oa-btn" data-ftype="article"><span data-en>Journal Article</span><span data-hu>Folyóiratcikk</span></button>
+    <button class="fb oa-btn" data-ftype="preprint"><span data-en>Preprint</span><span data-hu>Preprint</span></button>
     <button class="fb oa-btn" data-ftype="misc"><span data-en>Other</span><span data-hu>Egyéb</span></button>
     <button class="fb oa-btn" data-ftype="mastersthesis"><span data-en>Thesis</span><span data-hu>Dolgozat</span></button>
   </div>
 
   <div class="pub-search-wrap">
-    <label for="pub-search"><span data-en>Search:</span><span data-hu>Keresés:</span></label>
+    <label for="pub-search"><span data-en>Title:</span><span data-hu>Cím:</span></label>
     <input class="pub-search" id="pub-search" type="search" placeholder="Filter by title…" autocomplete="off" spellcheck="false"/>
-    <button class="pub-search-clear" id="pub-search-clear" aria-label="Clear search">✕ clear</button>
+    <button class="pub-search-clear" id="pub-search-clear" aria-label="Clear search">✕</button>
+    <label for="pub-venue-search" style="margin-left:.4rem"><span data-en>Venue:</span><span data-hu>Folyóirat / Konf.:</span></label>
+    <input class="pub-search" id="pub-venue-search" type="search" placeholder="Filter by venue…" autocomplete="off" spellcheck="false"/>
+    <button class="pub-search-clear" id="pub-venue-clear" aria-label="Clear venue search">✕</button>
   </div>
   <div class="pub-count" id="pub-count"></div>
   <div class="pub-list" id="pub-list"><p style="color:var(--muted);padding:1rem">Loading publications…</p></div>
@@ -488,12 +492,12 @@ const TAG_CLASS={vr:'vr',games:'games',hci:'hci',data:'data',spatial:'spatial',
 const TYPE_LABEL={
   article:'Journal Article', inproceedings:'Conference Paper',
   incollection:'Book Chapter', book:'Book', chapter:'Book Chapter',
-  misc:'Other', mastersthesis:'Thesis', other:'Other'
+  misc:'Other', mastersthesis:'Thesis', other:'Other', preprint:'Preprint'
 };
 const TYPE_LABEL_HU={
   article:'Folyóiratcikk', inproceedings:'Konferenciaközlemény',
   incollection:'Könyvfejezet', book:'Könyv', chapter:'Könyvfejezet',
-  misc:'Egyéb', mastersthesis:'Dolgozat', other:'Egyéb'
+  misc:'Egyéb', mastersthesis:'Dolgozat', other:'Egyéb', preprint:'Preprint'
 };
 
 
@@ -507,35 +511,43 @@ function buildPub(p){
   const tags = (p.tags||[]).filter(t=>t!=='editorial').map(t=>`<span class="pt ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
   const oa = p.oa ? '<span class="pt oa">Open Access</span>' : '';
   const vs = p.video_summary ? '<span class="pt vs">▶ Video Summary</span>' : '';
-  const typeLabelEn = (p.tags||[]).includes('editorial') ? 'Editorial / Preface' : (TYPE_LABEL[p.type] || p.type);
-  const typeLabelHu = (p.tags||[]).includes('editorial') ? 'Szerkesztői Cikk / Előszó' : (TYPE_LABEL_HU[p.type] || p.type);
-  const typeBadge = `<span class="pt tbadge"><span data-en>${typeLabelEn}</span><span data-hu>${typeLabelHu}</span></span>`;
+  const isEditorial = (p.tags||[]).includes('editorial');
+  const typeLabelEn = isEditorial ? 'Editorial / Preface' : (TYPE_LABEL[p.type] || p.type);
+  const typeLabelHu = isEditorial ? 'Szerkesztői Cikk / Előszó' : (TYPE_LABEL_HU[p.type] || p.type);
+  const typeBadge = `<span class="pt tbadge${p.type==='preprint'?' preprint':''}"><span data-en>${typeLabelEn}</span><span data-hu>${typeLabelHu}</span></span>`;
   const badges = [typeBadge, oa, vs].filter(Boolean).join('');
   const badgesRow = badges ? `<div class="pm pm-badges">${badges}</div>` : '';
   const doi = p.doi ? `<div class="pdoi">DOI: <a href="https://doi.org/${p.doi}" target="_blank">${p.doi}</a></div>` : '';
   const url = p.read_url || (p.doi ? `https://doi.org/${p.doi}` : null);
   const btn = url ? `<a class="pl" href="${url}" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>` : '';
   const ytBtn = p.video_summary ? `<a class="pl" href="${p.video_summary}" target="_blank" style="background:transparent;color:#ff4444;border-color:#ff4444;margin-left:.4rem">Video →</a>` : '';
+  const reviewedBtn = p.reviewed_url ? `<a class="pl reviewed" href="${p.reviewed_url}" target="_blank"><span data-en>Reviewed Version →</span><span data-hu>Lektorált verzió →</span></a>` : '';
   const ptype = (p.tags||[]).includes('editorial') ? 'editorial' :
     p.type==='article'       ? 'article' :
     p.type==='inproceedings' ? 'inproceedings' :
     (p.type==='incollection'||p.type==='chapter') ? 'incollection' :
     p.type==='book'          ? 'book' :
-    p.type==='mastersthesis' ? 'mastersthesis' : 'misc';
-  return `<div class="pub-item" data-t="${(p.tags||[]).join(' ')}" data-y="${p.year>2020?p.year:'older'}" data-ptype="${ptype}" ${p.oa?'data-oa="1"':''} ${p.video_summary?'data-vs="1"':''}>
+    p.type==='mastersthesis' ? 'mastersthesis' :
+    p.type==='preprint'      ? 'preprint' : 'misc';
+  const lang = (p.lang||'en').toUpperCase();
+  const venLower = (p.venue||'').toLowerCase();
+  return `<div class="pub-item" data-t="${(p.tags||[]).join(' ')}" data-y="${p.year>2020?p.year:'older'}" data-ptype="${ptype}" data-lang="${lang}" data-ven="${venLower}" ${p.oa?'data-oa="1"':''} ${p.video_summary?'data-vs="1"':''}>
+  <div class="pub-lang">${lang}</div>
+  <div class="pub-item-inner">
   <div class="pm">${tags}</div>
   ${badgesRow}
   <div class="ptitle">${p.title}</div>
   <div class="pauth">${hilite(p.authors)}</div>
   <div class="pven">${p.venue}</div>
   ${doi}
+  ${btn}${reviewedBtn}${ytBtn}
+  </div>
   <div class="pyr">${p.year}</div>
-  ${btn}${ytBtn}
 </div>`;
 }
 
 // ── FILTER STATE ──
-let aT=new Set(['all']), aY='all', aO='all', aV='all', aPt='all', aQ='', allPubs=[];
+let aT=new Set(['all']), aY='all', aO='all', aV='all', aPt='all', aQ='', aVen='', allPubs=[];
 
 function applyF(){
   let visible=0;
@@ -546,7 +558,8 @@ function applyF(){
     const vOk = aV==='all'||(aV==='vs'&&el.dataset.vs==='1');
     const ptOk = aPt==='all'||el.dataset.ptype===aPt;
     const qOk = aQ===''||(el.querySelector('.ptitle')||{textContent:''}).textContent.toLowerCase().includes(aQ);
-    const show = tOk&&yOk&&oOk&&vOk&&ptOk&&qOk;
+    const venOk = aVen===''||(el.dataset.ven||'').includes(aVen);
+    const show = tOk&&yOk&&oOk&&vOk&&ptOk&&qOk&&venOk;
     el.style.display = show?'':'none';
     if(show) visible++;
   });
@@ -615,6 +628,21 @@ function wireFilters(){
     clearBtn.addEventListener('click',()=>{
       searchEl.value=''; aQ='';
       clearBtn.classList.remove('visible');
+      applyF();
+    });
+  }
+  // Search by venue
+  const venEl=document.getElementById('pub-venue-search');
+  const venClear=document.getElementById('pub-venue-clear');
+  if(venEl){
+    venEl.addEventListener('input',()=>{
+      aVen=venEl.value.trim().toLowerCase();
+      venClear.classList.toggle('visible',aVen!=='');
+      applyF();
+    });
+    venClear.addEventListener('click',()=>{
+      venEl.value=''; aVen='';
+      venClear.classList.remove('visible');
       applyF();
     });
   }
