@@ -744,17 +744,14 @@ function updateCVStats(){
   const nProceedings = allPubs.filter(p=>p.type==='inproceedings').length;
   const nEditorial   = allPubs.filter(p=>(p.tags||[]).includes('editorial')).length;
 
-  // Count from editorship DOM
-  let nBooks=0, nEProcs=0, nSpecialIssues=0;
-  const editGrids = document.querySelectorAll('.edit-grid');
-  if(editGrids[0]) editGrids[0].querySelectorAll('.ec').forEach(ec=>{
+  // Count from editorship DOM (pattern-based, order-independent)
+  let nBooks=0, nEProcs=0, nSpecialIssues=0, nEditorialBoards=0;
+  document.querySelectorAll('.edit-grid .ec').forEach(ec=>{
     const t = ec.querySelector('.etype')?.textContent||'';
-    if(/Book/i.test(t)) nBooks++;
+    if(/Editorial Board/i.test(t)) nEditorialBoards++;
+    else if(/Special Issue/i.test(t)) nSpecialIssues++;
+    else if(/Book/i.test(t)) nBooks++;
     else if(/Proceedings|Konferenciakötet/i.test(t)) nEProcs++;
-  });
-  if(editGrids[1]) editGrids[1].querySelectorAll('.ec').forEach(ec=>{
-    const t = ec.querySelector('.etype')?.textContent||'';
-    if(/Special Issue/i.test(t)) nSpecialIssues++;
   });
 
   // Count talks
@@ -773,8 +770,8 @@ function updateCVStats(){
     `${nArticles} journal articles · ${nProceedings} conference papers · ${nEditorial} editorials/prefaces`,
     `${nArticles} folyóiratcikk · ${nProceedings} konferenciacikk · ${nEditorial} szerkesztői/előszó`);
   set('cv-edited-works',
-    `${nBooks} edited books · ${nEProcs} edited proceedings · ${nSpecialIssues} special issues`,
-    `${nBooks} szerk. könyv · ${nEProcs} konferenciakötet · ${nSpecialIssues} különszám`);
+    `${nBooks} edited books · ${nEProcs} edited proceedings · ${nSpecialIssues} special issues · ${nEditorialBoards} editorial board memberships`,
+    `${nBooks} szerk. könyv · ${nEProcs} konferenciakötet · ${nSpecialIssues} különszám · ${nEditorialBoards} szerkesztőbizottsági tagság`);
   set('cv-talks-count',
     `${nTalks} conference presentations`,
     `${nTalks} konferencia-előadás`);
