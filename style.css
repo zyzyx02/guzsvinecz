@@ -161,7 +161,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .pub-search-clear:hover{border-color:var(--accent);color:var(--accent)}
 .pub-count{font-size:.6rem;color:var(--muted);margin-bottom:.8rem;letter-spacing:.08em}
 .pub-count span{color:var(--accent)}
-.pub-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;align-items:start}
+.pub-list{display:block}
+/* ── YEAR GROUPS ── */
+.pyg{margin-bottom:1.1rem}
+.pyg-head{width:100%;display:flex;align-items:center;gap:.85rem;background:transparent;border:none;border-bottom:1px solid var(--border);padding:.35rem 0 .45rem;cursor:pointer;font-family:'DM Mono',monospace;margin-bottom:.7rem;text-align:left}
+.pyg-year{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border);line-height:1;letter-spacing:.04em;transition:color .2s}
+.pyg-head:hover .pyg-year{color:var(--accent)}
+.pyg-count{font-size:.6rem;color:var(--muted);border:1px solid var(--border);padding:.12rem .5rem;letter-spacing:.08em}
+.pyg-line{flex:1;height:1px;background:var(--border)}
+.pyg-arrow{font-size:.55rem;color:var(--muted)}
+.pyg-head:hover .pyg-arrow{color:var(--accent)}
+.pyg-body{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;align-items:start}
+.pyg-collapsed .pyg-body{display:none}
+.pyg-open-forced .pyg-body{display:grid!important}
+.pyg-open-forced .pyg-arrow{opacity:.35}
+.pyg--list .pyg-body{display:block}
+.pyg--list.pyg-collapsed .pyg-body{display:none}
+/* ── PUBS/YEAR CHART ── */
+.pub-chart-label{font-size:.59rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
+.pub-chart{display:flex;align-items:stretch;gap:.4rem;height:104px;margin-bottom:1.6rem;padding:.7rem .9rem .55rem;background:var(--card);border:1px solid var(--border)}
+.pych-bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:.22rem;background:transparent;border:none;cursor:pointer;padding:0;font-family:'DM Mono',monospace;min-width:0}
+.pych-track{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.pych-fill{width:100%;max-width:30px;background:var(--border);transition:background .2s}
+.pych-bar:hover .pych-fill,.pych-bar.active .pych-fill{background:var(--accent)}
+.pych-n{font-size:.53rem;color:var(--muted);line-height:1}
+.pych-y{font-size:.53rem;letter-spacing:.04em;color:var(--muted);line-height:1}
+.pych-bar:hover .pych-n,.pych-bar.active .pych-n,.pych-bar:hover .pych-y,.pych-bar.active .pych-y{color:var(--accent)}
 .pub-item{background:var(--card);border:1px solid var(--border);padding:.85rem 1.1rem;transition:background .2s;height:100%;position:relative;overflow:hidden}
 .pub-item:hover{background:var(--surface)}
 .pm{display:flex;gap:.36rem;margin-bottom:.35rem;flex-wrap:wrap}
@@ -209,6 +234,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .elink{font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);display:inline-flex;align-items:center;gap:.32rem;margin-top:auto;transition:gap .2s}
 .elink:hover{gap:.55rem}
 .eseclabel{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+/* ── EDITORSHIP SHOW MORE ── */
+#editorship-more{display:none}
+#editorship-more.open{display:block}
+.ed-more-btn{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.15rem;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;transition:border-color .2s,color .2s;margin-top:.4rem;display:block}
+.ed-more-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ed-more-btn .edm-open{display:none}
+.ed-more-btn.open .edm-open{display:inline}
+.ed-more-btn.open .edm-closed{display:none}
 
 /* ── CONFERENCE ORGANIZATION ── */
 .conf-list{display:flex;flex-direction:column;gap:.55rem}
@@ -262,7 +295,7 @@ footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-item
 
 /* ── TABLET ── */
 @media(max-width:1300px) and (min-width:901px){
-  .pub-list{grid-template-columns:repeat(2,1fr)}
+  .pyg-body{grid-template-columns:repeat(2,1fr)}
 }
 
 /* ── EDITORIAL TAG ── */
@@ -291,6 +324,7 @@ footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-item
   .cv-block-wide{grid-column:1}
   .cv-two-col{grid-template-columns:1fr}
   .edit-grid{grid-template-columns:1fr}
-  .pub-list{grid-template-columns:1fr}
+  .pyg-body{grid-template-columns:1fr}
+  .pub-chart{gap:.18rem;padding:.6rem .5rem .45rem}.pych-n{font-size:.45rem}.pych-y{font-size:.45rem}
   footer{flex-direction:column;gap:.7rem;text-align:center;padding:1.4rem 1.5rem}
 }
