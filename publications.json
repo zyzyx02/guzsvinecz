@@ -1,5 +1,65 @@
 [
   {
+    "id": "37394843",
+    "year": 2027,
+    "type": "inproceedings",
+    "oa": false,
+    "title": "Using Machine Learning to Analyze Accessibility Support in Game Engine Documentation",
+    "authors": "Namrouti, Hanan; Sikné Lányi, Cecília; Guzsvinecz, Tibor",
+    "venue": "Computers Helping People with Special Needs, pp. 354–360, 2027",
+    "doi": "10.1007/978-3-032-31308-9_43",
+    "tags": [
+      "accessibility",
+      "ml"
+    ],
+    "read_url": null
+  },
+  {
+    "id": "37409494",
+    "year": 2026,
+    "type": "article",
+    "oa": true,
+    "title": "Emotions in play: A length and sentiment analysis of steam reviews by player engagement mode",
+    "authors": "Guzsvinecz, Tibor; Szűcs, Judit",
+    "venue": "Heliyon, vol. 12, p. e45258, 2026",
+    "doi": "10.1016/j.heliyon.2026.e45258",
+    "tags": [
+      "games",
+      "data"
+    ],
+    "read_url": "https://doi.org/10.1016/j.heliyon.2026.e45258"
+  },
+  {
+    "id": "37415006",
+    "year": 2026,
+    "type": "article",
+    "oa": true,
+    "title": "Design and evaluation of IntuNav and EdgeNav navigation methods in desktop multi-browser virtual environments",
+    "authors": "Ichsan, Mochammad Hannats Hanafi; Sikné Lányi, Cecília; Guzsvinecz, Tibor; Ananta, Mahardeka Tri; Dewi, Aisshah Roesiana",
+    "venue": "Scientific Reports, 2026",
+    "doi": "10.1038/s41598-026-64931-9",
+    "tags": [
+      "vr",
+      "hci"
+    ],
+    "read_url": "https://doi.org/10.1038/s41598-026-64931-9"
+  },
+  {
+    "id": "37352896",
+    "year": 2026,
+    "type": "inproceedings",
+    "oa": true,
+    "title": "Cross-Cultural Color Fidelity and Realism: A Comparative Perceptual Study across Real, Unreal Engine, and Unity Lighting Environments",
+    "authors": "Namrouti, Hanan; Sikné Lányi, Cecília; Guzsvinecz, Tibor",
+    "venue": "The 15th Conference of PhD Students in Computer Science (CSCS 2026), pp. 59–63",
+    "doi": "",
+    "tags": [
+      "vr",
+      "hci"
+    ],
+    "read_url": "https://www.inf.u-szeged.hu/~cscs/CSCS2026_Proceedings.pdf"
+  },
+  {
     "id": "FIXME_app2026_4990",
     "year": 2026,
     "type": "article",
