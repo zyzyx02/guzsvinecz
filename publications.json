@@ -118,7 +118,8 @@
       "games",
       "data"
     ],
-    "read_url": "https://doi.org/10.1007/s10055-026-01353-y"
+    "read_url": "https://doi.org/10.1007/s10055-026-01353-y",
+	"video_summary": "https://youtu.be/M0gSbR33qoI"
   },
   {
     "id": "36851111",
@@ -270,7 +271,8 @@
       "games",
       "data"
     ],
-    "read_url": "https://doi.org/10.3390/computers14080339"
+    "read_url": "https://doi.org/10.3390/computers14080339",
+	"video_summary": "https://youtu.be/pYALoLKK9QA"
   },
   {
     "id": "35054048",
@@ -392,7 +394,8 @@
     "tags": [
       "games"
     ],
-    "read_url": "https://doi.org/10.1016/j.entcom.2025.101048"
+    "read_url": "https://doi.org/10.1016/j.entcom.2025.101048",
+	"video_summary": "https://youtu.be/KdzegneqDOg"
   },
   {
     "id": "36466455",
