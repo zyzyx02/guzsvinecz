@@ -21,13 +21,14 @@
     "oa": true,
     "title": "Emotions in play: A length and sentiment analysis of steam reviews by player engagement mode",
     "authors": "Guzsvinecz, Tibor; Szűcs, Judit",
-    "venue": "Heliyon, vol. 12, p. e45258, 2026",
+    "venue": "Heliyon, vol. 12, no. 13, p. e45258, 2026",
     "doi": "10.1016/j.heliyon.2026.e45258",
     "tags": [
       "games",
       "data"
     ],
-    "read_url": "https://doi.org/10.1016/j.heliyon.2026.e45258"
+    "read_url": "https://doi.org/10.1016/j.heliyon.2026.e45258",
+    "video_summary": "https://youtu.be/CrqrwGvUPmg"
   },
   {
     "id": "37415006",
@@ -119,7 +120,7 @@
       "data"
     ],
     "read_url": "https://doi.org/10.1007/s10055-026-01353-y",
-	"video_summary": "https://youtu.be/M0gSbR33qoI"
+    "video_summary": "https://youtu.be/M0gSbR33qoI"
   },
   {
     "id": "36851111",
@@ -256,7 +257,8 @@
     "tags": [
       "data"
     ],
-    "read_url": "https://doi.org/10.3390/app152111305"
+    "read_url": "https://doi.org/10.3390/app152111305",
+    "video_summary": "https://youtu.be/6qo82ia7XQc"
   },
   {
     "id": "36293152",
@@ -272,7 +274,7 @@
       "data"
     ],
     "read_url": "https://doi.org/10.3390/computers14080339",
-	"video_summary": "https://youtu.be/pYALoLKK9QA"
+    "video_summary": "https://youtu.be/pYALoLKK9QA"
   },
   {
     "id": "35054048",
@@ -365,7 +367,8 @@
       "data",
       "vr"
     ],
-    "read_url": "https://doi.org/10.12700/APH.22.6.2025.6.5"
+    "read_url": "https://doi.org/10.12700/APH.22.6.2025.6.5",
+    "video_summary": "https://youtu.be/0CLRix6Ja0Y"
   },
   {
     "id": "36034434",
@@ -395,7 +398,7 @@
       "games"
     ],
     "read_url": "https://doi.org/10.1016/j.entcom.2025.101048",
-	"video_summary": "https://youtu.be/KdzegneqDOg"
+    "video_summary": "https://youtu.be/KdzegneqDOg"
   },
   {
     "id": "36466455",
@@ -409,7 +412,8 @@
     "tags": [
       "games"
     ],
-    "read_url": "https://doi.org/10.1177/15554120251400832"
+    "read_url": "https://doi.org/10.1177/15554120251400832",
+    "video_summary": "https://youtu.be/Ddp6e5sqQzg"
   },
   {
     "id": "36474945",
@@ -1110,7 +1114,8 @@
       "games",
       "data"
     ],
-    "read_url": "https://doi.org/10.12700/APH.20.5.2023.5.10"
+    "read_url": "https://doi.org/10.12700/APH.20.5.2023.5.10",
+    "video_summary": "https://youtu.be/Hmn7XWZhFcs"
   },
   {
     "id": "34340424",
@@ -1140,7 +1145,8 @@
       "games",
       "data"
     ],
-    "read_url": "https://doi.org/10.1007/s11042-022-12308-1"
+    "read_url": "https://doi.org/10.1007/s11042-022-12308-1",
+    "video_summary": "https://youtu.be/W0BEyAUytwY"
   },
   {
     "id": "33813224",
