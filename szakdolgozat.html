@@ -235,7 +235,7 @@ a.inl:hover{border-color:var(--accent2)}
 <div class="sd-prog" id="prog"></div>
 
 <nav class="sd-nav">
-  <a class="sd-brand" href="index.html">GUZSVINECZ<span>.</span>SZAKDOLGOZAT</a>
+  <a class="sd-brand" href="index.html">GUZSVINECZ<span>/</span>SZAKDOLGOZAT</a>
   <div class="sd-nav-right">
     <a class="ctrl-btn" href="index.html">← Főoldal</a>
     <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">☀</button>
@@ -252,6 +252,7 @@ a.inl:hover{border-color:var(--accent2)}
   <a href="#szakok">Szakok</a>
   <a href="#beszamolo">Beszámoló</a>
   <a href="#gyik">GYIK</a>
+  <a href="#publikaciok">Szakirodalom</a>
   <a href="#ellenorzo">Ellenőrzőlista</a>
   <a href="#kapcsolat">Kapcsolat</a>
 </div>
@@ -436,6 +437,7 @@ a.inl:hover{border-color:var(--accent2)}
       <li><strong>Követelményspecifikáció és tervek</strong>, például UML-diagramok</li>
       <li><strong>Megvalósítás</strong>, azaz a módszertan</li>
       <li><strong>Eredmények</strong></li>
+      <li><strong>Felhasználói kézikönyv</strong>, ha a dolgozat megkívánja</li>
       <li><strong>Jövőbeli tervek</strong></li>
       <li><strong>Összefoglalás</strong></li>
       <li><strong>Irodalomjegyzék</strong></li>
@@ -576,6 +578,7 @@ a.inl:hover{border-color:var(--accent2)}
       </ul></div>
       <div class="mini no"><h4>Milyen gépen prezentálsz</h4><ul>
         <li><strong>Saját laptopot nem lehet használni</strong> a személyes beszámolón.</li>
+        <li><strong>Élő demó nincs</strong>, a programot nem tudod helyben elindítani. Képek és beágyazott videó helyettesíti.</li>
         <li>Tanszéki vagy egyetemi gép lesz, tehát a prezentációnak azon kell futnia.</li>
         <li>Vidd magaddal pendrive-on is, PDF-ben is, és számolj azzal, hogy a gépen nincs fent a te szoftvered.</li>
         <li>Online beszámolónál ez nyilván nem érvényes, ott a saját gépedről osztod meg a képernyőt.</li>
@@ -602,6 +605,7 @@ a.inl:hover{border-color:var(--accent2)}
             <label><input type="checkbox"/><span>Nem a dolgozatot kell bemutatni, hanem a munkádat</span></label>
             <label><input type="checkbox"/><span>Vetítéshez a PDF a legmegbízhatóbb, de az animációk abban nem jelennek meg</span></label>
             <label><input type="checkbox"/><span>Személyes beszámolón tanszéki vagy egyetemi gépen prezentálsz, saját laptopot nem lehet használni, tehát a fájljaidat vidd magaddal, és ne számíts a saját környezetedre</span></label>
+            <label><input type="checkbox"/><span><strong>Élő demó nincs:</strong> a program működését képernyőképekkel és egy rövid, a prezentációba ágyazott videóval mutatom be</span></label>
             <label><input type="checkbox"/><span>A lehetséges kérdésekre készíts tartalék diákat az utolsó dia után</span></label>
             <label><input type="checkbox"/><span>Nincs külön „Köszönöm a figyelmet!" dia. A felirat az <strong>Összefoglalás dia alján</strong> legyen, így az utolsó kivetített dián informatív tartalom marad. Szóban természetesen mondd el</span></label>
             <label><input type="checkbox"/><span>A kész diákat mutasd meg nekem</span></label>
@@ -627,9 +631,10 @@ a.inl:hover{border-color:var(--accent2)}
 
     <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Demó a beszámolón</span></button>
       <div class="acc-b">
-        <p>Személyes beszámolón <strong>saját laptopot nem használhatsz</strong>, tanszéki vagy egyetemi gép lesz. Ez a demóra is igaz, tehát vidd magaddal a futtatható változatot, és készülj rá, hogy a gépen nincs fent sem a motor, sem a fejlesztői környezeted. Ha a játék csak a te gépeden fut, akkor a demó helyett a videó marad.</p>
+        <p><strong>Élő demó nincs.</strong> Személyes beszámolón tanszéki vagy egyetemi gépről prezentálsz, saját laptopot nem használhatsz, a programodat pedig nem tudod odavinni és helyben elindítani. A működést <strong>képekkel és videóval</strong> mutasd be.</p>
         <p>Legyen tartalék minden esetben: egy rövid felvett videó a működésről megment akkor is, ha a gép vagy a projektor nem működik együtt. Online beszámolón egyszerűbb a helyzet, ott a saját gépedről osztod meg a képernyőt.</p>
-        <p>A demó legyen rövid és célzott. A bizottságot az érdekli, hogy a bemutatott dolog tényleg működik-e, és mennyi belőle a te munkád.</p>
+        <p>Gyakorlatban ez azt jelenti: készíts előre képernyőképeket a lényeges részekről, és egy rövid, vágott videót a működésről, amit a prezentációba ágyazol. Ilyenkor a PPT vagy PPTX a jó formátum, mert PDF-ben a videó nem játszódik le.</p>
+        <p>A bemutató legyen rövid és célzott. A bizottságot az érdekli, hogy a dolog tényleg működik-e, és mennyi belőle a te munkád, nem az, hogy hány percig nézhetik a játékmenetet.</p>
       </div>
     </div>
 
@@ -673,7 +678,7 @@ a.inl:hover{border-color:var(--accent2)}
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Milyen motort vagy technológiát válasszak?</span></button>
       <div class="acc-b"><p>Azt, amiben tényleg dolgozni tudsz, és ami illik a feladathoz. A választást viszont a dolgozatban indokolnod kell: miért ezt az eszköztárat választottad, milyen előnyei vannak, és milyen alternatívák jöttek szóba. Ezt a szakok követelményei kifejezetten kérik.</p><p>Ha a választás nem egyértelmű, ez jó konzultációs téma, mert utólag motort váltani drága.</p></div></div>
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Mennyi kód kerüljön a dolgozat szövegébe?</span></button>
-      <div class="acc-b"><p>Az érdemi részbe a lényeges, magyarázott kódrészletek valók, nem a teljes forrás. A hosszabb listákat tedd a mellékletbe. A dolgozat attól lesz jó, hogy elmagyarázod, miért úgy oldottad meg, nem attól, hogy hány oldal kódot másoltál bele.</p></div></div>
+      <div class="acc-b"><p><strong>A lehető legkevesebb.</strong> A program működését ne kódlistákkal mutasd be, hanem <strong>vizuálisan</strong>: folyamatábrával, szekvenciadiagrammal, osztálydiagrammal, állapotgéppel, architektúraábrával, bármivel, ami egy ránézésre érthető.</p><p>Kódrészlet csak akkor kerüljön a szövegbe, ha egy konkrét, saját megoldást másképp nem lehet elmagyarázni, és akkor is néhány sor, magyarázattal. A hosszabb listák a mellékletbe valók.</p></div></div>
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Hogyan teszteljem, és mit írjak a tesztelésről?</span></button>
       <div class="acc-b"><p>Ez szakfüggő, de mindegyik szak vár valamilyen tesztelést. Mérnökinformatikus BSc-nél szükség esetén unit- és integrációs tesztek, verifikáció és validáció. Programtervező és gazdaságinformatikus szakon az éles környezetben történt tesztelés és annak eredményei. Üzemmérnök-informatikuson a tesztelési módszerek, az eredmények, és ha lehetséges, a felhasználói visszajelzések vagy az éles üzem tapasztalatai.</p><p>Játéknál a játszhatóság tesztelése is ide tartozik. Ha más is játszott vele, és abból tanultál valamit, az tartalom a dolgozatba.</p></div></div>
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Mi van, ha nem készül el minden funkció?</span></button>
@@ -731,7 +736,7 @@ a.inl:hover{border-color:var(--accent2)}
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Személyesen vagy online kell beszámolnom?</span></button>
         <div class="acc-b"><p>Aki <strong>Zalaegerszegre jár, személyesen</strong> számol be, Tervezés I-ben és Tervezés II-ben egyaránt. Aki <strong>Veszprémbe jár, online</strong>, és a levelezős hallgatók szintén online.</p><p>A védés ettől független: az mindenkinek a saját kampuszán van, személyesen.</p></div></div>
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Vihetem a saját laptopomat a beszámolóra?</span></button>
-        <div class="acc-b"><p>Nem. Személyes beszámolón tanszéki vagy egyetemi gépen prezentálsz. Ehhez igazodj: a prezentációt vidd magaddal pendrive-on, PDF-ben is, és ne építs a saját fejlesztői környezetedre.</p><p>Ha demóznál, gondold át, fut-e a program egy idegen gépen. Ha nem, videóval mutasd be. Online beszámolónál ez nem kérdés, ott a saját gépedről osztod meg a képernyőt.</p></div></div>
+        <div class="acc-b"><p>Nem. Személyes beszámolón tanszéki vagy egyetemi gépen prezentálsz. Ehhez igazodj: a prezentációt vidd magaddal pendrive-on, PDF-ben is, és ne építs a saját fejlesztői környezetedre.</p><p>Élő demó sincs: a programodat nem viheted oda és nem indíthatod el helyben. A működést képekkel és egy rövid videóval mutasd be, a prezentációba ágyazva.</p></div></div>
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Mikor kell elküldeni a prezentációt?</span></button>
         <div class="acc-b"><p>Legalább öt munkanappal a bemutató előtt. A kész diákat mindenképpen nézzük át, mielőtt a bizottság elé állsz.</p></div></div>
       <div class="acc faq"><button class="acc-h"><span class="mk">+</span><span>Mikor van a leadási határidő?</span></button>
@@ -757,23 +762,54 @@ a.inl:hover{border-color:var(--accent2)}
   <!-- 10 PUBLIKÁCIÓK -->
   <section class="sd-sec" id="publikaciok">
     <div class="sd-sh"><span class="sd-sn">10</span><span class="sd-st">Kiindulópont a szakirodalomhoz</span><span class="sd-sl"></span></div>
-    <p class="sd-p">Az alábbiak szabadon elérhetők, APA formátumban. A teljes listám a <a class="inl" href="index.html#publications">főoldalon</a> található.</p>
-    <div class="blk"><h4>Térérzékelés virtuális valóságban</h4>
-      <ul class="reflist">
-        <li>Guzsvinecz, T., Szűcs, J., &amp; Perge, E. (2024). Examination of Accurate Exocentric Distance Estimates in a Virtual Environment Using a Desktop Display and the Gear VR. <em>Electronics, 13</em>(8), 1536. <a href="https://doi.org/10.3390/electronics13081536" target="_blank" rel="noopener">https://doi.org/10.3390/electronics13081536</a></li>
-        <li>Guzsvinecz, T., Perge, E., &amp; Szűcs, J. (2023). Examining the results of virtual reality-based egocentric distance estimation tests based on immersion level. <em>Sensors, 23</em>(6), 3138. <a href="https://doi.org/10.3390/s23063138" target="_blank" rel="noopener">https://doi.org/10.3390/s23063138</a></li>
-        <li>Guzsvinecz, T., Perge, E., &amp; Szűcs, J. (2023). Analyzing accurate egocentric distance estimates of university students in virtual environments with a desktop display and gear VR display. <em>Electronics, 12</em>(10), 2253. <a href="https://doi.org/10.3390/electronics12102253" target="_blank" rel="noopener">https://doi.org/10.3390/electronics12102253</a></li>
-      </ul>
-    </div>
-    <div class="blk"><h4>Felhasználói vélemények, szövegalapú érzelemanalízis</h4>
-      <ul class="reflist">
-        <li>Guzsvinecz, T. (2024). The Soulsification of video games. <em>Multimedia Tools and Applications</em>, 1-27. <a href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank" rel="noopener">https://doi.org/10.1007/s11042-024-19628-4</a></li>
-        <li>Guzsvinecz, T., &amp; Szűcs, J. (2024). Textual Analysis of Virtual Reality Game Reviews. <em>Infocommunications Journal</em>, Joint Special Issue on Cognitive Infocommunications and Cognitive Aspects of Virtual Reality, 84-91. <a href="https://doi.org/10.36244/ICJ.2024.5.10" target="_blank" rel="noopener">https://doi.org/10.36244/ICJ.2024.5.10</a></li>
-        <li>Guzsvinecz, T., &amp; Szűcs, J. (2023). Length and sentiment analysis of reviews about top-level video game genres on the steam platform. <em>Computers in Human Behavior, 149</em>, 107955. <a href="https://doi.org/10.1016/j.chb.2023.107955" target="_blank" rel="noopener">https://doi.org/10.1016/j.chb.2023.107955</a></li>
-        <li>Guzsvinecz, T. (2023). Sentiment analysis of souls-like role-playing video game reviews. <em>Acta Polytechnica Hungarica, 20</em>(5), 149-168. <a href="https://doi.org/10.12700/APH.20.5.2023.5.10" target="_blank" rel="noopener">https://doi.org/10.12700/APH.20.5.2023.5.10</a></li>
-        <li>Guzsvinecz, T. (2023). The correlation between positive reviews, playtime, design and game mechanics in souls-like role-playing video games. <em>Multimedia Tools and Applications, 82</em>(3), 4641-4670. <a href="https://doi.org/10.1007/s11042-022-12308-1" target="_blank" rel="noopener">https://doi.org/10.1007/s11042-022-12308-1</a></li>
-      </ul>
-    </div>
+    <p class="sd-p">Ha a témád kapcsolódik a kutatási területeimhez, ezek jó kiindulópontot adnak, és további hivatkozásokat találsz bennük. Mind szabadon elérhető, APA formátumban. A teljes, folyamatosan frissülő lista a <a class="inl" href="index.html#publications">főoldalon</a> van.</p>
+    <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Játékvélemények, érzelem- és szövegelemzés (6)</span></button>
+      <div class="acc-b"><ul class="reflist">
+        <li><strong>Guzsvinecz, T.</strong>, Nemeth, K., & Szűcs, J. (2026). Transformer-based emotion profiling and clustering of cybersickness narratives in Steam reviews of first-person virtual reality games. <em>Acta Psychologica, vol. 270, p. 107743</em>. <a href="https://doi.org/10.1016/j.actpsy.2026.107743" target="_blank" rel="noopener">https://doi.org/10.1016/j.actpsy.2026.107743</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, & Szűcs, J. (2026). Emotions in play: A length and sentiment analysis of steam reviews by player engagement mode. <em>Heliyon, vol. 12, no. 13, p. e45258</em>. <a href="https://doi.org/10.1016/j.heliyon.2026.e45258" target="_blank" rel="noopener">https://doi.org/10.1016/j.heliyon.2026.e45258</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Nemeth, K., & Szűcs, J. (2026). Cybersickness in commercial first-person virtual reality video games: analysis of player experience in steam reviews. <em>Virtual Reality, vol. 30</em>. <a href="https://doi.org/10.1007/s10055-026-01353-y" target="_blank" rel="noopener">https://doi.org/10.1007/s10055-026-01353-y</a></li>
+        <li><strong>Guzsvinecz, T.</strong> (2025). Reactions to video games that evoke a feeling of liminality. <em>Entertainment Computing, vol. 55, p. 101048</em>. <a href="https://doi.org/10.1016/j.entcom.2025.101048" target="_blank" rel="noopener">https://doi.org/10.1016/j.entcom.2025.101048</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, & Szűcs, J. (2024). Textual Analysis of Virtual Reality Game Reviews. <em>Infocommunications Journal, vol. 16, pp. 84–91</em>. <a href="https://doi.org/10.36244/ICJ.2024.5.10" target="_blank" rel="noopener">https://doi.org/10.36244/ICJ.2024.5.10</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, & Szűcs, J. (2023). Length and sentiment analysis of reviews about top-level video game genres on the Steam platform. <em>Computers in Human Behavior, vol. 149, p. 107955</em>. <a href="https://doi.org/10.1016/j.chb.2023.107955" target="_blank" rel="noopener">https://doi.org/10.1016/j.chb.2023.107955</a></li>
+      </ul></div></div>
+    <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Souls-játékok (5)</span></button>
+      <div class="acc-b"><ul class="reflist">
+        <li><strong>Guzsvinecz, T.</strong> (2025). Topic Modeling of Positive and Negative Reviews of Soulslike Video Games. <em>Computers, vol. 14, p. 339</em>. <a href="https://doi.org/10.3390/computers14080339" target="_blank" rel="noopener">https://doi.org/10.3390/computers14080339</a></li>
+        <li><strong>Guzsvinecz, T.</strong> (2025). The Soulsification of Video Games. <em>Multimedia Tools and Applications, vol. 84, no. 15, pp. 14827–14853</em>. <a href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank" rel="noopener">https://doi.org/10.1007/s11042-024-19628-4</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, & Szűcs, J. (2025). Game Theory and Strategic Decision-Making in the Dark Souls Games. <em>In: Game Theory — Computational Aspects and Applications (IntechOpen), pp. 1–20</em>. <a href="https://doi.org/10.5772/intechopen.1008456" target="_blank" rel="noopener">https://doi.org/10.5772/intechopen.1008456</a></li>
+        <li><strong>Guzsvinecz, T.</strong> (2023). Sentiment Analysis of Souls-like Role-Playing Video Game Reviews. <em>Acta Polytechnica Hungarica, vol. 20, no. 5, pp. 149–168</em>. <a href="https://doi.org/10.12700/APH.20.5.2023.5.10" target="_blank" rel="noopener">https://doi.org/10.12700/APH.20.5.2023.5.10</a></li>
+        <li><strong>Guzsvinecz, T.</strong> (2023). The correlation between positive reviews, playtime, design and game mechanics in souls-like role-playing video games. <em>Multimedia Tools and Applications, vol. 82, no. 3, pp. 4641–4670</em>. <a href="https://doi.org/10.1007/s11042-022-12308-1" target="_blank" rel="noopener">https://doi.org/10.1007/s11042-022-12308-1</a></li>
+      </ul></div></div>
+    <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Virtuális valóság és térérzékelés (6)</span></button>
+      <div class="acc-b"><ul class="reflist">
+        <li><strong>Guzsvinecz, T.</strong>, Szűcs, J., & Perge, E. (2025). How Egocentric Distance Estimation Changes in Virtual Environments by Using a Desktop Display or the Gear VR. <em>Acta Cybernetica, vol. 27, pp. 15–41</em>. <a href="https://doi.org/10.14232/actacyb.307740" target="_blank" rel="noopener">https://doi.org/10.14232/actacyb.307740</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Szűcs, J., & Perge, E. (2025). The Effects of Immersion Level, Human Characteristics, and a Virtual Scale on Exocentric Distance Perception. <em>Infocommunications Journal, vol. 17, pp. 24–31</em>. <a href="https://doi.org/10.36244/ICJ.2025.6.4" target="_blank" rel="noopener">https://doi.org/10.36244/ICJ.2025.6.4</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Szűcs, J., & Perge, E. (2025). Examining the Influence of Egocentric Distance on Exocentric Distance Estimation in Virtual Environments. <em>Acta Polytechnica Hungarica, vol. 22, pp. 163-179</em>. <a href="https://doi.org/10.12700/APH.22.7.2025.7.9" target="_blank" rel="noopener">https://doi.org/10.12700/APH.22.7.2025.7.9</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Szűcs, J., & Perge, E. (2024). Examination of Accurate Exocentric Distance Estimates in a Virtual Environment Using a Desktop Display and the Gear VR. <em>Electronics (Switzerland), vol. 13, no. 8, p. 1536</em>. <a href="https://doi.org/10.3390/electronics13081536" target="_blank" rel="noopener">https://doi.org/10.3390/electronics13081536</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Perge, E., & Szűcs, J. (2023). Examining the Results of Virtual Reality-Based Egocentric Distance Estimation Tests Based on Immersion Level. <em>Sensors, vol. 23, no. 6, p. 3138</em>. <a href="https://doi.org/10.3390/s23063138" target="_blank" rel="noopener">https://doi.org/10.3390/s23063138</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Perge, E., & Szűcs, J. (2023). Analyzing Accurate Egocentric Distance Estimates of University Students in Virtual Environments with a Desktop Display and Gear VR Display. <em>Electronics (Switzerland), vol. 12</em>. <a href="https://doi.org/10.3390/electronics12102253" target="_blank" rel="noopener">https://doi.org/10.3390/electronics12102253</a></li>
+      </ul></div></div>
+    <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Akadálymentesítés (4)</span></button>
+      <div class="acc-b"><ul class="reflist">
+        <li><strong>Guzsvinecz, T.</strong> (2025). Video game accessibility in the top-level genres. <em>Universal Access in the Information Society, vol. 24, pp. 1479–1494</em>. <a href="https://doi.org/10.1007/s10209-024-01154-7" target="_blank" rel="noopener">https://doi.org/10.1007/s10209-024-01154-7</a></li>
+        <li>Ara, J., Sikné Lányi, C., Kelemen, A., & <strong>Guzsvinecz, T.</strong> (2025). An inclusive framework for automated web content accessibility evaluation. <em>Universal Access in the Information Society, vol. 24, pp. 1581–1607</em>. <a href="https://doi.org/10.1007/s10209-024-01164-5" target="_blank" rel="noopener">https://doi.org/10.1007/s10209-024-01164-5</a></li>
+        <li>Szabó, P., Ara, J., Halmosi, B., Sikné Lányi, C., & <strong>Guzsvinecz, T.</strong> (2023). Technologies Designed to Assist Individuals with Cognitive Impairments. <em>Sustainability, vol. 15, p. 13490</em>. <a href="https://doi.org/10.3390/su151813490" target="_blank" rel="noopener">https://doi.org/10.3390/su151813490</a></li>
+        <li>Elgendy, M., <strong>Guzsvinecz, T.</strong>, & Sikné Lányi, C. (2019). Identification of Markers in Challenging Conditions for People with Visual Impairment Using Convolutional Neural Network. <em>Applied Sciences-Basel, vol. 9, p. 5110</em>. <a href="https://doi.org/10.3390/app9235110" target="_blank" rel="noopener">https://doi.org/10.3390/app9235110</a></li>
+      </ul></div></div>
+    <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Komoly játékok, gamifikáció, oktatás (4)</span></button>
+      <div class="acc-b"><ul class="reflist">
+        <li>Haneklaus, N., Horváth, L. S., Brink, H., Brink-Flores, K., Kyomuhimbo, H. D., Lee, T. R., Mišík, M., Roubík, H., Kiselicki, M., Szabó, P., <strong>Guzsvinecz, T.</strong>, & Sikné Lányi, C. (2026). Negotiating Virtually and Face-to-Face: Experience from a Serious Game Conducted in Person and via Smartphone Application. <em>Applied Sciences-Basel, vol. 16, p. 3300</em>. <a href="https://doi.org/10.3390/app16073300" target="_blank" rel="noopener">https://doi.org/10.3390/app16073300</a></li>
+        <li>Szűcs, J., Németh, K., Dávid, L., & <strong>Guzsvinecz, T.</strong> (2026). An Interactive Educational Platform for E-Sports: Development and Future Perspectives. <em>International Journal of Education and Information Technologies, vol. 20, pp. 11–17</em>. <a href="https://doi.org/10.46300/9109.2026.20.2" target="_blank" rel="noopener">https://doi.org/10.46300/9109.2026.20.2</a></li>
+        <li>Haneklaus, N., & et al. (incl. <strong>Guzsvinecz, T.</strong> (2025). The phosphorus negotiation game (P-Game): first evaluation of a serious game to support science-policy decision making played in more than 20 countries worldwide. <em>Discover Sustainability, vol. 6</em>. <a href="https://doi.org/10.1007/s43621-024-00693-6" target="_blank" rel="noopener">https://doi.org/10.1007/s43621-024-00693-6</a></li>
+        <li>Sikné Lányi, C., Szücs, V., Shirmohammadi, S., Grudeva, P., Abersek, B., <strong>Guzsvinecz, T.</strong>, & Van Isacker, K. (2019). How to Develop Serious Games for Social and Cognitive Competence of Children with Learning Difficulties. <em>Acta Polytechnica Hungarica, vol. 16, pp. 149-169</em>. <a href="https://doi.org/10.12700/APH.16.6.2019.6.10" target="_blank" rel="noopener">https://doi.org/10.12700/APH.16.6.2019.6.10</a></li>
+      </ul></div></div>
+    <div class="acc"><button class="acc-h"><span class="mk">+</span><span>Gépi tanulás és mintázatfelismerés (4)</span></button>
+      <div class="acc-b"><ul class="reflist">
+        <li>Szűcs, J., Németh, K., Jambrits, S., & <strong>Guzsvinecz, T.</strong> (2026). Machine Learning in Psychological Drawing Analysis: Shapes, Colors and Symmetry. <em>International Journal of Education and Information Technologies, vol. 20, p. 55</em>. <a href="https://doi.org/10.46300/9109.2026.20.7" target="_blank" rel="noopener">https://doi.org/10.46300/9109.2026.20.7</a></li>
+        <li>Szűcs, J., & <strong>Guzsvinecz, T.</strong> (2025). Creation of Digital Twins using Spatial Artificial Intelligence — A Pilot Study. <em>Acta Polytechnica Hungarica, vol. 22, no. 6, pp. 67–80</em>. <a href="https://doi.org/10.12700/APH.22.6.2025.6.5" target="_blank" rel="noopener">https://doi.org/10.12700/APH.22.6.2025.6.5</a></li>
+        <li><strong>Guzsvinecz, T.</strong>, Szűcs, J., Szücs, V., Demeter, R., Katona, J., & Kővári, A. (2024). The Accuracy of the k-Nearest Neighbors and k-Means Algorithms in Gesture Identification. <em>Infocommunications Journal, vol. 16, pp. 30–36</em>. <a href="https://doi.org/10.36244/ICJ.2024.5.4" target="_blank" rel="noopener">https://doi.org/10.36244/ICJ.2024.5.4</a></li>
+        <li>Katona, J., Kővári, A., <strong>Guzsvinecz, T.</strong>, Szűcs, J., Demeter, R., & Szücs, V. (2023). Brain Computer Interfaces in Computer Science and Engineering Areas: A Systematic Study. <em>Indonesian Journal of Electrical Engineering and Computer Science, vol. 32, no. 3, pp. 1755–1765</em>. <a href="https://doi.org/10.11591/ijeecs.v32.i3.pp1755-1765" target="_blank" rel="noopener">https://doi.org/10.11591/ijeecs.v32.i3.pp1755-1765</a></li>
+      </ul></div></div>
   </section>
 
   <!-- 11 ELLENŐRZŐLISTA -->
@@ -811,6 +847,7 @@ a.inl:hover{border-color:var(--accent2)}
 
   <footer class="sd-foot">
     <span>© 2026 Dr. Guzsvinecz Tibor · Pannon Egyetem</span>
+    <span>Utolsó frissítés: 2026. szeptember 22.</span>
     <span><a href="index.html">guzsvinecz.com</a></span>
   </footer>
 </div>
@@ -849,9 +886,9 @@ const STEPS=[
   links:[['#fejlesztes','Fejlesztési mérföldkövek'],['#felepites','A dolgozat felépítése']]},
 
  {n:'03',t:'Tanszéki beszámoló I.',w:'Az utolsó két szorgalmi hét',
-  todo:['Készítsd el a diákat: legfeljebb 15 vagy 16 dia, oldalszámozva, nagy betűkkel, címszavakkal.','A prezentáció a munkádat mutassa be, ne a dolgozatot, és kövesse a dolgozat fő fejezeteit.','<strong>Ha Zalaegerszegre jársz, személyesen kell beszámolnod. Ha Veszprémbe jársz, online.</strong>','<strong>Személyes beszámolón tanszéki vagy egyetemi gépről prezentálsz, saját laptopot nem lehet használni.</strong> Ehhez igazodj, amikor a bemutatót tervezed.','Gyakorold időméréssel a 10 perces keretre, és exportálj PDF-be is.','A megjelenés kötelező, ez a tárgy teljesítésének feltétele.'],
+  todo:['Készítsd el a diákat: legfeljebb 15 vagy 16 dia, oldalszámozva, nagy betűkkel, címszavakkal.','A prezentáció a munkádat mutassa be, ne a dolgozatot, és kövesse a dolgozat fő fejezeteit.','<strong>Ha Zalaegerszegre jársz, személyesen kell beszámolnod. Ha Veszprémbe jársz, online.</strong>','<strong>Személyes beszámolón tanszéki vagy egyetemi gépről prezentálsz, saját laptopot nem lehet használni, és élő demót sem tudsz tartani.</strong> A működést képekkel és beágyazott videóval mutasd be.','Gyakorold időméréssel a 10 perces keretre, és exportálj PDF-be is.','A megjelenés kötelező, ez a tárgy teljesítésének feltétele.'],
   send:['A prezentáció, legalább öt munkanappal a bemutató előtt.'],
-  dev:{jatek:'Ha élőben demóznál, számolj azzal, hogy idegen gépen fut majd. Vidd magaddal a buildet, és legyen tartalék videód is a működésről.',app:'Ha élőben demóznál, számolj azzal, hogy idegen gépen fut majd. Vidd magaddal a telepíthető változatot, és legyen tartalék videód is.',egyeb:'Az addigi eredményeket ábrákon vidd magaddal, ne nyers adatként.'},
+  dev:{jatek:'Élő demó nincs, a játékot nem tudod helyben elindítani. Készíts előre képernyőképeket és egy rövid videót a működésről, és ágyazd be a prezentációba.',app:'Élő demó nincs, az alkalmazást nem tudod helyben elindítani. Készíts előre képernyőképeket és egy rövid videót a működésről, és ágyazd be a prezentációba.',egyeb:'Az addigi eredményeket ábrákon vidd magaddal, ne nyers adatként.'},
   links:[['#beszamolo','Beszámoló, teljes ellenőrzőlista']]},
 
  {n:'04',t:'Végleges témakiírás',w:'A 2. félév eleje',
@@ -869,7 +906,7 @@ const STEPS=[
  {n:'06',t:'Tanszéki beszámoló II.',w:'A félév vége előtt',
   todo:['Ugyanaz a rend, mint az első beszámolón: legfeljebb 15 vagy 16 dia, 10 perc, öt munkanappal előtte a prezentáció.','<strong>Zalaegerszegi hallgatóknak személyesen, veszprémieknek online</strong>, és személyes beszámolón itt sem használhatsz saját laptopot.','Most már eredményt kell mutatni, ne tervet.','Készíts tartalék diákat a várható kérdésekhez.'],
   send:['A prezentáció, legalább öt munkanappal a bemutató előtt.'],
-  dev:{jatek:'80-90 százalékos készültség, bemutatható játékmenettel. A demóhoz vidd a buildet, és legyen tartalék videó.',app:'80-90 százalékos készültség, bemutatható fő folyamatokkal. A demóhoz vidd a telepíthető változatot, és legyen tartalék videó.',egyeb:'80-90 százalék: az elemzés érdemi eredményei, ábrákon bemutatva.'},
+  dev:{jatek:'80-90 százalékos készültség. A játékmenetet képekkel és beágyazott videóval mutasd be, élő demó nincs.',app:'80-90 százalékos készültség. A fő folyamatokat képekkel és beágyazott videóval mutasd be, élő demó nincs.',egyeb:'80-90 százalék: az elemzés érdemi eredményei, ábrákon bemutatva.'},
   links:[['#beszamolo','Beszámoló, teljes ellenőrzőlista']]},
 
  {n:'07',t:'Végleges anyag hozzám',w:'Leadás előtt 2 héttel',
@@ -893,7 +930,7 @@ const STEPS=[
  {n:'10',t:'Bírálat és védés',w:'A záróvizsga keretében',
   todo:['A védés mindenkinek a <strong>saját kampuszán van, személyesen</strong>. A rendjét és az időpontját a kar hirdeti ki.','Olvasd el a bírálatot, és készíts írásos választ minden felvetett pontra.','Nézd át a dolgozatod gyenge pontjait. Amit te látsz hibának, arra a bizottság is rá fog kérdezni.','Készülj a három visszatérő kérdésre: miért ezzel a módszerrel, hogyan alkalmazható a gyakorlatban, és hogyan tesztelted.'],
   send:['Ha szeretnéd, küldd el a védési prezentációt, és átnézem.'],
-  dev:{jatek:'Ha demóznál, előre kérdezd meg, milyen gépen lesz rá lehetőség, és legyen tartalék videód.',app:'Ha demóznál, előre kérdezd meg, milyen gépen lesz rá lehetőség, és legyen tartalék videód.',egyeb:'Az eredményeket szóban is meg kell tudnod védeni, módszerestül.'},
+  dev:{jatek:'A működést itt is képekkel és videóval mutasd be, élő demóra ne számíts.',app:'A működést itt is képekkel és videóval mutasd be, élő demóra ne számíts.',egyeb:'Az eredményeket szóban is meg kell tudnod védeni, módszerestül.'},
   links:[['#beszamolo','Előadás és kérdések'],['#kapcsolat','Kapcsolat']]}
 ];
 
