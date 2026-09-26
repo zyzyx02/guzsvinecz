@@ -216,9 +216,11 @@
       <div class="fp-authors"><strong>Guzsvinecz, Tibor</strong>; Kovács, Bendegúz Lajos; Szűcs, Judit; Kada, Peter Zoltan; Cserjesi, Renata</div>
       <div class="fp-tags">
         <span class="pt games">Games</span>
+        <span class="pt vs">▶ Video Summary</span>
       </div>
       <div class="fp-actions">
         <a class="fp-read" href="https://doi.org/10.1177/15554120261488594" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>
+        <a class="fp-yt" href="https://youtu.be/Z_q_afvXNTU">Video →</a>
       </div>
     </div>
 
@@ -924,8 +926,8 @@ function buildNewestCard(p){
     <div class="fp-meta"><span class="fp-year">${p.year}</span><span class="fp-venue">${venueShort}</span></div>
     <div class="fp-title">${p.title}</div>
     <div class="fp-authors">${auth}</div>
-    <div class="fp-tags">${tags}${oa}${typeBadge}</div>
-    ${url?`<div class="fp-actions"><a class="fp-read" href="${url}" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a></div>`:''}
+    <div class="fp-tags">${tags}${oa}${p.video_summary?'<span class="pt vs">▶ Video Summary</span>':''}${typeBadge}</div>
+    ${(url||p.video_summary)?`<div class="fp-actions">${url?`<a class="fp-read" href="${url}" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>`:''}${p.video_summary?`<a class="fp-yt" href="${p.video_summary}" target="_blank">Video →</a>`:''}</div>`:''}
   </div>`;
 }
 function renderNewest(pubs){
