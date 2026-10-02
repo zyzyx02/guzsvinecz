@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESPAWN Flow Diagram Generator | Dr. Tibor Guzsvinecz</title>
+<meta name="description" content="Generate a RESPAWN flow diagram for studies that analyse player reviews. Enter your counts and settings, check that the numbers add up, and download the figure as PNG, SVG or PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"]{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#c8ff00;--accent2:#00d4ff;--text:#e8e8f0;--muted:#8a8aa0;--white:#ffffff;--nav-bg:rgba(10,10,15,.9);--warn:#ffb347;--ok:#7ddc6f;--err:#ff6b6b}
+:root[data-theme="light"]{--bg:#f4f4ef;--surface:#eaeae4;--card:#ffffff;--border:#d0d0c8;--accent:#5a8a00;--accent2:#0077aa;--text:#1a1a2e;--muted:#5f5f73;--white:#1a1a2e;--nav-bg:rgba(244,244,239,.94);--warn:#a85d00;--ok:#2f7d22;--err:#b3261e}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:.88rem;line-height:1.65;transition:background .3s,color .3s}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent);color:#000}
+[data-lang="en"] [data-hu]{display:none}
+[data-lang="hu"] [data-en]{display:none}
+
+/* nav */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-home{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.nav-home:hover{color:var(--accent);text-decoration:none}
+.nav-right{display:flex;gap:.5rem;align-items:center}
+.ctrl-btn{font-size:.68rem;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;padding:.36rem .58rem;transition:border-color .2s,color .2s;font-family:'DM Mono',monospace}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* layout */
+main{max-width:1500px;margin:0 auto;padding:2.5rem 3rem 4rem}
+.eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1;color:var(--white);letter-spacing:.01em;margin:.4rem 0 .8rem}
+h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2rem;color:var(--white);letter-spacing:.02em;margin-bottom:.8rem}
+h3{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);font-weight:500;display:flex;align-items:center;gap:.6rem}
+.lead{font-family:'Instrument Serif',serif;font-size:1.35rem;line-height:1.45;color:var(--text);max-width:62rem}
+.lead em{color:var(--accent)}
+.intro{margin-bottom:2.2rem}
+.note{color:var(--muted);font-size:.78rem;margin-top:.6rem;max-width:62rem}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:2rem;align-items:start}
+@media(max-width:1100px){.grid{grid-template-columns:1fr}.preview-wrap{position:static!important}}
+@media(max-width:700px){nav{padding:.8rem 1rem}main{padding:1.5rem 1rem 3rem}}
+
+/* form */
+fieldset{border:1px solid var(--border);background:var(--card);padding:1.1rem 1.2rem 1.2rem;margin-bottom:1rem}
+legend{padding:0 .5rem}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.6rem;height:1.6rem;padding:0 .35rem;background:var(--accent);color:#000;font-weight:500;font-size:.8rem}
+.fs-help{color:var(--muted);font-size:.74rem;margin:.2rem 0 .8rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.row.one{grid-template-columns:1fr}
+.row.three{grid-template-columns:1.4fr .8fr .8fr}
+@media(max-width:700px){.row,.row.three{grid-template-columns:1fr}}
+label{display:block;font-size:.7rem;letter-spacing:.06em;color:var(--muted);margin:.45rem 0 .2rem}
+input[type=text],input[type=number],textarea{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'DM Mono',monospace;font-size:.82rem;padding:.48rem .6rem;outline:none;transition:border-color .2s}
+textarea{min-height:3.2rem;resize:vertical}
+input:focus,textarea:focus{border-color:var(--accent)}
+input[type=number]::-webkit-inner-spin-button{opacity:.4}
+.inline-check{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--muted);margin-top:.3rem;cursor:pointer}
+.inline-check input{accent-color:var(--accent)}
+.mini-btn{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.06em;background:transparent;border:1px dashed var(--border);color:var(--muted);padding:.3rem .6rem;cursor:pointer;margin-top:.5rem}
+.mini-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* preview */
+.preview-wrap{position:sticky;top:5rem}
+.preview{background:#fff;border:1px solid var(--border);padding:.6rem;overflow:auto}
+.preview svg{display:block;width:100%;height:auto}
+.checks{margin:.9rem 0;font-size:.76rem;display:flex;flex-direction:column;gap:.35rem}
+.chk{padding:.45rem .7rem;border-left:3px solid var(--border);background:var(--card)}
+.chk.ok{border-color:var(--ok)}
+.chk.warn{border-color:var(--warn)}
+.chk.err{border-color:var(--err)}
+.chk b{font-weight:500}
+.export{border:1px solid var(--border);background:var(--card);padding:1rem 1.2rem}
+.formats{display:flex;gap:1rem;flex-wrap:wrap;margin:.5rem 0 .9rem}
+.formats label{display:flex;align-items:center;gap:.4rem;margin:0;font-size:.8rem;color:var(--text);cursor:pointer}
+.formats input{accent-color:var(--accent)}
+.res{display:flex;gap:.6rem;align-items:center;font-size:.74rem;color:var(--muted);margin-bottom:.8rem}
+.res select{background:var(--surface);color:var(--text);border:1px solid var(--border);font-family:'DM Mono',monospace;padding:.25rem .4rem}
+.btn{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.2rem;border:1px solid var(--accent);background:var(--accent);color:#000;cursor:pointer;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn-row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.status{font-size:.74rem;color:var(--muted);margin-top:.6rem;min-height:1.2em}
+
+/* sections below */
+section.block{margin-top:3.5rem;border-top:1px solid var(--border);padding-top:2rem}
+.cite-banner{border:1px solid var(--warn);color:var(--warn);padding:.6rem .9rem;font-size:.76rem;margin-bottom:1rem}
+.tabs{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:-1px}
+.tab{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.45rem .9rem;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--card);color:var(--accent);border-bottom-color:var(--card)}
+.cite-box{position:relative;border:1px solid var(--border);background:var(--card);padding:1rem 1.1rem}
+.cite-box pre{white-space:pre-wrap;word-break:break-word;font-family:'DM Mono',monospace;font-size:.8rem;line-height:1.6;color:var(--text)}
+.copy{position:absolute;top:.6rem;right:.6rem}
+table.check{width:100%;border-collapse:collapse;font-size:.78rem;background:var(--card)}
+table.check th,table.check td{border:1px solid var(--border);padding:.55rem .7rem;text-align:left;vertical-align:top}
+table.check th{color:var(--muted);font-weight:500;letter-spacing:.06em;font-size:.7rem;text-transform:uppercase}
+table.check td:first-child{white-space:nowrap;color:var(--white)}
+@media(max-width:700px){table.check td:first-child{white-space:normal}table.check{font-size:.72rem}}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:900px){.two-col{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--border);padding:1.5rem 3rem;color:var(--muted);font-size:.72rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-home" href="index.html">← guzsvinecz.com</a>
+  <div class="nav-right">
+    <button class="ctrl-btn" id="lang-btn" type="button" aria-label="Switch language">HU</button>
+    <button class="ctrl-btn" id="theme-btn" type="button" aria-label="Switch theme">☀</button>
+  </div>
+</nav>
+
+<main>
+  <header class="intro">
+    <div class="eyebrow">RESPAWN · <span data-en>reporting checklist for game review research</span><span data-hu>riportolási checklist játék-review kutatásokhoz</span></div>
+    <h1><span data-en>RESPAWN Flow Diagram Generator</span><span data-hu>RESPAWN folyamatábra-generátor</span></h1>
+    <p class="lead" data-en>Player reviews are not surveys. Every corpus passes through a <em>review-generating process</em> before analysis. Enter your counts and settings below, check that the numbers add up, and download the diagram for your methods section.</p>
+    <p class="lead" data-hu>A játékos-review nem kérdőív. Minden korpusz átmegy egy <em>review-generáló folyamaton</em>, mielőtt elemzés lesz belőle. Add meg alább a számaidat és beállításaidat, ellenőrizd, hogy a számok összeadódnak-e, majd töltsd le az ábrát a módszertani részhez.</p>
+    <p class="note" data-en>Everything runs in your browser. Nothing you type is sent anywhere; a draft is kept only in this browser so you can return to it.</p>
+    <p class="note" data-hu>Minden a böngésződben fut. Semmit nem küldünk el sehova; a piszkozat csak ebben a böngészőben marad meg, hogy később folytathasd.</p>
+  </header>
+
+  <div class="grid">
+    <!-- ======================= FORM ======================= -->
+    <form id="f" autocomplete="off" onsubmit="return false">
+
+      <fieldset>
+        <legend><h3><span class="badge">R</span><span class="badge">E</span> <span data-en>Platform</span><span data-hu>Platform</span></h3></legend>
+        <p class="fs-help" data-en>What exists on the platform for your games and time window, and what happened there.</p>
+        <p class="fs-help" data-hu>Mi érhető el a platformon a vizsgált játékokra és időablakra, és mi történt ott közben.</p>
+        <div class="row">
+          <div><label for="platform_total"><span data-en>Reviews on the platform (n)</span><span data-hu>Review-k a platformon (n)</span></label><input type="text" inputmode="numeric" id="platform_total" placeholder="e.g. 125000"></div>
+          <div><label for="games"><span data-en>Number of games</span><span data-hu>Játékok száma</span></label><input type="text" inputmode="numeric" id="games" placeholder="e.g. 12"></div>
+        </div>
+        <label for="events"><span data-en>Platform effects in the window (updates, sales, review bombs, flagged periods)</span><span data-hu>Platformhatások az időablakban (frissítések, akciók, review bombing, megjelölt időszakok)</span></label>
+        <textarea id="events" placeholder="e.g. Major update 2.0 (May 2025); one flagged off-topic period (June 2025)"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend><h3><span class="badge">S</span> <span data-en>Sampling and collection</span><span data-hu>Mintavétel és gyűjtés</span></h3></legend>
+        <p class="fs-help" data-en>Report every parameter, including defaults you left unchanged. If you did not check how many reviews the platform's defaults excluded, tick "not checked" rather than guessing.</p>
+        <p class="fs-help" data-hu>Minden paramétert adj meg, a változatlanul hagyott alapbeállításokat is. Ha nem ellenőrizted, hány review-t szűrtek ki a platform alapbeállításai, jelöld be a „not checked” opciót, ne becsülj.</p>
+        <div class="row">
+          <div><label for="retrieved"><span data-en>Reviews retrieved (n)</span><span data-hu>Letöltött review-k (n)</span></label><input type="text" inputmode="numeric" id="retrieved" placeholder="e.g. 98000"></div>
+          <div><label for="collected_on"><span data-en>Collected on</span><span data-hu>Gyűjtés dátuma</span></label><input type="text" id="collected_on" placeholder="e.g. 12–14 March 2026"></div>
+        </div>
+        <label for="source"><span data-en>Source / endpoint</span><span data-hu>Forrás / végpont</span></label>
+        <input type="text" id="source" placeholder="e.g. Steam appreviews endpoint">
+        <label for="params"><span data-en>Parameters (including defaults kept)</span><span data-hu>Paraméterek (a megtartott alapbeállításokkal együtt)</span></label>
+        <textarea id="params" placeholder="e.g. filter=recent; language=all; purchase_type=all; filter_offtopic_activity=0"></textarea>
+        <label for="window"><span data-en>Time window</span><span data-hu>Időablak</span></label>
+        <input type="text" id="window" placeholder="e.g. 1 January 2024 to 31 December 2025">
+
+        <div class="row" style="margin-top:.6rem">
+          <div>
+            <label for="nr_offtopic"><span data-en>Not retrieved: off-topic periods (n)</span><span data-hu>Nem letöltve: off-topic időszakok (n)</span></label>
+            <input type="text" inputmode="numeric" id="nr_offtopic">
+            <label class="inline-check"><input type="checkbox" id="nr_offtopic_nc"> <span data-en>not checked</span><span data-hu>nem ellenőrizve</span></label>
+          </div>
+          <div>
+            <label for="nr_nonsteam"><span data-en>Not retrieved: non-Steam purchases (n)</span><span data-hu>Nem letöltve: nem Steamen vásárolt (n)</span></label>
+            <input type="text" inputmode="numeric" id="nr_nonsteam">
+            <label class="inline-check"><input type="checkbox" id="nr_nonsteam_nc"> <span data-en>not checked</span><span data-hu>nem ellenőrizve</span></label>
+          </div>
+        </div>
+        <div class="row">
+          <div><label for="nr_other_label"><span data-en>Not retrieved: other reason</span><span data-hu>Nem letöltve: egyéb ok</span></label><input type="text" id="nr_other_label" placeholder="e.g. API page limit"></div>
+          <div><label for="nr_other"><span data-en>Other (n)</span><span data-hu>Egyéb (n)</span></label><input type="text" inputmode="numeric" id="nr_other"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><h3><span class="badge">P</span> <span data-en>Preprocessing</span><span data-hu>Előfeldolgozás</span></h3></legend>
+        <p class="fs-help" data-en>How many reviews each filter removed. Leave a filter empty if you did not apply it.</p>
+        <p class="fs-help" data-hu>Hány review-t távolított el az egyes szűrők. Ha egy szűrőt nem alkalmaztál, hagyd üresen.</p>
+        <div class="row">
+          <div><label for="rm_dup"><span data-en>Duplicates removed (n)</span><span data-hu>Duplikátumok (n)</span></label><input type="text" inputmode="numeric" id="rm_dup"></div>
+          <div><label for="rm_lang"><span data-en>Non-target language (n)</span><span data-hu>Nem célnyelvű (n)</span></label><input type="text" inputmode="numeric" id="rm_lang"></div>
+        </div>
+        <div class="row">
+          <div><label for="rm_len"><span data-en>Below length threshold (n)</span><span data-hu>Hossz-küszöb alatt (n)</span></label><input type="text" inputmode="numeric" id="rm_len"></div>
+          <div><label for="rm_len_thr"><span data-en>Threshold</span><span data-hu>Küszöb</span></label><input type="text" id="rm_len_thr" placeholder="e.g. fewer than 5 words"></div>
+        </div>
+        <div class="row">
+          <div><label for="rm_other_label"><span data-en>Other filter</span><span data-hu>Egyéb szűrő</span></label><input type="text" id="rm_other_label" placeholder="e.g. non-text content only"></div>
+          <div><label for="rm_other"><span data-en>Other (n)</span><span data-hu>Egyéb (n)</span></label><input type="text" inputmode="numeric" id="rm_other"></div>
+        </div>
+        <div class="row">
+          <div><label for="after_prep"><span data-en>Reviews after preprocessing (n)</span><span data-hu>Review-k előfeldolgozás után (n)</span></label><input type="text" inputmode="numeric" id="after_prep"></div>
+          <div style="display:flex;align-items:flex-end"><button type="button" class="mini-btn" id="calc-after"><span data-en>Compute from counts</span><span data-hu>Számítás a darabszámokból</span></button></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><h3><span class="badge">A</span> <span data-en>Analytic and measurement choices</span><span data-hu>Elemzési és mérési döntések</span></h3></legend>
+        <div class="row">
+          <div><label for="analysed"><span data-en>Analysed corpus (n)</span><span data-hu>Elemzett korpusz (n)</span></label><input type="text" inputmode="numeric" id="analysed"></div>
+          <div><label for="label_set"><span data-en>Label set / taxonomy</span><span data-hu>Címkekészlet / taxonómia</span></label><input type="text" id="label_set" placeholder="e.g. 8 NRC emotions"></div>
+        </div>
+        <label for="tool"><span data-en>Tool / model and version</span><span data-hu>Eszköz / modell és verzió</span></label>
+        <input type="text" id="tool" placeholder="e.g. VADER 3.3.2">
+        <label for="validation"><span data-en>Validation against human labels</span><span data-hu>Validálás emberi címkékkel</span></label>
+        <input type="text" id="validation" placeholder="e.g. 500 reviews, two annotators, Cohen's kappa reported">
+      </fieldset>
+
+      <fieldset>
+        <legend><h3><span class="badge">W</span><span class="badge">N</span> <span data-en>Language and norms</span><span data-hu>Nyelv és normák</span></h3></legend>
+        <div class="row">
+          <div><label for="languages"><span data-en>Languages and detection method</span><span data-hu>Nyelvek és nyelvfelismerés</span></label><input type="text" id="languages" placeholder="e.g. English; Steam language field"></div>
+          <div><label for="slang"><span data-en>Slang / lexicon handling</span><span data-hu>Szleng / lexikon kezelése</span></label><input type="text" id="slang" placeholder="e.g. none; domain lexicon"></div>
+        </div>
+        <div class="row three">
+          <div><label for="terms"><span data-en>Terms of collection</span><span data-hu>Gyűjtési feltételek</span></label><input type="text" id="terms" placeholder="e.g. public endpoint, Steam ToS"></div>
+          <div><label for="ids"><span data-en>Identifiers</span><span data-hu>Azonosítók</span></label><input type="text" id="ids" placeholder="e.g. hashed"></div>
+          <div><label for="shared"><span data-en>Shared</span><span data-hu>Megosztva</span></label><input type="text" id="shared" placeholder="e.g. IDs + code, Zenodo"></div>
+        </div>
+      </fieldset>
+
+      <div class="btn-row">
+        <button type="button" class="mini-btn" id="save-json"><span data-en>Save inputs (.json)</span><span data-hu>Adatok mentése (.json)</span></button>
+        <label class="mini-btn" for="load-json" style="margin:0;display:inline-block"><span data-en>Load inputs (.json)</span><span data-hu>Adatok betöltése (.json)</span></label>
+        <input type="file" id="load-json" accept="application/json,.json" class="sr">
+        <button type="button" class="mini-btn" id="reset"><span data-en>Clear all</span><span data-hu>Minden törlése</span></button>
+      </div>
+    </form>
+
+    <!-- ======================= PREVIEW ======================= -->
+    <div class="preview-wrap">
+      <div class="preview" id="preview" aria-live="polite"></div>
+      <div class="checks" id="checks"></div>
+      <div class="export">
+        <h3><span data-en>Download</span><span data-hu>Letöltés</span></h3>
+        <div class="formats" role="radiogroup" aria-label="Format">
+          <label><input type="radio" name="fmt" value="png" checked> PNG</label>
+          <label><input type="radio" name="fmt" value="svg"> SVG <span style="color:var(--muted)" data-en>(editable)</span><span style="color:var(--muted)" data-hu>(szerkeszthető)</span></label>
+          <label><input type="radio" name="fmt" value="pdf"> PDF <span style="color:var(--muted)" data-en>(vector)</span><span style="color:var(--muted)" data-hu>(vektoros)</span></label>
+        </div>
+        <div class="res" id="res-row">
+          <label for="dpi" style="margin:0"><span data-en>PNG resolution</span><span data-hu>PNG felbontás</span></label>
+          <select id="dpi"><option value="300">300 dpi</option><option value="600" selected>600 dpi</option></select>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="download"><span data-en>Generate and download</span><span data-hu>Generálás és letöltés</span></button>
+        </div>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= HOW TO CITE ======================= -->
+  <section class="block" id="cite">
+    <h2><span data-en>If you use RESPAWN, please cite</span><span data-hu>Ha használod a RESPAWN-t, kérjük, hivatkozd</span></h2>
+    <div class="cite-banner" id="cite-banner">
+      <span data-en>Forthcoming: the article is in preparation for Digital Games and Gaming (MDPI). Bracketed fields will be completed on publication.</span>
+      <span data-hu>Megjelenés alatt: a cikk a Digital Games and Gaming (MDPI) folyóiratba készül. A szögletes zárójeles mezők a megjelenéskor kerülnek kitöltésre.</span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-fmt="apa" aria-selected="true">APA 7</button>
+      <button class="tab" role="tab" data-fmt="mdpi" aria-selected="false">MDPI</button>
+      <button class="tab" role="tab" data-fmt="bibtex" aria-selected="false">BibTeX</button>
+      <button class="tab" role="tab" data-fmt="ris" aria-selected="false">RIS</button>
+    </div>
+    <div class="cite-box">
+      <button class="mini-btn copy" id="copy-cite" type="button"><span data-en>Copy</span><span data-hu>Másolás</span></button>
+      <pre id="cite-text"></pre>
+    </div>
+    <p class="note" data-en>Suggested sentence for your methods section: "Review collection and processing are reported following the RESPAWN checklist [ref], with counts shown in a RESPAWN flow diagram (Figure X)."</p>
+    <p class="note" data-hu>Javasolt mondat a módszertani részhez: „Review collection and processing are reported following the RESPAWN checklist [ref], with counts shown in a RESPAWN flow diagram (Figure X).”</p>
+    <p class="note"><span data-en>Templates and source files:</span><span data-hu>Sablonok és forrásfájlok:</span> <span id="zenodo-link"></span></p>
+  </section>
+
+  <!-- ======================= CHECKLIST ======================= -->
+  <section class="block" id="checklist">
+    <h2><span data-en>The RESPAWN checklist</span><span data-hu>A RESPAWN checklist</span></h2>
+    <p class="note" style="margin-bottom:1rem" data-en>Seven items, one for each stage of the review-generating process. The flow diagram covers the counts; the checklist covers what to state in the text.</p>
+    <p class="note" style="margin-bottom:1rem" data-hu>Hét tétel, a review-generáló folyamat minden szakaszára egy. A folyamatábra a darabszámokat mutatja; a checklist azt, amit a szövegben kell leírni.</p>
+    <table class="check">
+      <thead><tr><th><span data-en>Item</span><span data-hu>Tétel</span></th><th><span data-en>Report at minimum</span><span data-hu>Minimálisan közlendő</span></th></tr></thead>
+      <tbody>
+        <tr><td>R · Reviewer selection</td><td>Which reviews were eligible (purchase type, free copies, Early Access); playtime-at-review distribution; any reviewer-level filters; treatment of edited reviews</td></tr>
+        <tr><td>E · Events and platform effects</td><td>Time window; known events inside it (releases, updates, sales, review bombs); whether flagged off-topic periods were included; sort order</td></tr>
+        <tr><td>S · Sampling and collection</td><td>Source and endpoint; every parameter, including defaults left unchanged; date of collection; number retrieved vs. number reported by the platform</td></tr>
+        <tr><td>P · Preprocessing</td><td>Each filter (length, language, duplicates, non-text content) and the number of reviews it removed</td></tr>
+        <tr><td>A · Analytic and measurement choices</td><td>Tool or model and version; label set or taxonomy; thresholds and hyperparameters; validation against human judgement on comparable text; robustness checks</td></tr>
+        <tr><td>W · Wording and drift</td><td>Languages included and how they were detected; handling of slang and game-specific vocabulary; stability checks for multi-year corpora</td></tr>
+        <tr><td>N · Norms for ethics and data sharing</td><td>Terms of collection; handling of identifiers; verbatim vs. paraphrased quotations; what is shared (data, IDs, code) and where</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <span>© Tibor Guzsvinecz · University of Pannonia</span>
+  <span><span data-en>RESPAWN diagram and checklist:</span><span data-hu>RESPAWN ábra és checklist:</span> CC BY 4.0</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/svg2pdf.js@2.8.1/dist/svg2pdf.umd.min.js" defer></script>
+<script>
+/* =====================================================================
+   CITATION: update these fields when the article is published.
+   Keep the brackets until the real values are known.
+   ===================================================================== */
+const CITATION = {
+  published: false,
+  authors: [["Guzsvinecz", "Tibor", "T."]],      // add co-authors as [family, given, initials]
+  title: "Player Reviews Are Not Surveys",        // final title on publication
+  journal: "Digital Games and Gaming",
+  journalAbbr: "Digit. Games Gaming",
+  year: "[year]",
+  volume: "[volume]",
+  article: "[article number]",
+  doi: "[DOI]",
+  zenodo: ""                                      // e.g. "https://doi.org/10.5281/zenodo.XXXXXXX"
+};
+
+/* ===================================================================== */
+const FIELDS = ["platform_total","games","events","retrieved","collected_on","source","params","window",
+  "nr_offtopic","nr_nonsteam","nr_other_label","nr_other","rm_dup","rm_lang","rm_len","rm_len_thr",
+  "rm_other_label","rm_other","after_prep","analysed","label_set","tool","validation","languages","slang",
+  "terms","ids","shared"];
+const CHECKS = ["nr_offtopic_nc","nr_nonsteam_nc"];
+const STORE_KEY = "respawn-draft-v1";
+const $ = id => document.getElementById(id);
+
+/* ---------- theme and language (same convention as the main site) ---------- */
+function setTheme(t){document.documentElement.setAttribute("data-theme",t);$("theme-btn").textContent=t==="dark"?"☀":"☾";try{localStorage.setItem("respawn-theme",t)}catch(e){}}
+function setLang(l){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l;$("lang-btn").textContent=l==="en"?"HU":"EN";try{localStorage.setItem("respawn-lang",l)}catch(e){}if($("status"))$("status").textContent="";render()}
+$("theme-btn").onclick=()=>setTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
+$("lang-btn").onclick=()=>setLang(document.documentElement.getAttribute("data-lang")==="en"?"hu":"en");
+const tr=(en,hu)=>document.documentElement.getAttribute("data-lang")==="hu"?hu:en;
+
+/* ---------- data ---------- */
+function getData(){const d={};FIELDS.forEach(k=>d[k]=$(k).value.trim());CHECKS.forEach(k=>d[k]=$(k).checked);return d}
+function setData(d){FIELDS.forEach(k=>{$(k).value=d&&d[k]!=null?d[k]:""});CHECKS.forEach(k=>{$(k).checked=!!(d&&d[k])});render()}
+function num(s){if(s==null)return null;const t=String(s).replace(/[\s,.  ']/g,"");if(t==="")return null;return /^\d+$/.test(t)?parseInt(t,10):NaN}
+function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}
+function nText(s){const n=num(s);if(n===null)return "n = …";if(isNaN(n))return "n = "+s;return "n = "+fmt(n)}
+function or(s){return s&&s.length?s:"…"}
+
+/* ---------- text measurement for wrapping ---------- */
+const FONT_FAMILY="Helvetica, Arial, sans-serif";
+const mctx=document.createElement("canvas").getContext("2d");
+function wrap(text,size,maxW,weight){mctx.font=`${weight||400} ${size}px ${FONT_FAMILY}`;const out=[];
+  String(text).split("\n").forEach(par=>{const words=par.split(/\s+/);let line="";
+    words.forEach(w=>{const test=line?line+" "+w:w;if(mctx.measureText(test).width<=maxW||!line){line=test}else{out.push(line);line=w}});
+    out.push(line)});return out}
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+
+/* ---------- SVG builder (layout mirrors Figure 2 of the article) ---------- */
+const C={unobs:"#F2F2F2",unobsE:"#8C8C8C",plat:"#E8F1FA",platE:"#0072B2",res:"#FDF1E3",resE:"#D55E00",side:"#FFFFFF",text:"#1A1A1A",muted:"#4D4D4D",badge:"#1A1A1A"};
+function buildSVG(d){
+  const W=1000,MX=80,MW=400,SX=560,SW=420,CX=MX+MW/2,PAD=16,TS=17,BS=14.5,LH=20,GAP=30;
+  let y=20; const parts=[]; const phases=[];
+  const boxH=(title,body,w,align)=>{const lines=wrap(body,BS,w-2*PAD-(align==="center"?30:0));return {lines,h:PAD+TS+10+lines.length*LH+PAD-4}};
+  function box(x,yy,w,h,title,lines,fill,edge,opt){opt=opt||{};
+    parts.push(`<rect x="${x}" y="${yy}" width="${w}" height="${h}" rx="10" fill="${fill}" stroke="${edge}" stroke-width="2"${opt.dashed?' stroke-dasharray="7 5"':""}/>`);
+    const center=opt.align==="center";const tx=center?x+w/2:x+PAD;const anchor=center?"middle":"start";
+    parts.push(`<text x="${tx}" y="${yy+PAD+TS-3}" font-family="${FONT_FAMILY}" font-size="${TS}" font-weight="700" fill="${C.text}" text-anchor="${anchor}">${esc(title)}</text>`);
+    lines.forEach((ln,i)=>parts.push(`<text x="${tx}" y="${yy+PAD+TS+10+(i+1)*LH-5}" font-family="${FONT_FAMILY}" font-size="${BS}" fill="${C.text}" text-anchor="${anchor}">${esc(ln)}</text>`));
+    if(opt.badge){const bw=12+opt.badge.length*12,bx=x+w-bw-10,by=yy+10;
+      parts.push(`<rect x="${bx}" y="${by}" width="${bw}" height="26" rx="5" fill="${C.badge}"/>`);
+      parts.push(`<text x="${bx+bw/2}" y="${by+18.5}" font-family="${FONT_FAMILY}" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">${esc(opt.badge)}</text>`)}}
+  const arrow=(x1,y1,x2,y2)=>parts.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${C.muted}" stroke-width="2" marker-end="url(#ah)"/>`);
+  const dotted=(x1,y1,x2,y2)=>parts.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${C.muted}" stroke-width="1.5" stroke-dasharray="3 4"/>`);
+
+  // row 1: unobservable
+  {const a=boxH("",tr("not observable","not observable"),MW,"center"),b=boxH("","not observable (self-selection)",SW,"center");const h=Math.max(a.h,b.h);
+   box(MX,y,MW,h,"Players who own the game",["not observable"],C.unobs,C.unobsE,{dashed:true,align:"center"});
+   box(SX,y,SW,h,"Players who did not write a review",["not observable (self-selection)"],C.unobs,C.unobsE,{dashed:true,align:"center"});
+   arrow(MX+MW,y+h/2,SX-4,y+h/2);phases.push(["Player and platform",y,null,C.platE]);var prevBottom=y+h;y+=h+GAP}
+  // row 2: platform + events
+  {const g=num(d.games);const gtxt=g===null?"(… games)":`(${isNaN(g)?d.games:fmt(g)} ${g===1?"game":"games"})`;
+   const main=[nText(d.platform_total),gtxt];const side=boxH("",or(d.events),SW,"left");const h=Math.max(PAD+TS+10+2*LH+PAD-4,side.h);
+   arrow(CX,prevBottom,CX,y-4);
+   box(MX,y,MW,h,"Reviews on the platform",main,C.plat,C.platE,{align:"center",badge:"R"});
+   box(SX,y,SW,h,"Platform effects in the window",side.lines,C.side,C.platE,{badge:"E"});
+   dotted(MX+MW,y+h/2,SX,y+h/2);phases[0][2]=y+h;prevBottom=y+h;y+=h+GAP}
+  // row 3: exclusion (not retrieved)
+  {const nr=[];
+   nr.push("Off-topic periods: "+(d.nr_offtopic_nc?"not checked":nText(d.nr_offtopic)));
+   nr.push("Non-Steam purchases: "+(d.nr_nonsteam_nc?"not checked":nText(d.nr_nonsteam)));
+   if(d.nr_other_label||d.nr_other) nr.push((d.nr_other_label||"Other")+": "+nText(d.nr_other)); else nr.push("Other: n = …");
+   const s=boxH("",nr.join("\n"),SW,"left");phases.push(["Researcher",y,null,C.resE]);
+   box(SX,y,SW,s.h,"Not retrieved (platform defaults)",s.lines,C.side,C.resE);
+   var exclMid=y+s.h/2;var connStart=prevBottom;y+=s.h+GAP}
+  // row 4: retrieved + collection settings
+  {const coll=["Source/endpoint: "+or(d.source),"Parameters (incl. defaults kept): "+or(d.params),"Time window: "+or(d.window),"Collected on: "+or(d.collected_on)].join("\n");
+   const s=boxH("",coll,SW,"left");const h=Math.max(PAD+TS+10+LH+PAD-4,s.h);
+   arrow(CX,connStart,CX,y-4);arrow(CX,exclMid,SX-4,exclMid);
+   box(MX,y,MW,h,"Reviews retrieved",[nText(d.retrieved)],C.res,C.resE,{align:"center",badge:"S"});
+   box(SX,y,SW,h,"Collection settings",s.lines,C.side,C.resE);
+   dotted(MX+MW,y+h/2,SX,y+h/2);prevBottom=y+h;y+=h+GAP}
+  // row 5: exclusion (preprocessing)
+  {const rm=["Duplicates: "+nText(d.rm_dup),"Below length threshold"+(d.rm_len_thr?" ("+d.rm_len_thr+")":"")+": "+nText(d.rm_len),"Non-target language: "+nText(d.rm_lang),(d.rm_other_label||"Other filters")+": "+nText(d.rm_other)].join("\n");
+   const s=boxH("",rm,SW,"left");box(SX,y,SW,s.h,"Removed in preprocessing",s.lines,C.side,C.resE);
+   var exclMid2=y+s.h/2;var connStart2=prevBottom;y+=s.h+GAP}
+  // row 6: after preprocessing
+  {const h=PAD+TS+10+LH+PAD-4;arrow(CX,connStart2,CX,y-4);arrow(CX,exclMid2,SX-4,exclMid2);
+   box(MX,y,MW,h,"Reviews after preprocessing",[nText(d.after_prep)],C.res,C.resE,{align:"center",badge:"P"});prevBottom=y+h;y+=h+GAP}
+  // row 7: analysed + measurement
+  {const meas=["Tool/model and version: "+or(d.tool),"Label set / taxonomy: "+or(d.label_set),"Validation against human labels: "+or(d.validation)].join("\n");
+   const s=boxH("",meas,SW,"left");const h=Math.max(PAD+TS+10+LH+PAD-4,s.h);arrow(CX,prevBottom,CX,y-4);
+   box(MX,y,MW,h,"Analysed corpus",[nText(d.analysed)],C.res,C.resE,{align:"center",badge:"A"});
+   box(SX,y,SW,h,"Measurement",s.lines,C.side,C.resE);dotted(MX+MW,y+h/2,SX,y+h/2);phases[1][2]=y+h;y+=h+GAP+6}
+  // bands W and N
+  const bandTop=y;
+  [["W","Languages and detection: "+or(d.languages)+" · Slang/lexicon handling: "+or(d.slang)],
+   ["N","Terms of collection: "+or(d.terms)+" · Identifiers: "+or(d.ids)+" · Shared: "+or(d.shared)]].forEach(([L,t])=>{
+    const lines=wrap(t,BS,SX+SW-MX-70);const h=Math.max(46,22+lines.length*LH);
+    parts.push(`<rect x="${MX}" y="${y}" width="${SX+SW-MX}" height="${h}" rx="8" fill="${C.unobs}" stroke="${C.unobsE}" stroke-width="1.5"/>`);
+    parts.push(`<rect x="${MX+12}" y="${y+h/2-13}" width="26" height="26" rx="5" fill="${C.badge}"/>`);
+    parts.push(`<text x="${MX+25}" y="${y+h/2+5.5}" font-family="${FONT_FAMILY}" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">${L}</text>`);
+    lines.forEach((ln,i)=>parts.push(`<text x="${MX+52}" y="${y+h/2-((lines.length-1)*LH)/2+5+i*LH}" font-family="${FONT_FAMILY}" font-size="${BS}" fill="${C.text}">${esc(ln)}</text>`));
+    y+=h+12});
+  phases.push(["All stages",bandTop,y-12,C.unobsE]);
+  // legend
+  y+=10;parts.push(`<rect x="${MX}" y="${y}" width="40" height="22" rx="4" fill="${C.unobs}" stroke="${C.unobsE}" stroke-width="1.5" stroke-dasharray="6 4"/>`);
+  parts.push(`<text x="${MX+52}" y="${y+16}" font-family="${FONT_FAMILY}" font-size="13" fill="${C.muted}">Not observable: cannot be counted, report as a limitation</text>`);
+  parts.push(`<text x="${SX+SW}" y="${y+16}" font-family="${FONT_FAMILY}" font-size="12" fill="${C.muted}" text-anchor="end">RESPAWN flow diagram</text>`);
+  const H=y+40;
+  // phase bars
+  const ph=phases.map(([lab,a,b,col])=>{const mid=(a+b)/2;return `<line x1="34" y1="${a}" x2="34" y2="${b}" stroke="${col}" stroke-width="5"/><text x="18" y="${mid}" transform="rotate(-90 18 ${mid})" font-family="${FONT_FAMILY}" font-size="15" font-weight="700" fill="${col}" text-anchor="middle">${esc(lab)}</text>`}).join("");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`+
+    `<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${C.muted}"/></marker></defs>`+
+    `<rect width="${W}" height="${H}" fill="#FFFFFF"/>`+ph+parts.join("")+`</svg>`;
+}
+
+/* ---------- consistency checks ---------- */
+function checks(d){const out=[];const R=num(d.retrieved),A=num(d.after_prep),Z=num(d.analysed),P=num(d.platform_total);
+  const bad=FIELDS.filter(k=>/^(platform_total|games|retrieved|nr_|rm_dup|rm_lang|rm_len$|rm_other$|after_prep|analysed)/.test(k)&&!/label|thr/.test(k)).filter(k=>Number.isNaN(num(d[k])));
+  if(bad.length)out.push(["err",tr("These fields should contain whole numbers only: ","Ezekbe a mezőkbe csak egész szám kerülhet: ")+bad.map(k=>{const l=document.querySelector(`label[for=${k}] span[data-${document.documentElement.getAttribute('data-lang')||'en'}]`);return l?l.textContent:k}).join(", ")]);
+  const rms=["rm_dup","rm_lang","rm_len","rm_other"].map(k=>num(d[k]));const filled=rms.filter(v=>v!==null&&!isNaN(v));const sum=filled.reduce((a,b)=>a+b,0);
+  if(R!==null&&!isNaN(R)&&A!==null&&!isNaN(A)){const exp=R-sum;
+    if(exp===A)out.push(["ok",tr(`Preprocessing adds up: ${fmt(R)} retrieved − ${fmt(sum)} removed = ${fmt(A)}.`,`Az előfeldolgozás összeadódik: ${fmt(R)} letöltött − ${fmt(sum)} eltávolított = ${fmt(A)}.`)]);
+    else out.push(["warn",tr(`Retrieved minus removed is ${fmt(exp)}, but "after preprocessing" is ${fmt(A)} (difference: ${fmt(Math.abs(exp-A))}). Check for a filter that is not listed.`,`A letöltött mínusz eltávolított ${fmt(exp)}, de az „előfeldolgozás után” érték ${fmt(A)} (eltérés: ${fmt(Math.abs(exp-A))}). Lehet, hogy egy szűrő hiányzik a listából.`)])}
+  if(A!==null&&Z!==null&&!isNaN(A)&&!isNaN(Z)&&Z>A)out.push(["warn",tr("The analysed corpus is larger than the corpus after preprocessing.","Az elemzett korpusz nagyobb, mint az előfeldolgozás utáni korpusz.")]);
+  if(A!==null&&Z!==null&&!isNaN(A)&&!isNaN(Z)&&Z<A)out.push(["warn",tr(`The analysed corpus is ${fmt(A-Z)} smaller than the corpus after preprocessing. If you subsampled, state how in the text.`,`Az elemzett korpusz ${fmt(A-Z)} review-val kisebb az előfeldolgozás utáninál. Ha almintát vettél, írd le a szövegben, hogyan.`)]);
+  if(P!==null&&R!==null&&!isNaN(P)&&!isNaN(R)&&R>P)out.push(["warn",tr("More reviews were retrieved than the platform reports. Check the time window and the platform count.","Több review-t töltöttél le, mint amennyit a platform jelez. Ellenőrizd az időablakot és a platform számát.")]);
+  if(!d.nr_offtopic_nc&&num(d.nr_offtopic)===null||!d.nr_nonsteam_nc&&num(d.nr_nonsteam)===null)out.push(["warn",tr('Platform defaults: give a count or tick "not checked". An empty box suggests nothing was excluded.','Platform-alapbeállítások: adj meg darabszámot, vagy jelöld be a „nem ellenőrizve” opciót. Az üres mező azt sugallja, hogy semmi nem esett ki.')]);
+  return out}
+
+/* ---------- render ---------- */
+let svgString="";
+function render(){const d=getData();svgString=buildSVG(d);$("preview").innerHTML=svgString;
+  $("checks").innerHTML=checks(d).map(([c,t])=>`<div class="chk ${c}">${esc(t)}</div>`).join("");
+  try{localStorage.setItem(STORE_KEY,JSON.stringify(d))}catch(e){}
+  $("res-row").style.display=document.querySelector('input[name=fmt]:checked').value==="png"?"flex":"none"}
+document.querySelectorAll("#f input, #f textarea").forEach(el=>el.addEventListener("input",render));
+document.querySelectorAll("input[name=fmt]").forEach(el=>el.addEventListener("change",render));
+["nr_offtopic","nr_nonsteam"].forEach(k=>{$(k+"_nc").addEventListener("change",()=>{if($(k+"_nc").checked)$(k).value="";render()});$(k).addEventListener("input",()=>{if($(k).value)$(k+"_nc").checked=false})});
+$("calc-after").onclick=()=>{const R=num($("retrieved").value);if(R===null||isNaN(R)){status(tr("Enter the number of reviews retrieved first.","Előbb add meg a letöltött review-k számát."));return}
+  const s=["rm_dup","rm_lang","rm_len","rm_other"].map(k=>num($(k).value)).filter(v=>v!==null&&!isNaN(v)).reduce((a,b)=>a+b,0);$("after_prep").value=String(R-s);render()};
+
+/* ---------- export ---------- */
+function status(t){$("status").textContent=t}
+function download(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+function svgSize(){const m=svgString.match(/width="(\d+(?:\.\d+)?)" height="(\d+(?:\.\d+)?)"/);return {w:+m[1],h:+m[2]}}
+function toPNG(scale){return new Promise((res,rej)=>{const {w,h}=svgSize();const img=new Image();
+  img.onload=()=>{const c=document.createElement("canvas");c.width=Math.round(w*scale);c.height=Math.round(h*scale);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);c.toBlob(b=>b?res(b):rej(new Error("toBlob failed")),"image/png")};
+  img.onerror=()=>rej(new Error("SVG could not be rasterised"));img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgString)})}
+// The figure is 1000 px wide; at 600 dpi that is printed about 8.5 cm wide per 1000 px * (600/300)... keep it simple:
+// scale 3 ≈ 300 dpi and scale 6 ≈ 600 dpi for a figure printed at full text width (~17 cm).
+const latin1=s=>/^[\x00-\xFF…–—‘’“”−]*$/.test(s);
+$("download").onclick=async()=>{render();const f=document.querySelector("input[name=fmt]:checked").value;const base="respawn_flow_diagram";
+  try{
+    if(f==="svg"){download(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n'+svgString],{type:"image/svg+xml"}),base+".svg");status(tr("SVG downloaded.","SVG letöltve."))}
+    else if(f==="png"){const scale=$("dpi").value==="600"?6:3;status(tr("Rendering PNG…","PNG készül…"));download(await toPNG(scale),base+".png");status(tr("PNG downloaded.","PNG letöltve."))}
+    else{if(!window.jspdf){status(tr("The PDF library is still loading or could not be loaded. Try again in a moment, or use SVG.","A PDF-könyvtár még töltődik, vagy nem sikerült betölteni. Próbáld újra kicsit később, vagy válaszd az SVG-t."));return}
+      const {jsPDF}=window.jspdf;const {w,h}=svgSize();const doc=new jsPDF({unit:"pt",format:[w*0.75,h*0.75],orientation:w>h?"l":"p"});
+      const text=getData();const allText=Object.values(text).filter(v=>typeof v==="string").join("");
+      if(latin1(allText)&&doc.svg){const holder=document.createElement("div");holder.style.cssText="position:absolute;left:-99999px";holder.innerHTML=svgString;document.body.appendChild(holder);
+        const el=holder.querySelector("svg");el.querySelectorAll("[font-family]").forEach(n=>n.setAttribute("font-family","helvetica"));
+        await doc.svg(el,{x:0,y:0,width:w*0.75,height:h*0.75});holder.remove();doc.save(base+".pdf");status(tr("Vector PDF downloaded.","Vektoros PDF letöltve."))}
+      else{const blob=await toPNG(4);const url=await new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(blob)});
+        doc.addImage(url,"PNG",0,0,w*0.75,h*0.75,undefined,"FAST");doc.save(base+".pdf");
+        status(tr("PDF downloaded as a high-resolution image, because your text contains characters (e.g. ő, ű) that the built-in PDF fonts cannot encode. Use SVG for a fully editable vector file.","A PDF nagy felbontású képként készült, mert a szövegben olyan karakter van (pl. ő, ű), amelyet a beépített PDF-betűkészlet nem tud kódolni. Teljesen szerkeszthető vektoros fájlhoz válaszd az SVG-t."))}}
+  }catch(e){console.error(e);status(tr("Export failed: ","Az exportálás nem sikerült: ")+e.message)}};
+
+/* ---------- save / load / reset ---------- */
+$("save-json").onclick=()=>download(new Blob([JSON.stringify({respawn:"1",data:getData()},null,2)],{type:"application/json"}),"respawn_inputs.json");
+$("load-json").onchange=e=>{const file=e.target.files[0];if(!file)return;const fr=new FileReader();fr.onload=()=>{try{const j=JSON.parse(fr.result);setData(j.data||j);status(tr("Inputs loaded.","Adatok betöltve."))}catch(err){status(tr("This file could not be read as RESPAWN inputs.","Ez a fájl nem olvasható be RESPAWN-adatként."))}};fr.readAsText(file);e.target.value=""};
+$("reset").onclick=()=>{if(confirm(tr("Clear all fields?","Minden mezőt törölsz?")))setData({})};
+
+/* ---------- citation ---------- */
+function authorsAPA(){const a=CITATION.authors.map(([f,g,i])=>`${f}, ${i}`);return a.length===1?a[0]:a.slice(0,-1).join(", ")+", & "+a[a.length-1]}
+function authorsMDPI(){return CITATION.authors.map(([f,g,i])=>`${f}, ${i}`).join("; ")}
+function authorsBib(){return CITATION.authors.map(([f,g])=>`${f}, ${g}`).join(" and ")}
+const doiURL=()=>CITATION.doi.startsWith("[")?CITATION.doi:"https://doi.org/"+CITATION.doi;
+function citation(kind){const c=CITATION;
+  if(kind==="apa")return `${authorsAPA()} (${c.year}). ${c.title}. ${c.journal}, ${c.volume}, ${c.article}. ${doiURL()}`;
+  if(kind==="mdpi")return `${authorsMDPI()} ${c.title}. ${c.journalAbbr} ${c.year}, ${c.volume}, ${c.article}. ${doiURL()}`;
+  if(kind==="bibtex")return `@article{guzsvinecz_respawn,\n  author  = {${authorsBib()}},\n  title   = {${c.title}},\n  journal = {${c.journal}},\n  year    = {${c.year}},\n  volume  = {${c.volume}},\n  pages   = {${c.article}},\n  doi     = {${c.doi}}\n}`;
+  if(kind==="ris")return ["TY  - JOUR",...c.authors.map(([f,g])=>`AU  - ${f}, ${g}`),`TI  - ${c.title}`,`JO  - ${c.journal}`,`PY  - ${c.year}`,`VL  - ${c.volume}`,`SP  - ${c.article}`,`DO  - ${c.doi}`,"ER  - "].join("\n")}
+let citeKind="apa";
+function showCite(){$("cite-text").textContent=citation(citeKind);document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.fmt===citeKind?"true":"false"))}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{citeKind=t.dataset.fmt;showCite()});
+$("copy-cite").onclick=async()=>{try{await navigator.clipboard.writeText($("cite-text").textContent);status(tr("Citation copied.","Hivatkozás kimásolva."))}catch(e){const r=document.createRange();r.selectNodeContents($("cite-text"));const s=getSelection();s.removeAllRanges();s.addRange(r)}};
+$("cite-banner").style.display=CITATION.published?"none":"block";
+$("zenodo-link").innerHTML=CITATION.zenodo?`<a href="${esc(CITATION.zenodo)}">${esc(CITATION.zenodo)}</a>`:tr("Zenodo record forthcoming.","A Zenodo-rekord hamarosan elérhető.");
+
+/* ---------- init ---------- */
+(function init(){let t="dark",l="en",draft=null;
+  try{t=localStorage.getItem("respawn-theme")||t;l=localStorage.getItem("respawn-lang")||l;draft=JSON.parse(localStorage.getItem(STORE_KEY)||"null")}catch(e){}
+  setTheme(t);document.documentElement.setAttribute("data-lang",l);$("lang-btn").textContent=l==="en"?"HU":"EN";
+  if(draft)setData(draft);else render();showCite()})();
+</script>
+</body>
+</html>
