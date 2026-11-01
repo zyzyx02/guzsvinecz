@@ -1,5 +1,20 @@
 [
   {
+    "id": "FIXME_app2026_10807",
+    "year": 2026,
+    "type": "article",
+    "oa": true,
+    "title": "Abstract-Level Reporting Practices and Methodological Composition in 245 Studies Using User-Generated Video Game Reviews",
+    "authors": "Guzsvinecz, Tibor; Nemeth, Krisztian; Szűcs, Judit",
+    "venue": "Applied Sciences-Basel, vol. 16, p. 10807, 2026",
+    "doi": "10.3390/app162110807",
+    "tags": [
+      "games",
+      "data"
+    ],
+    "read_url": "https://doi.org/10.3390/app162110807"
+  },
+  {
     "id": "37536293",
     "year": 2026,
     "type": "article",
