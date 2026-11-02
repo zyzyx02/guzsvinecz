@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soulsification | Dr. Tibor Guzsvinecz</title>
+<meta name="description" content="Soulsification: the process of incorporating elements of FromSoftware's Souls games into other video games. Definition, findings and the related research line of Dr. Tibor Guzsvinecz.">
+<link rel="canonical" href="https://guzsvinecz.com/soulsification.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Soulsification | Dr. Tibor Guzsvinecz">
+<meta property="og:description" content="How Souls game design spreads into other games: definition, findings, research line.">
+<meta property="og:url" content="https://guzsvinecz.com/soulsification.html">
+<meta property="og:image" content="https://guzsvinecz.com/GT.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"]{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#c8ff00;--accent2:#00d4ff;--ember:#f0b96a;--text:#e8e8f0;--muted:#8a8aa0;--white:#ffffff;--nav-bg:rgba(10,10,15,.9)}
+:root[data-theme="light"]{--bg:#f4f4ef;--surface:#eaeae4;--card:#ffffff;--border:#d0d0c8;--accent:#5a8a00;--accent2:#0077aa;--ember:#a86a14;--text:#1a1a2e;--muted:#5f5f73;--white:#1a1a2e;--nav-bg:rgba(244,244,239,.94)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:.92rem;line-height:1.7;transition:background .3s,color .3s}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent);color:#000}
+[data-lang="en"] [data-hu]{display:none}
+[data-lang="hu"] [data-en]{display:none}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-home{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.nav-home:hover{color:var(--accent);text-decoration:none}
+.nav-right{display:flex;gap:.5rem;align-items:center}
+.ctrl-btn{font-size:.68rem;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;padding:.36rem .58rem;transition:border-color .2s,color .2s;font-family:'DM Mono',monospace}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+main{max-width:1100px;margin:0 auto;padding:3rem 3rem 4rem}
+.eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(3rem,8vw,6rem);line-height:.95;color:var(--white);letter-spacing:.02em;margin:.5rem 0 1.4rem}
+h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2rem;color:var(--white);letter-spacing:.02em;margin:0 0 1rem;display:flex;align-items:center;gap:1rem}
+h2::after{content:'';flex:1;height:1px;background:var(--border)}
+section{margin-top:3.5rem}
+
+.definition{border-left:2px solid var(--ember);padding:.2rem 0 .2rem 1.4rem;max-width:48rem}
+.definition p{font-family:'Instrument Serif',serif;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.45;color:var(--text)}
+.definition cite{display:block;margin-top:.8rem;font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.prose{max-width:48rem;color:var(--text)}
+.prose p+p{margin-top:.9rem}
+.prose strong{color:var(--white);font-weight:500}
+.origin{max-width:48rem;margin-top:1.6rem;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--ember);padding:1.1rem 1.3rem}
+.origin-label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:.5rem}
+.origin p{font-size:.86rem}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.stat{background:var(--card);padding:1.3rem 1.2rem}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;color:var(--white)}
+.stat-num small{font-size:1.3rem;color:var(--muted)}
+.stat-label{font-size:.72rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
+.src{font-size:.72rem;color:var(--muted);margin-top:.9rem;max-width:48rem}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.pubs{list-style:none;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.pub{background:var(--card);padding:1.1rem 1.2rem;display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto;gap:1rem;align-items:start}
+.pub-year{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--ember);line-height:1.1}
+.pub-title{color:var(--white);font-size:.9rem;line-height:1.5}
+.pub-meta{font-size:.72rem;color:var(--muted);margin-top:.25rem}
+.pub-lens{display:inline-block;margin-top:.45rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.1rem .5rem}
+.pub.core{box-shadow:inset 3px 0 0 var(--ember)}
+.pub-actions{display:flex;flex-direction:column;gap:.4rem;align-items:stretch;width:6.8rem}
+.btn{display:inline-flex;justify-content:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--accent);color:#000;background:var(--accent);font-weight:600;white-space:nowrap}
+.btn:hover{background:transparent;color:var(--accent);text-decoration:none}
+.btn.yt{background:transparent;border-color:#ff3b3b;color:#ff3b3b}
+.btn.yt:hover{background:#ff3b3b;color:#fff}
+@media(max-width:700px){
+  nav{padding:.8rem 1rem}main{padding:2rem 1rem 3rem}
+  .pub{grid-template-columns:1fr}.pub-actions{flex-direction:row;width:auto}.pub-actions .btn{width:6.8rem}
+}
+footer{border-top:1px solid var(--border);padding:1.5rem 3rem;color:var(--muted);font-size:.72rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+@media(max-width:700px){footer{padding:1.2rem 1rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-home" href="index.html">← guzsvinecz.com</a>
+  <div class="nav-right">
+    <button class="ctrl-btn" id="lang-btn" type="button" aria-label="Switch language">HU</button>
+    <button class="ctrl-btn" id="theme-btn" type="button" aria-label="Switch theme">☀</button>
+  </div>
+</nav>
+
+<main>
+  <header>
+    <div class="eyebrow"><span data-en>Concept · research line</span><span data-hu>Fogalom · kutatási vonal</span></div>
+    <h1>Soulsification</h1>
+    <div class="definition">
+      <p data-en>“Soulsification” refers to the process of incorporating elements commonly found in Souls games into other video games or game genres.</p>
+      <p data-hu>A „Soulsification” azt a folyamatot jelöli, amelyben a Souls-játékokra jellemző elemek más videojátékokba vagy játékműfajokba kerülnek át.</p>
+      <cite>Guzsvinecz (2025), Multimedia Tools and Applications 84, p. 14830</cite>
+    </div>
+  </header>
+
+  <section>
+    <h2><span data-en>What it means</span><span data-hu>Mit jelent</span></h2>
+    <div class="prose">
+      <p data-en>After the commercial success of FromSoftware's <strong>Demon's Souls</strong> and <strong>Dark Souls</strong>, other studios began adopting their challenging combat, punishing death mechanics, interconnected level layouts, demanding boss encounters and environmental storytelling. The games that go through this process are what players call <strong>Soulslike</strong>.</p>
+      <p data-hu>A FromSoftware <strong>Demon's Souls</strong> és <strong>Dark Souls</strong> játékainak kereskedelmi sikere után más stúdiók is átvették a nehéz harcrendszert, a büntető halálmechanikát, az egymásba kapcsolódó pályaszerkezetet, a kemény főellenség-harcokat és a környezeti történetmesélést. Az így átalakuló játékokat nevezik a játékosok <strong>Soulslike</strong>-nak.</p>
+      <p data-en>Soulsification is not a copy of the formula. Games adapt selected Souls elements to a new context and keep an identity of their own.</p>
+      <p data-hu>A Soulsification nem a recept lemásolása: a játékok kiválasztott Souls-elemeket ültetnek át új közegbe, és közben megtartják saját arculatukat.</p>
+    </div>
+    <div class="origin">
+      <div class="origin-label"><span data-en>Where the term comes from</span><span data-hu>Honnan a kifejezés</span></div>
+      <p data-en>I did not coin the term. “Soulsification” was already in use before the 2025 article: games journalists used it, for example in <a href="https://arstechnica.com/gaming/2019/11/jedi-fallen-order-game-review-more-like-the-force-goes-back-to-sleep/" target="_blank" rel="noopener">Ars Technica's 2019 review of Star Wars Jedi: Fallen Order</a> and on <a href="https://www.destructoid.com/august-games-with-gold-darksiders-yooka-laylee-lost-planet-garou/" target="_blank" rel="noopener">Destructoid</a>, and players used it on online forums. The 2025 article takes the term from there, gives it a working definition as a design process, and measures it: how many Soulslike games are released, and what players think about the trend.</p>
+      <p data-hu>A kifejezést nem én alkottam. A „Soulsification” már a 2025-ös cikk előtt is használatban volt: játékújságírók írták le, például az <a href="https://arstechnica.com/gaming/2019/11/jedi-fallen-order-game-review-more-like-the-force-goes-back-to-sleep/" target="_blank" rel="noopener">Ars Technica 2019-es Star Wars Jedi: Fallen Order-kritikájában</a> és a <a href="https://www.destructoid.com/august-games-with-gold-darksiders-yooka-laylee-lost-planet-garou/" target="_blank" rel="noopener">Destructoidon</a>, a játékosok pedig online fórumokon használták. A 2025-ös cikk innen veszi át, tervezési folyamatként munkadefiníciót ad neki, és méri: hány Soulslike játék jelenik meg, és mit gondolnak a játékosok a trendről.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span data-en>What the 2025 study found</span><span data-hu>Mit talált a 2025-ös vizsgálat</span></h2>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">1026</div><div class="stat-label"><span data-en>Soulslike releases on Steam, 2009–2023 (SteamDB)</span><span data-hu>Soulslike megjelenés a Steamen, 2009–2023 (SteamDB)</span></div></div>
+      <div class="stat"><div class="stat-num">2014</div><div class="stat-label"><span data-en>from this year, releases grew every single year</span><span data-hu>ettől az évtől minden évben nőtt a megjelenések száma</span></div></div>
+      <div class="stat"><div class="stat-num">45<small>/61</small></div><div class="stat-label"><span data-en>Souls players who think the process exists (13 of 39 non-players)</span><span data-hu>Souls-játékos szerint létező folyamat (a nem játszók közül 13/39)</span></div></div>
+      <div class="stat"><div class="stat-num">56<small>/100</small></div><div class="stat-label"><span data-en>want Souls mechanics in games, if they fit the game</span><span data-hu>szeretne Souls-mechanikát a játékokban, ha illik hozzájuk</span></div></div>
+    </div>
+    <p class="src"><span data-en>Release counts from SteamDB, where the original Souls games are also tagged Soulslike; an ARIMA forecast points to continued growth. Survey: 100 participants. Source: Guzsvinecz (2025), pp. 14834–14845.</span><span data-hu>A megjelenésszámok a SteamDB-ből származnak, ahol az eredeti Souls-játékok is Soulslike címkét kapnak; az ARIMA-előrejelzés további növekedést mutat. Kérdőív: 100 résztvevő. Forrás: Guzsvinecz (2025), 14834–14845. o.</span></p>
+  </section>
+
+  <section>
+    <h2><span data-en>The research line</span><span data-hu>A kutatási vonal</span></h2>
+    <ul class="pubs">
+      <li class="pub">
+        <div class="pub-year">2023</div>
+        <div><div class="pub-title">The correlation between positive reviews, playtime, design and game mechanics in souls-like role-playing video games</div>
+          <div class="pub-meta">Guzsvinecz, T. · Multimedia Tools and Applications 82(3), 4641–4670</div>
+          <span class="pub-lens"><span data-en>Steam reviews · design factors</span><span data-hu>Steam review · dizájn-tényezők</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.1007/s11042-022-12308-1" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/W0BEyAUytwY" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+      <li class="pub">
+        <div class="pub-year">2023</div>
+        <div><div class="pub-title">Sentiment Analysis of Souls-like Role-Playing Video Game Reviews</div>
+          <div class="pub-meta">Guzsvinecz, T. · Acta Polytechnica Hungarica 20(5), 149–168</div>
+          <span class="pub-lens"><span data-en>Steam reviews · sentiment</span><span data-hu>Steam review · sentiment</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.12700/APH.20.5.2023.5.10" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/Hmn7XWZhFcs" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+      <li class="pub">
+        <div class="pub-year">2024</div>
+        <div><div class="pub-title">Towards Understanding Player Experience between Classic and Unfair 2D Platform Video Games</div>
+          <div class="pub-meta">Csali, T., Szűcs, J., Guzsvinecz, T. · IEEE CogInfoCom 2024, Tokyo, 229–234</div>
+          <span class="pub-lens"><span data-en>difficulty · player experience</span><span data-hu>nehézség · játékosélmény</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.1109/CogInfoCom63007.2024.10894736" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+      </li>
+      <li class="pub core">
+        <div class="pub-year">2025</div>
+        <div><div class="pub-title">The Soulsification of Video Games</div>
+          <div class="pub-meta">Guzsvinecz, T. · Multimedia Tools and Applications 84(15), 14827–14853 · Open Access</div>
+          <span class="pub-lens"><span data-en>the concept · releases + survey</span><span data-hu>a fogalom · megjelenések + kérdőív</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/UKjXXJNndeM" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+      <li class="pub">
+        <div class="pub-year">2025</div>
+        <div><div class="pub-title">Game Theory and Strategic Decision-Making in the Dark Souls Games</div>
+          <div class="pub-meta">Guzsvinecz, T., Szűcs, J. · Game Theory: Computational Aspects and Applications (IntechOpen), 1–20</div>
+          <span class="pub-lens"><span data-en>game theory · decisions</span><span data-hu>játékelmélet · döntések</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.5772/intechopen.1008456" target="_blank" rel="noopener"><span data-en>Chapter →</span><span data-hu>Fejezet →</span></a><a class="btn yt" href="https://youtu.be/V3Z9KyNFV74" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+      <li class="pub">
+        <div class="pub-year">2025</div>
+        <div><div class="pub-title">Topic Modeling of Positive and Negative Reviews of Soulslike Video Games</div>
+          <div class="pub-meta">Guzsvinecz, T. · Computers 14, 339</div>
+          <span class="pub-lens"><span data-en>Steam reviews · topic modeling</span><span data-hu>Steam review · topikmodellezés</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.3390/computers14080339" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/pYALoLKK9QA" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+      <li class="pub">
+        <div class="pub-year">2026</div>
+        <div><div class="pub-title">Beyond Fairy Tales: Post-Fairy-Tale Narrative Identity and Therapeutic Ambiguity in FromSoftware's Souls Games</div>
+          <div class="pub-meta">Guzsvinecz, T., Kovács, B. L., Szűcs, J., Kada, P. Z., Cserjesi, R. · Games and Culture (in press)</div>
+          <span class="pub-lens"><span data-en>narrative · game studies</span><span data-hu>narratíva · játéktudomány</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.1177/15554120261488594" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/Z_q_afvXNTU" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <span>© Tibor Guzsvinecz · University of Pannonia</span>
+  <span><a href="index.html#publications"><span data-en>All publications →</span><span data-hu>Összes publikáció →</span></a></span>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, $=function(id){return document.getElementById(id)};
+  function setTheme(t){root.setAttribute('data-theme',t);$('theme-btn').textContent=t==='dark'?'☀':'☾';try{localStorage.setItem('gt-theme',t)}catch(e){}}
+  function setLang(l){root.setAttribute('data-lang',l);root.lang=l;$('lang-btn').textContent=l==='en'?'HU':'EN';try{localStorage.setItem('gt-lang',l)}catch(e){}}
+  var t='dark', l='en';
+  try{t=localStorage.getItem('gt-theme')||t;l=localStorage.getItem('gt-lang')||l}catch(e){}
+  var q=new URLSearchParams(location.search);
+  if(q.get('lang')==='hu'||q.get('lang')==='en') l=q.get('lang');
+  if(q.get('theme')==='light'||q.get('theme')==='dark') t=q.get('theme');
+  setTheme(t); setLang(l);
+  $('theme-btn').addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+  $('lang-btn').addEventListener('click',function(){setLang(root.getAttribute('data-lang')==='en'?'hu':'en')});
+})();
+</script>
+</body>
+</html>

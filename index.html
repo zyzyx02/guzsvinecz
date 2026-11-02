@@ -117,6 +117,16 @@
     <div class="hero-eclipse">
       <iframe src="eclipse_loop.html" loading="lazy" title="Dr. Guzsvinecz logo animation" allowtransparency="true"></iframe>
       <div class="hero-eclipse-label">HOMO · LUDENS · QUAERIT</div>
+      <div class="orbit" role="navigation" aria-label="Projects">
+        <a class="orbit-item" style="--a:-90deg" href="respawn.html" title="Reporting checklist and flow-diagram generator for game review research"><span>RESPAWN</span></a>
+        <a class="orbit-item" style="--a:30deg" href="soulsification.html" title="The concept and the research line"><span>Soulsification</span></a>
+        <a class="orbit-item" style="--a:150deg" href="post-fairy-tale.html" title="The post-fairy-tale narrative system and therapeutic ambiguity"><span class="two">Post-Fairy-Tale &amp;<br>Therapeutic Ambiguity</span></a>
+      </div>
+    </div>
+    <div class="orbit-chips" aria-label="Projects">
+      <a href="respawn.html">RESPAWN</a>
+      <a href="soulsification.html">Soulsification</a>
+      <a href="post-fairy-tale.html">Post-Fairy-Tale &amp; Therapeutic Ambiguity</a>
     </div>
   </div>
 </section>
@@ -183,6 +193,7 @@
       <div class="fp-actions">
         <a class="fp-read" href="https://doi.org/10.1007/s11042-024-19628-4" target="_blank"><span data-en>Read Paper →</span><span data-hu>Cikk olvasása →</span></a>
         <a class="fp-yt" href="https://youtu.be/UKjXXJNndeM">Video →</a>
+        <a class="fp-concept" href="soulsification.html"><span data-en>Concept →</span><span data-hu>A fogalom →</span></a>
       </div>
     </div>
 
@@ -415,8 +426,8 @@
     <a class="pfl alt" href="https://scholar.google.com/citations?user=03Sg_PgAAAAJ" target="_blank">→ Google Scholar</a>
   </div>
   <div class="updated">
-    <span data-en>Publication data last updated: 1 November 2026. For the full list, see ResearchGate or MTMT.</span>
-    <span data-hu>A publikációs adatok utolsó frissítése: 2026. november 1. A teljes listáért lásd a ResearchGate-et vagy az MTMT-t.</span>
+    <span data-en>Publication data last updated: 2 November 2026. For the full list, see ResearchGate or MTMT.</span>
+    <span data-hu>A publikációs adatok utolsó frissítése: 2026. november 2. A teljes listáért lásd a ResearchGate-et vagy az MTMT-t.</span>
   </div>
 </div></div>
 
@@ -511,7 +522,7 @@
 
 <footer>
   <div class="fc"><span data-en>© 2026 Dr. Tibor Guzsvinecz <span>·</span> University of Pannonia</span><span data-hu>© 2026 Dr. Guzsvinecz Tibor <span>·</span> Pannon Egyetem</span></div>
-  <div class="fc"><span data-en>Last updated: 1 November 2026</span><span data-hu>Utolsó frissítés: 2026. november 1.</span></div>
+  <div class="fc"><span data-en>Last updated: 2 November 2026</span><span data-hu>Utolsó frissítés: 2026. november 2.</span></div>
 </footer>
 
 <script>
@@ -524,6 +535,12 @@ function toggleLang(){
   const r=document.documentElement,b=document.getElementById('lang-btn');
   r.getAttribute('data-lang')==='en'?(r.setAttribute('data-lang','hu'),b.textContent='EN'):(r.setAttribute('data-lang','en'),b.textContent='HU');
 }
+// Carry the current language/theme to the sub-pages (soulsification.html + post-fairy-tale.html read ?lang= & ?theme=)
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a[href^="soulsification.html"],a[href^="post-fairy-tale.html"]'); if(!a) return;
+  const r=document.documentElement;
+  a.href=a.getAttribute('href').split('?')[0]+'?lang='+r.getAttribute('data-lang')+'&theme='+r.getAttribute('data-theme');
+});
 
 // ── SITE-WIDE STATS — SINGLE SOURCE OF TRUTH (update these numbers HERE only) ──
 const SITE_STATS={hIndex:16,citations:850,citationsPlus:true,graduates:64,tdk:9,phdStudents:3};

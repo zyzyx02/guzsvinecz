@@ -328,3 +328,31 @@ footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-item
   .pub-chart{gap:.18rem;padding:.6rem .5rem .45rem}.pych-n{font-size:.45rem}.pych-y{font-size:.45rem}
   footer{flex-direction:column;gap:.7rem;text-align:center;padding:1.4rem 1.5rem}
 }
+
+
+/* ── HERO ORBIT (2026-11-02): project links circling the eclipse logo ── */
+@property --spin{syntax:'<angle>';inherits:true;initial-value:0deg}
+.hero-eclipse{container-type:inline-size}
+.orbit{position:absolute;inset:0;z-index:3;pointer-events:none;--spin:0deg;animation:orbitSpin 140s linear infinite}
+.orbit-item{position:absolute;left:50%;top:50%;pointer-events:auto;--t:calc(var(--a) + var(--spin));transform:rotate(var(--t)) translateX(46cqi) rotate(calc(-1 * var(--t)))}
+.orbit-item>span{display:block;transform:translate(-50%,-50%);font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:#f0b96a;padding:.32rem .75rem;border:1px solid rgba(240,185,106,.45);background:rgba(10,10,15,.72);backdrop-filter:blur(6px);transition:color .25s,border-color .25s,background .25s,box-shadow .25s}
+.orbit-item>span.two{text-align:center;line-height:1.5}
+.orbit-item:hover{text-decoration:none}
+.orbit-item:hover>span,.orbit-item:focus-visible>span{color:#000;background:#f0b96a;border-color:#f0b96a;box-shadow:0 0 18px rgba(230,168,74,.55)}
+.orbit-item:focus-visible{outline:none}
+.hero-eclipse:hover .orbit,.orbit:focus-within{animation-play-state:paused}
+[data-theme="light"] .orbit-item>span{background:rgba(244,244,239,.85);color:#a86a14;border-color:rgba(168,106,20,.45)}
+[data-theme="light"] .orbit-item:hover>span{background:#a86a14;color:#fff}
+@keyframes orbitSpin{to{--spin:360deg}}
+.orbit-chips{display:none}
+@media(prefers-reduced-motion:reduce){.orbit{animation:none}}
+@media(max-width:900px){
+  .hero-right{flex-direction:column;gap:1rem}
+  .orbit{display:none}
+  .orbit-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+  .orbit-chips a{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#f0b96a;border:1px solid rgba(240,185,106,.45);padding:.35rem .8rem}
+  [data-theme="light"] .orbit-chips a{color:#a86a14;border-color:rgba(168,106,20,.45)}
+}
+.fp-concept{display:inline-flex;align-items:center;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#f0b96a;padding:.28rem .85rem;border:1px solid #f0b96a;font-family:'DM Mono',monospace;font-weight:600;transition:background .2s,color .2s}
+.fp-concept:hover{background:#f0b96a;color:#000;text-decoration:none}
+[data-theme="light"] .fp-concept{color:#a86a14;border-color:#a86a14}

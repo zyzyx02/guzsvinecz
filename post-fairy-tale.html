@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post-Fairy-Tale &amp; Therapeutic Ambiguity | Dr. Tibor Guzsvinecz</title>
+<meta name="description" content="Therapeutic ambiguity and the post-fairy-tale narrative system: two concepts for reading FromSoftware's Souls games, introduced in Games and Culture (2026).">
+<link rel="canonical" href="https://guzsvinecz.com/post-fairy-tale.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Post-Fairy-Tale &amp; Therapeutic Ambiguity | Dr. Tibor Guzsvinecz">
+<meta property="og:description" content="Why the Souls games resonate despite refusing to reassure: two concepts from Games and Culture (2026).">
+<meta property="og:url" content="https://guzsvinecz.com/post-fairy-tale.html">
+<meta property="og:image" content="https://guzsvinecz.com/GT.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"]{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#c8ff00;--accent2:#00d4ff;--ember:#f0b96a;--text:#e8e8f0;--muted:#8a8aa0;--white:#ffffff;--nav-bg:rgba(10,10,15,.9)}
+:root[data-theme="light"]{--bg:#f4f4ef;--surface:#eaeae4;--card:#ffffff;--border:#d0d0c8;--accent:#5a8a00;--accent2:#0077aa;--ember:#a86a14;--text:#1a1a2e;--muted:#5f5f73;--white:#1a1a2e;--nav-bg:rgba(244,244,239,.94)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:.92rem;line-height:1.7;transition:background .3s,color .3s}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent);color:#000}
+[data-lang="en"] [data-hu]{display:none}
+[data-lang="hu"] [data-en]{display:none}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-home{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.nav-home:hover{color:var(--accent);text-decoration:none}
+.nav-right{display:flex;gap:.5rem;align-items:center}
+.ctrl-btn{font-size:.68rem;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;padding:.36rem .58rem;transition:border-color .2s,color .2s;font-family:'DM Mono',monospace}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+main{max-width:1100px;margin:0 auto;padding:3rem 3rem 4rem}
+.eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(3rem,8vw,6rem);line-height:.95;color:var(--white);letter-spacing:.02em;margin:.5rem 0 1.4rem}
+h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2rem;color:var(--white);letter-spacing:.02em;margin:0 0 1rem;display:flex;align-items:center;gap:1rem}
+h2::after{content:'';flex:1;height:1px;background:var(--border)}
+section{margin-top:3.5rem}
+
+.definition{border-left:2px solid var(--ember);padding:.2rem 0 .2rem 1.4rem;max-width:48rem}
+.definition p{font-family:'Instrument Serif',serif;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.45;color:var(--text)}
+.definition cite{display:block;margin-top:.8rem;font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.prose{max-width:48rem;color:var(--text)}
+.prose p+p{margin-top:.9rem}
+.prose strong{color:var(--white);font-weight:500}
+.origin{max-width:48rem;margin-top:1.6rem;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--ember);padding:1.1rem 1.3rem}
+.origin-label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:.5rem}
+.origin p{font-size:.86rem}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.stat{background:var(--card);padding:1.3rem 1.2rem}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;color:var(--white)}
+.stat-num small{font-size:1.3rem;color:var(--muted)}
+.stat-label{font-size:.72rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
+.src{font-size:.72rem;color:var(--muted);margin-top:.9rem;max-width:48rem}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.pubs{list-style:none;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.pub{background:var(--card);padding:1.1rem 1.2rem;display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto;gap:1rem;align-items:start}
+.pub-year{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--ember);line-height:1.1}
+.pub-title{color:var(--white);font-size:.9rem;line-height:1.5}
+.pub-meta{font-size:.72rem;color:var(--muted);margin-top:.25rem}
+.pub-lens{display:inline-block;margin-top:.45rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.1rem .5rem}
+.pub.core{box-shadow:inset 3px 0 0 var(--ember)}
+.pub-actions{display:flex;flex-direction:column;gap:.4rem;align-items:stretch;width:6.8rem}
+.btn{display:inline-flex;justify-content:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--accent);color:#000;background:var(--accent);font-weight:600;white-space:nowrap}
+.btn:hover{background:transparent;color:var(--accent);text-decoration:none}
+.btn.yt{background:transparent;border-color:#ff3b3b;color:#ff3b3b}
+.btn.yt:hover{background:#ff3b3b;color:#fff}
+@media(max-width:700px){
+  nav{padding:.8rem 1rem}main{padding:2rem 1rem 3rem}
+  .pub{grid-template-columns:1fr}.pub-actions{flex-direction:row;width:auto}.pub-actions .btn{width:6.8rem}
+}
+footer{border-top:1px solid var(--border);padding:1.5rem 3rem;color:var(--muted);font-size:.72rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+@media(max-width:700px){footer{padding:1.2rem 1rem}}
+
+.ttable{width:100%;border-collapse:collapse;font-size:.8rem;background:var(--card);border:1px solid var(--border)}
+.ttable th,.ttable td{padding:.75rem .9rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.ttable th{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.ttable td:first-child{color:var(--white);white-space:nowrap}
+.ttable td:last-child{color:var(--ember)}
+.twrap{overflow-x:auto}
+.cycle{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;max-width:48rem}
+.cycle span.step{border:1px solid var(--border);background:var(--card);padding:.45rem .8rem;font-size:.78rem;color:var(--white)}
+.cycle span.arr{color:var(--ember)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:62rem}
+.pair .definition p{font-size:clamp(1.1rem,2vw,1.35rem)}
+.h1-two{font-size:clamp(2.6rem,6.5vw,5rem)}
+.h1-two .amp{color:var(--ember)}
+.term{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:.5rem}
+@media(max-width:800px){.pair{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-home" href="index.html">← guzsvinecz.com</a>
+  <div class="nav-right">
+    <button class="ctrl-btn" id="lang-btn" type="button" aria-label="Switch language">HU</button>
+    <button class="ctrl-btn" id="theme-btn" type="button" aria-label="Switch theme">☀</button>
+  </div>
+</nav>
+
+<main>
+  <header>
+    <div class="eyebrow"><span data-en>Two linked concepts · Souls games · narrative</span><span data-hu>Két összetartozó fogalom · Souls-játékok · narratíva</span></div>
+    <h1 class="h1-two">Post-Fairy-Tale<br><span class="amp">&amp;</span> Therapeutic Ambiguity</h1>
+    <div class="pair">
+      <div class="definition">
+        <div class="term"><span data-en>The structure · post-fairy-tale narrative system</span><span data-hu>A szerkezet · post-fairy-tale narratív rendszer</span></div>
+        <p data-en>A structure that retains the symbolic apparatus of the fairy tale while withdrawing its guarantee structure.</p>
+        <p data-hu>Olyan szerkezet, amely megtartja a mese szimbolikus apparátusát, de visszavonja a garancia-struktúráját.</p>
+        <cite>Guzsvinecz et al. (2026), Games and Culture, p. 1</cite>
+      </div>
+      <div class="definition">
+        <div class="term"><span data-en>The mode of engagement · therapeutic ambiguity</span><span data-hu>A részvételi mód · therapeutic ambiguity</span></div>
+        <p data-en>Symbolic confrontation with fear, loss, and uncertainty is preserved, while narrative containment and moral resolution are withheld.</p>
+        <p data-hu>A félelemmel, veszteséggel és bizonytalansággal való szimbolikus szembesülés megmarad, a narratív megtartás és az erkölcsi feloldás viszont elmarad.</p>
+        <cite>Guzsvinecz et al. (2026), Games and Culture, p. 8</cite>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <h2><span data-en>What they mean</span><span data-hu>Mit jelentenek</span></h2>
+    <div class="prose">
+      <p data-en>FromSoftware's Souls games are hard, bleak and refuse to explain themselves, yet players describe them as meaningful, reflective, even transformative. The two concepts explain this together. The <strong>post-fairy-tale narrative system</strong> names the structure: heroes, villains, helpers, cyclical time and magical objects are all still there, but the assurances of moral clarity, closure and restoration are gone. This is not subversion, which swaps the values and keeps the machinery: here the machinery runs, and the verdict never arrives.</p>
+      <p data-hu>A FromSoftware Souls-játékai nehezek, sötétek, és nem magyarázzák meg magukat, a játékosok mégis jelentésteli, elgondolkodtató, sőt átalakító élményként írnak róluk. A két fogalom együtt magyarázza ezt. A <strong>post-fairy-tale narratív rendszer</strong> a szerkezetet nevezi meg: hős, gonosz, segítő, ciklikus idő és varázstárgyak továbbra is vannak, de az erkölcsi egyértelműség, a lezárás és a helyreállítás ígérete eltűnik. Ez nem szubverzió, ami az értékeket cseréli és a gépezetet megtartja: itt a gépezet fut, csak az ítélet marad el.</p>
+      <p data-en><strong>Therapeutic ambiguity</strong> names the mode of engagement this structure produces. The games do not guide players toward closure; they ask them to tolerate unresolved meaning and to persist without reassurance. Meaning shifts from narrative outcome to endurance, repetition and embodied learning, and communities help one another tolerate the ambiguity rather than resolve it.</p>
+      <p data-hu>A <strong>therapeutic ambiguity</strong> az a részvételi mód, amelyet ez a szerkezet létrehoz. A játékok nem vezetik a játékost a lezárás felé, hanem azt kérik tőle, hogy viselje el a feloldatlan jelentést, és megnyugtatás nélkül is kitartson. A jelentés a narratív kimenetelről a kitartásra, az ismétlésre és a testesült tanulásra tolódik, a közösségek pedig abban segítik egymást, hogy elviseljék a bizonytalanságot, nem abban, hogy feloldják.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span data-en>The five withdrawn guarantees</span><span data-hu>Az öt visszavont garancia</span></h2>
+    <div class="twrap">
+      <table class="ttable">
+        <thead><tr><th><span data-en>Guarantee</span><span data-hu>Garancia</span></th><th><span data-en>Classic Western fairy tale</span><span data-hu>Klasszikus nyugati mese</span></th><th><span data-en>Japanese folk-tale tradition</span><span data-hu>Japán népmese-hagyomány</span></th><th><span data-en>Souls games</span><span data-hu>Souls-játékok</span></th></tr></thead>
+        <tbody>
+          <tr><td>Role legibility</td><td>Roles identifiable by function</td><td>Roles identifiable by function</td><td>Roles persist in degraded form</td></tr>
+          <tr><td>Proportionate return</td><td>Endurance is rewarded</td><td>Reward may be granted and then lost</td><td>Endurance continues unrewarded</td></tr>
+          <tr><td>Terminal point</td><td>Events reach a settled end</td><td>Events reach a settled end</td><td>Endings multiply without adjudication</td></tr>
+          <tr><td>Restoration</td><td>Disrupted order is restored</td><td>Loss is often irreversible</td><td>The world remains beyond repair</td></tr>
+          <tr><td>Reliable telling</td><td>The narrating voice can be trusted</td><td>The narrating voice can be trusted</td><td>No account is confirmed authoritative</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src"><span data-en>Table 1 (p. 10). The middle column follows Napier (2015) and Seki (1963) and is not an exhaustive typology. The Souls games withdraw all five guarantees, which is what makes them post-fairy-tale rather than simply Japanese.</span><span data-hu>1. táblázat (10. o.), a cikk angol szövegével. A középső oszlop Napier (2015) és Seki (1963) leírását követi, nem teljes tipológia. A Souls-játékok mind az öt garanciát visszavonják: ettől post-fairy-tale, és nem egyszerűen japán.</span></p>
+  </section>
+
+  <section>
+    <h2><span data-en>The cycle</span><span data-hu>A ciklus</span></h2>
+    <div class="cycle">
+      <span class="step"><span data-en>Failure</span><span data-hu>Kudarc</span></span><span class="arr">→</span>
+      <span class="step"><span data-en>Frustration</span><span data-hu>Frusztráció</span></span><span class="arr">→</span>
+      <span class="step"><span data-en>Persistence</span><span data-hu>Kitartás</span></span><span class="arr">→</span>
+      <span class="step"><span data-en>Adaptation</span><span data-hu>Alkalmazkodás</span></span><span class="arr">→</span>
+      <span class="step"><span data-en>Embodied learning</span><span data-hu>Testesült tanulás</span></span><span class="arr">↺</span>
+    </div>
+    <p class="src"><span data-en>Frustration may also lead to disengagement. Uncertainty is never resolved: it persists as a continuous condition, shaping meaning through repeated engagement. After Figure 1 (p. 15).</span><span data-hu>A frusztrációból kiszállás is lehet. A bizonytalanság soha nem oldódik fel: állandó feltételként marad meg, és az ismételt részvétel során formálja a jelentést. Az 1. ábra nyomán (15. o.).</span></p>
+  </section>
+
+  <section>
+    <h2><span data-en>Read more</span><span data-hu>Tovább</span></h2>
+    <ul class="pubs">
+      <li class="pub core">
+        <div class="pub-year">2026</div>
+        <div><div class="pub-title">Beyond Fairy Tales: Post-Fairy-Tale Narrative Identity and Therapeutic Ambiguity in FromSoftware's Souls Games</div>
+          <div class="pub-meta">Guzsvinecz, T., Kovács, B. L., Szűcs, J., Kada, P. Z., Cserjesi, R. · Games and Culture (in press)</div>
+          <span class="pub-lens"><span data-en>where both concepts are introduced</span><span data-hu>itt vezettük be a két fogalmat</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.1177/15554120261488594" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/Z_q_afvXNTU" target="_blank" rel="noopener">Video →</a></div>
+      </li>
+    </ul>
+    <p class="src"><a href="soulsification.html"><span data-en>Related: Soulsification, and the full Souls research line →</span><span data-hu>Kapcsolódó: Soulsification és a teljes Souls-kutatási vonal →</span></a></p>
+  </section>
+</main>
+
+<footer>
+  <span>© Tibor Guzsvinecz · University of Pannonia</span>
+  <span><a href="index.html#publications"><span data-en>All publications →</span><span data-hu>Összes publikáció →</span></a></span>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, $=function(id){return document.getElementById(id)};
+  function setTheme(t){root.setAttribute('data-theme',t);$('theme-btn').textContent=t==='dark'?'☀':'☾';try{localStorage.setItem('gt-theme',t)}catch(e){}}
+  function setLang(l){root.setAttribute('data-lang',l);root.lang=l;$('lang-btn').textContent=l==='en'?'HU':'EN';try{localStorage.setItem('gt-lang',l)}catch(e){}}
+  var t='dark', l='en';
+  try{t=localStorage.getItem('gt-theme')||t;l=localStorage.getItem('gt-lang')||l}catch(e){}
+  var q=new URLSearchParams(location.search);
+  if(q.get('lang')==='hu'||q.get('lang')==='en') l=q.get('lang');
+  if(q.get('theme')==='light'||q.get('theme')==='dark') t=q.get('theme');
+  setTheme(t); setLang(l);
+  $('theme-btn').addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+  $('lang-btn').addEventListener('click',function(){setLang(root.getAttribute('data-lang')==='en'?'hu':'en')});
+})();
+</script>
+</body>
+</html>

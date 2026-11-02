@@ -1,5 +1,21 @@
 [
   {
+    "id": "37773456",
+    "year": 2026,
+    "type": "inproceedings",
+    "oa": false,
+    "title": "Acute and Accommodated Emotional Profiles in Cybersickness-Related First-Person Virtual Reality Game Reviews",
+    "authors": "Guzsvinecz, Tibor; Nemeth, Krisztian; Szűcs, Judit",
+    "venue": "2026 IEEE 24th International Symposium on Intelligent Systems and Informatics (SISY 2026), Pula, Croatia, pp. 595–600",
+    "doi": "10.1109/SISY71351.2026.11738535",
+    "tags": [
+      "vr",
+      "games",
+      "data"
+    ],
+    "read_url": "https://doi.org/10.1109/SISY71351.2026.11738535"
+  },
+  {
     "id": "FIXME_app2026_10807",
     "year": 2026,
     "type": "article",
@@ -335,7 +351,7 @@
     "tags": [
       "games"
     ],
-    "read_url": "https://www.mdpi.com/10.1007/s11042-024-19628-4",
+    "read_url": "https://doi.org/10.1007/s11042-024-19628-4",
     "video_summary": "https://youtu.be/UKjXXJNndeM"
   },
   {
