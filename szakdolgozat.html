@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="robots" content="noindex,nofollow,noarchive"/>
 <meta name="googlebot" content="noindex,nofollow"/>
-<meta name="description" content="Szakdolgozat-navigátor Dr. Guzsvinecz Tibor témavezetettjeinek."/>
-<title>Szakdolgozat-navigátor · Dr. Guzsvinecz Tibor</title>
+<meta name="description" content="Szakdolgozat-navigátor Dr. habil. Guzsvinecz Tibor témavezetettjeinek."/>
+<title>Szakdolgozat-navigátor · Dr. habil. Guzsvinecz Tibor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
@@ -198,7 +198,9 @@
 .warn b{color:var(--accent2)}
 a.inl{color:var(--accent2);border-bottom:1px solid transparent;transition:border-color .2s}
 a.inl:hover{border-color:var(--accent2)}
-.sd-foot{border-top:1px solid var(--border);margin-top:5rem;padding:2.2rem 0 0;color:var(--muted);font-size:.78rem;letter-spacing:.05em;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.sd-foot{border-top:1px solid var(--border);padding:1.6rem 6rem 1.6rem 4rem;color:var(--muted);font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.sd-foot .sep{color:var(--accent)}
+@media(max-width:900px){.sd-foot{flex-direction:column;gap:.7rem;text-align:center;padding:1.4rem 1.5rem 4.5rem}}
 .sd-foot a{color:var(--accent2)}
 .totop{position:fixed;right:1.6rem;bottom:1.6rem;z-index:105;background:var(--card);border:1px solid var(--border);color:var(--muted);font-family:'DM Mono',monospace;font-size:.9rem;padding:.6rem .8rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,border-color .2s,color .2s}
 .totop.show{opacity:1;pointer-events:auto}
@@ -224,6 +226,15 @@ a.inl:hover{border-color:var(--accent2)}
   .acc-b{padding-left:1.2rem}
   .fd-w{margin-left:0}
 }
+@media(max-width:480px){
+  .sd-brand{font-size:.95rem;letter-spacing:.06em;min-width:0}
+  .sd-nav-right{gap:.4rem;flex-shrink:0}
+  .sd-home{white-space:nowrap}
+  .sd-home-txt{display:none}
+  .sd-sh{gap:.8rem}
+  .sd-st{min-width:0;font-size:1.45rem;overflow-wrap:anywhere}
+}
+@media(max-width:360px){.sd-brand{font-size:.82rem;letter-spacing:.04em}}
 @media(prefers-reduced-motion:reduce){
   .sd-sec{opacity:1;transform:none;transition:none}
   *{animation:none!important}
@@ -237,7 +248,7 @@ a.inl:hover{border-color:var(--accent2)}
 <nav class="sd-nav">
   <a class="sd-brand" href="index.html">GUZSVINECZ<span>/</span>SZAKDOLGOZAT</a>
   <div class="sd-nav-right">
-    <a class="ctrl-btn" href="index.html">← Főoldal</a>
+    <a class="ctrl-btn sd-home" href="index.html" aria-label="Főoldal">←<span class="sd-home-txt"> Főoldal</span></a>
     <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">☀</button>
   </div>
 </nav>
@@ -845,17 +856,18 @@ a.inl:hover{border-color:var(--accent2)}
   <!-- 12 KAPCSOLAT -->
   <section class="sd-sec" id="kapcsolat">
     <div class="sd-sh"><span class="sd-sn">12</span><span class="sd-st">Kapcsolat</span><span class="sd-sl"></span></div>
-    <p class="sd-p">Dr. Guzsvinecz Tibor, egyetemi docens · Pannon Egyetem, Műszaki Informatikai Kar · Informatikai Rendszerek és Alkalmazásai Tanszék · Zalaegerszegi Egyetemi Központ</p>
+    <p class="sd-p">Dr. habil. Guzsvinecz Tibor, egyetemi docens · Pannon Egyetem, Műszaki Informatikai Kar · Informatikai Rendszerek és Alkalmazásai Tanszék · Zalaegerszegi Egyetemi Központ</p>
     <p class="sd-p">E-mail: <a class="inl" id="contact-email" href="#">guzsvinecz.tibor [at] zek.uni-pannon.hu</a></p>
     <div class="sd-note">Ez az oldal a témavezetettjeimnek szól, és nincs kilinkelve a főoldalról, tehát mentsd el a linket. A kötelező érvényű követelményeket és határidőket mindig a kari oldal tartalmazza, ez itt azok kivonata és a saját elvárásaim.</div>
   </section>
 
-  <footer class="sd-foot">
-    <span>© 2026 Dr. Guzsvinecz Tibor · Pannon Egyetem</span>
-    <span>Utolsó frissítés: 2026. szeptember 22.</span>
-    <span><a href="index.html">guzsvinecz.com</a></span>
-  </footer>
 </div>
+
+<footer class="sd-foot">
+  <span>© 2026 Dr. habil. Guzsvinecz Tibor <span class="sep">·</span> Pannon Egyetem</span>
+  <span><a href="index.html">guzsvinecz.com</a></span>
+  <span>Utolsó frissítés: 2026. november 11.</span>
+</footer>
 
 <button class="totop" id="totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Vissza a tetejére">↑</button>
 
