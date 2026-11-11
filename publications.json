@@ -1,5 +1,21 @@
 [
   {
+    "id": "37791360",
+    "year": 2026,
+    "type": "article",
+    "oa": true,
+    "title": "Explainable AI for Early Sprint Delivery Risk Prediction Across Agile Software Projects",
+    "authors": "Szava, Levente Antal; Sik-Lanyi, Cecilia; Guzsvinecz, Tibor",
+    "venue": "Algorithms, vol. 19, p. 987, 2026",
+    "doi": "10.3390/a19110987",
+    "tags": [
+      "ml",
+      "data",
+      "hci"
+    ],
+    "read_url": "https://doi.org/10.3390/a19110987"
+  },
+  {
     "id": "37773456",
     "year": 2026,
     "type": "inproceedings",
