@@ -1,5 +1,20 @@
 [
   {
+    "id": "rs_2026_gamerlex",
+    "year": 2026,
+    "type": "preprint",
+    "oa": true,
+    "title": "GamerLex: A sentiment lexicon of gaming slang and jargon derived from Steam reviews",
+    "authors": "Guzsvinecz, Tibor",
+    "venue": "Research Square (2693-5015), pp. 1–26, 2026",
+    "doi": "10.21203/rs.3.rs-11503520/v1",
+    "tags": [
+      "games",
+      "data"
+    ],
+    "read_url": "https://doi.org/10.21203/rs.3.rs-11503520/v1"
+  },
+  {
     "id": "37791360",
     "year": 2026,
     "type": "article",

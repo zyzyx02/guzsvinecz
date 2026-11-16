@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GamerLex | Dr. habil. Tibor Guzsvinecz</title>
+<meta name="description" content="GamerLex: an open sentiment lexicon of gaming slang and game jargon for player reviews, built from 4.69 million Steam reviews, with valence on the VADER scale.">
+<link rel="canonical" href="https://guzsvinecz.com/gamerlex.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GamerLex | Dr. habil. Tibor Guzsvinecz">
+<meta property="og:description" content="A sentiment lexicon of gaming slang and jargon for player reviews: 8,046 entries, VADER scale, open data and code.">
+<meta property="og:url" content="https://guzsvinecz.com/gamerlex.html">
+<meta property="og:image" content="https://guzsvinecz.com/GT.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"]{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#c8ff00;--accent2:#00d4ff;--ember:#f0b96a;--text:#e8e8f0;--muted:#8a8aa0;--white:#ffffff;--nav-bg:rgba(10,10,15,.9)}
+:root[data-theme="light"]{--bg:#f4f4ef;--surface:#eaeae4;--card:#ffffff;--border:#d0d0c8;--accent:#5a8a00;--accent2:#0077aa;--ember:#a86a14;--text:#1a1a2e;--muted:#5f5f73;--white:#1a1a2e;--nav-bg:rgba(244,244,239,.94)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:.92rem;line-height:1.7;transition:background .3s,color .3s}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--accent);color:#000}
+[data-lang="en"] [data-hu]{display:none}
+[data-lang="hu"] [data-en]{display:none}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-home{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.nav-home:hover{color:var(--accent);text-decoration:none}
+.nav-right{display:flex;gap:.5rem;align-items:center}
+.ctrl-btn{font-size:.68rem;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;padding:.36rem .58rem;transition:border-color .2s,color .2s;font-family:'DM Mono',monospace}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+main{max-width:1100px;margin:0 auto;padding:3rem 3rem 4rem}
+.eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(3rem,8vw,6rem);line-height:.95;color:var(--white);letter-spacing:.02em;margin:.5rem 0 1.4rem}
+h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2rem;color:var(--white);letter-spacing:.02em;margin:0 0 1rem;display:flex;align-items:center;gap:1rem}
+h2::after{content:'';flex:1;height:1px;background:var(--border)}
+section{margin-top:3.5rem}
+
+.definition{border-left:2px solid var(--ember);padding:.2rem 0 .2rem 1.4rem;max-width:48rem}
+.definition p{font-family:'Instrument Serif',serif;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.45;color:var(--text)}
+.definition cite{display:block;margin-top:.8rem;font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.prose{max-width:48rem;color:var(--text)}
+.prose p+p{margin-top:.9rem}
+.prose strong{color:var(--white);font-weight:500}
+.origin{max-width:48rem;margin-top:1.6rem;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--ember);padding:1.1rem 1.3rem}
+.origin-label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:.5rem}
+.origin p{font-size:.86rem}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.stat{background:var(--card);padding:1.3rem 1.2rem}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;color:var(--white)}
+.stat-num small{font-size:1.3rem;color:var(--muted)}
+.stat-label{font-size:.72rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
+.src{font-size:.72rem;color:var(--muted);margin-top:.9rem;max-width:48rem}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.pubs{list-style:none;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.pub{background:var(--card);padding:1.1rem 1.2rem;display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto;gap:1rem;align-items:start}
+.pub-year{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--ember);line-height:1.1}
+.pub-title{color:var(--white);font-size:.9rem;line-height:1.5}
+.pub-meta{font-size:.72rem;color:var(--muted);margin-top:.25rem}
+.pub-lens{display:inline-block;margin-top:.45rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.1rem .5rem}
+.pub.core{box-shadow:inset 3px 0 0 var(--ember)}
+.pub-actions{display:flex;flex-direction:column;gap:.4rem;align-items:stretch;width:6.8rem}
+.btn{display:inline-flex;justify-content:center;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--accent);color:#000;background:var(--accent);font-weight:600;white-space:nowrap}
+.btn:hover{background:transparent;color:var(--accent);text-decoration:none}
+.btn.yt{background:transparent;border-color:#ff3b3b;color:#ff3b3b}
+.btn.yt:hover{background:#ff3b3b;color:#fff}
+@media(max-width:700px){
+  nav{padding:.8rem 1rem}main{padding:2rem 1rem 3rem}
+  .pub{grid-template-columns:1fr}.pub-actions{flex-direction:row;width:auto}.pub-actions .btn{width:6.8rem}
+}
+footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--border)}
+.fc{font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fc .sep{color:var(--accent)}
+.fc a{color:var(--accent2)}
+@media(max-width:900px){footer{flex-direction:column;gap:.7rem;text-align:center;padding:1.4rem 1.5rem}}
+/* justified body text */
+.definition p,.prose p,.origin p,.cm-desc{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
+/* concept switcher */
+:root[data-theme="dark"]{--concept:#f0b96a}:root[data-theme="light"]{--concept:#a86a14}
+.nav-concepts{display:flex;gap:1.6rem;align-items:center}
+.nav-concepts a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:.2rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+.nav-concepts a:hover{color:var(--concept);text-decoration:none}
+.nav-concepts a.on{color:var(--concept);border-bottom-color:var(--concept)}
+@media(max-width:900px){.nav-concepts{display:none}}
+.concepts-more{max-width:1100px;margin:0 auto;padding:0 3rem 3.5rem}
+.cm-label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.cm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media(max-width:1000px){.cm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cm-card{display:block;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--concept);padding:1rem 1.2rem;transition:background .2s,transform .2s}
+.cm-card:hover{background:var(--surface);transform:translateY(-2px);text-decoration:none}
+.cm-name{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--concept)}
+.cm-desc{display:block;margin-top:.35rem;font-size:.8rem;line-height:1.5;color:var(--text)}
+.cm-go{display:block;margin-top:.5rem;font-size:.66rem;color:var(--muted)}
+@media(max-width:700px){.concepts-more{padding:0 1rem 2.5rem}.cm-grid{grid-template-columns:minmax(0,1fr)}}
+
+.tiers,.ex{width:100%;max-width:60rem;border-collapse:collapse;font-size:.8rem;background:var(--card);border:1px solid var(--border)}
+.tiers th,.tiers td,.ex th,.ex td{padding:.7rem .9rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.tiers th,.ex th{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.tiers td.n,.ex td.n,.tiers th.n,.ex th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tiers td:first-child{color:var(--ember);white-space:nowrap}
+.ex td:first-child{font-family:'Instrument Serif',serif;font-size:1.05rem;color:var(--text)}
+.ex td.good{color:var(--accent)}
+.tbl-wrap{overflow-x:auto}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent);color:#000}
+.status{display:inline-block;margin-left:.6rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--ember);color:var(--ember);padding:.1rem .5rem;vertical-align:middle}
+@media(max-width:700px){.stat-num{font-size:2.1rem}.tiers,.ex{min-width:600px}}
+@media(max-width:480px){.stats{grid-template-columns:minmax(0,1fr)}}
+.grp{margin-top:1rem;border:1px solid var(--border);background:var(--surface)}
+.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.9rem;padding:.85rem 1.1rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+.grp>summary::-webkit-details-marker{display:none}
+.grp>summary::before{content:'+';font-size:1rem;width:1rem;color:var(--muted)}
+.grp[open]>summary::before{content:'−'}
+.grp>summary:hover{color:var(--white)}
+.grp-n{margin-left:auto;font-size:.62rem;color:var(--muted);border:1px solid var(--border);padding:.05rem .5rem}
+.grp>.pubs{border:0;border-top:1px solid var(--border)}
+.cite-box{max-width:48rem;background:var(--card);border:1px solid var(--border);padding:1rem 1.2rem;font-size:.8rem;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-home" href="index.html">← guzsvinecz.com</a>
+  <div class="nav-concepts" aria-label="Concepts"><a href="respawn.html">RESPAWN</a><a href="soulsification.html">Soulsification</a><a href="post-fairy-tale.html">Post-Fairy-Tale</a><a href="gamerlex.html" class="on" aria-current="page">GamerLex</a></div>
+  <div class="nav-right">
+    <button class="ctrl-btn" id="lang-btn" type="button" aria-label="Switch language">HU</button>
+    <button class="ctrl-btn" id="theme-btn" type="button" aria-label="Switch theme">☀</button>
+  </div>
+</nav>
+
+<main>
+  <header>
+    <div class="eyebrow"><span data-en>Resource · sentiment lexicon</span><span data-hu>Erőforrás · szentimentlexikon</span><span class="status"><span data-en>Preprint</span><span data-hu>Preprint</span></span></div>
+    <h1>GamerLex</h1>
+    <div class="definition">
+      <p data-en>GamerLex is a sentiment lexicon of gaming slang and game jargon, built from 4.69 million Steam reviews, with valence on the VADER scale.</p>
+      <p data-hu>A GamerLex a gamerszleng és a játékzsargon szentimentlexikona, 4,69 millió Steam-értékelésből építve, VADER-skálájú valenciával.</p>
+      <cite>Guzsvinecz (2026), Research Square preprint, pp. 2–3</cite>
+    </div>
+    <div class="actions">
+      <a class="btn" href="https://github.com/zyzyx02/GamerLex" target="_blank" rel="noopener"><span data-en>Lexicon + code (GitHub) →</span><span data-hu>Lexikon + kód (GitHub) →</span></a>
+      <a class="btn ghost" href="https://doi.org/10.21203/rs.3.rs-11503520/v1" target="_blank" rel="noopener"><span data-en>Preprint →</span><span data-hu>Preprint →</span></a>
+    </div>
+  </header>
+
+  <section>
+    <h2><span data-en>Why it is needed</span><span data-hu>Miért kell</span></h2>
+    <div class="prose">
+      <p data-en>General sentiment lexicons such as <strong>VADER</strong> were built for general and social media English. On game reviews they fail in two ways. They miss community slang and evaluative shorthand such as <strong>cashgrab</strong>, <strong>unplayable</strong> or <strong>goated</strong>. And they read the descriptive vocabulary of games as emotion: VADER rates <strong>kill</strong> at −3.7, <strong>brutal</strong> at −3.1 and <strong>terrifying</strong> at −2.7, although in a review of a shooter or a horror game these words usually describe the content, and often praise it.</p>
+      <p data-hu>Az általános szentimentlexikonok, például a <strong>VADER</strong>, általános és közösségimédia-angolra készültek. Játékértékeléseken kétféleképpen hibáznak. Hiányzik belőlük a közösségi szleng és az értékelő rövidítések, mint a <strong>cashgrab</strong>, az <strong>unplayable</strong> vagy a <strong>goated</strong>. A játékok leíró szókincsét pedig érzelemnek olvassák: a VADER a <strong>kill</strong> szót −3,7-re, a <strong>brutal</strong>t −3,1-re, a <strong>terrifying</strong>et −2,7-re értékeli, pedig egy lövöldözős vagy horrorjáték értékelésében ezek többnyire a tartalmat írják le, sokszor dicsérően.</p>
+      <p data-en>GamerLex keeps VADER's rules and vocabulary and adds or replaces word values for the review domain. Valence is not rated term by term: it comes from each term's association with players' recommendations on a training split, adjusted for review length and calibrated on 1,449 VADER anchor words.</p>
+      <p data-hu>A GamerLex megtartja a VADER szabályait és szókincsét, és a játékértékelések területére szavakat ad hozzá vagy értékeket cserél le. A valenciát nem szavanként pontozzák: minden kifejezés a játékosok ajánlásaival való együttjárásából kapja, egy tanító részhalmazon, a review-hosszra korrigálva, 1449 VADER-horgonyszóra kalibrálva.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span data-en>Two sentences</span><span data-hu>Két mondat</span></h2>
+    <div class="tbl-wrap"><table class="ex">
+      <thead><tr><th><span data-en>Review sentence</span><span data-hu>Értékelés-mondat</span></th><th class="n"><span data-en>Human</span><span data-hu>Ember</span></th><th class="n">VADER</th><th class="n">+ GamerLex</th></tr></thead>
+      <tbody>
+        <tr><td>“Clunky controls, very sparse and vague tutorial, cringe worthy dialogue.”</td><td class="n">−2</td><td class="n">+0.30</td><td class="n good">−0.61</td></tr>
+        <tr><td>“Definitely a good way to kill time.”</td><td class="n">+2</td><td class="n">−0.03</td><td class="n good">+0.65</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src"><span data-en>Human: median of three ratings on a −2 to +2 scale. VADER and GamerLex: compound score. In the first sentence <em>worthy</em> is positive in VADER while <em>clunky</em> and <em>cringe</em> are missing; in the second, <em>kill</em> cancels <em>good</em>. Source: Guzsvinecz (2026), p. 3.</span><span data-hu>Ember: három értékelő mediánja −2 és +2 közötti skálán. VADER és GamerLex: compound pontszám. Az első mondatban a <em>worthy</em> a VADER-ben pozitív, a <em>clunky</em> és a <em>cringe</em> hiányzik; a másodikban a <em>kill</em> kioltja a <em>good</em>-ot. Forrás: Guzsvinecz (2026), 3. o.</span></p>
+  </section>
+
+  <section>
+    <h2><span data-en>Results</span><span data-hu>Eredmények</span></h2>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">8,046</div><div class="stat-label"><span data-en>entries: 4,223 hand-audited in three tiers + 3,823 automatic</span><span data-hu>bejegyzés: 4223 kézzel auditált három szinten + 3823 automatikus</span></div></div>
+      <div class="stat"><div class="stat-num">62.8<small>%</small></div><div class="stat-label"><span data-en>of held-out Steam reviews contain at least one curated term</span><span data-hu>a tesztelt Steam-értékelések ennyiében van legalább egy kurált kifejezés</span></div></div>
+      <div class="stat"><div class="stat-num">.825<small>→</small>.893</div><div class="stat-label"><span data-en>length-stratified AUC for predicting recommendations (99,389 held-out reviews)</span><span data-hu>hossz szerint rétegzett AUC az ajánlás előrejelzésére (99 389 tesztértékelés)</span></div></div>
+      <div class="stat"><div class="stat-num">.579<small>→</small>.664</div><div class="stat-label"><span data-en>Spearman correlation with the median human rating (1,462 sentences, three raters)</span><span data-hu>Spearman-korreláció az emberi értékelések mediánjával (1462 mondat, három értékelő)</span></div></div>
+    </div>
+    <p class="src"><span data-en>VADER alone → VADER + GamerLex (all four tiers). Against human ratings GamerLex also exceeded two uncurated lexicons induced from the same data (0.634 and 0.620). The gain over VADER held when the review label was controlled for, in an approximately unselected subset of sentences and in sentences without terms added during the audit. Source: Guzsvinecz (2026), pp. 2, 4, 13–18.</span><span data-hu>VADER önmagában → VADER + GamerLex (mind a négy szint). Emberi értékelésekkel szemben a GamerLex két, ugyanabból az adatból indukált, kurálatlan lexikont is felülmúlt (0,634 és 0,620). A VADER-hez képesti javulás megmaradt az értékelés címkéjének kontrollálásakor, egy közelítőleg szelektálatlan mondat-részhalmazon és az audit során hozzáadott kifejezéseket nem tartalmazó mondatokon is. Forrás: Guzsvinecz (2026), 2., 4., 13–18. o.</span></p>
+  </section>
+
+  <section>
+    <h2><span data-en>Four tiers</span><span data-hu>Négy szint</span></h2>
+    <div class="tbl-wrap"><table class="tiers">
+      <thead><tr><th><span data-en>Tier</span><span data-hu>Szint</span></th><th><span data-en>What it holds</span><span data-hu>Mit tartalmaz</span></th><th class="n"><span data-en>Entries</span><span data-hu>Bejegyzés</span></th><th><span data-en>Examples (valence)</span><span data-hu>Példák (valencia)</span></th></tr></thead>
+      <tbody>
+        <tr><td>core</td><td><span data-en>gaming slang and game jargon</span><span data-hu>gamerszleng és játékzsargon</span></td><td class="n">3,593</td><td>abandonware (−3.79), unplayable (−3.18), banger (+2.67), goated (+2.51)</td></tr>
+        <tr><td>extended</td><td><span data-en>general evaluative words absent from VADER, incl. frequent misspellings</span><span data-hu>a VADER-ből hiányzó általános értékelő szavak, gyakori elírásokkal</span></td><td class="n">436</td><td>unfinished (−2.19), mediocre (−1.81), catchy (+1.68), quirky (+1.12)</td></tr>
+        <tr><td>vader_override</td><td><span data-en>words VADER rates negative that describe content or praise in reviews</span><span data-hu>a VADER szerint negatív szavak, amelyek az értékelésekben tartalmat írnak le vagy dicsérnek</span></td><td class="n">194</td><td>kill (−0.29), brutal (+0.99), terrifying (+1.92), horror (+0.86)</td></tr>
+        <tr><td>auto</td><td><span data-en>optional: frequent review words selected by a fixed rule</span><span data-hu>opcionális: gyakori értékelésszavak rögzített szabály szerint</span></td><td class="n">3,823</td><td>uninstalled (−3.11), money (−1.34), unique (+1.45), underrated (+3.63)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src"><span data-en>Source: Guzsvinecz (2026), Table 1, p. 13.</span><span data-hu>Forrás: Guzsvinecz (2026), 1. táblázat, 13. o.</span></p>
+  </section>
+
+  <section>
+    <h2><span data-en>How to use it</span><span data-hu>Hogyan használd</span></h2>
+    <div class="prose">
+      <p data-en>Load the entries into VADER's lexicon, replacing VADER's value where both contain a word, and join multi-word terms with underscores before scoring; the released helper module does this. VADER's rules for negation, degree modifiers, contrast, capitalisation and punctuation stay unchanged. Do not score text with GamerLex alone: it is an extension of VADER, not a replacement.</p>
+      <p data-hu>A bejegyzéseket a VADER lexikonjába kell betölteni, ahol mindkettőben szerepel egy szó, ott a VADER értékét lecserélve; a többszavas kifejezéseket pontozás előtt alávonással kell összekötni. A mellékelt segédmodul ezt elvégzi. A VADER tagadási, fokozó, ellentétes, nagybetűs és írásjel-szabályai változatlanok. Önmagában a GamerLexszel ne pontozz szöveget: a VADER kiegészítése, nem helyettesítője.</p>
+      <p data-en><strong>Which tiers?</strong> To measure the sentiment of the text separately from the reviewer's verdict, use the three curated tiers. To use sentiment as a proxy for the verdict, use all four. Valences describe how words are used in Steam reviews, and gaming slang changes quickly.</p>
+      <p data-hu><strong>Melyik szintek?</strong> Ha a szöveg hangulatát az értékelő ítéletétől külön akarod mérni, a három kurált szintet használd. Ha a szentiment az ítélet közelítése, mind a négyet. A valenciák azt írják le, hogyan használják a szavakat Steam-értékelésekben, és a gamerszleng gyorsan változik.</p>
+    </div>
+    <div class="origin">
+      <div class="origin-label"><span data-en>Status and citation</span><span data-hu>Állapot és hivatkozás</span></div>
+      <p data-en>The preprint was posted on 16 November 2026; the journal version is under review at <em>Scientific Reports</em>. The lexicon (CSV, JSON and VADER format), corpus statistics for every entry, the helper module and the build and evaluation scripts are on GitHub under an open licence; on acceptance the release will be archived with a DOI. Review texts are not redistributed.</p>
+      <p data-hu>A preprint 2026. november 16-án jelent meg; a folyóiratváltozat a <em>Scientific Reports</em>-nál bírálat alatt áll. A lexikon (CSV, JSON és VADER-formátumban), minden bejegyzés korpuszstatisztikája, a segédmodul, valamint az építő- és kiértékelő szkriptek nyílt licenccel a GitHubon érhetők el; elfogadás után a kiadás DOI-val archiválva lesz. Az értékelések szövegét nem tesszük közzé.</p>
+    </div>
+    <p class="src" style="margin-top:1.2rem"><span data-en>Cite as:</span><span data-hu>Hivatkozás:</span></p>
+    <div class="cite-box">Guzsvinecz, T. (2026). GamerLex: A sentiment lexicon of gaming slang and jargon derived from Steam reviews. <em>Research Square</em> [preprint]. <a href="https://doi.org/10.21203/rs.3.rs-11503520/v1" target="_blank" rel="noopener">https://doi.org/10.21203/rs.3.rs-11503520/v1</a></div>
+  </section>
+
+  <section>
+    <h2><span data-en>The research line</span><span data-hu>A kutatási vonal</span></h2>
+    <p class="src" style="margin:0 0 1.2rem"><span data-en>14 published text, sentiment and emotion analyses of player reviews, grouped by method. GamerLex builds on them.</span><span data-hu>14 megjelent szöveg-, szentiment- és érzelemelemzés játékosértékelésekről, módszer szerint csoportosítva. A GamerLex ezekre épít.</span></p>
+    <ul class="pubs">
+      <li class="pub core">
+        <div class="pub-year">2026</div>
+        <div><div class="pub-title">GamerLex: A sentiment lexicon of gaming slang and jargon derived from Steam reviews</div>
+          <div class="pub-meta">Guzsvinecz, T. · Research Square (preprint; under review at Scientific Reports)</div>
+          <span class="pub-lens"><span data-en>the lexicon · domain-calibrated sentiment</span><span data-hu>a lexikon · területre kalibrált szentiment</span></span></div>
+        <div class="pub-actions"><a class="btn" href="https://doi.org/10.21203/rs.3.rs-11503520/v1" target="_blank" rel="noopener"><span data-en>Preprint →</span><span data-hu>Preprint →</span></a><a class="btn ghost" href="https://github.com/zyzyx02/GamerLex" target="_blank" rel="noopener">GitHub →</a></div>
+      </li>
+    </ul>
+    <details class="grp" open>
+      <summary><span class="grp-name"><span data-en>Lexicon-based sentiment &amp; emotion</span><span data-hu>Lexikonalapú szentiment és érzelem</span></span><span class="grp-n">6</span></summary>
+      <ul class="pubs">
+        <li class="pub">
+          <div class="pub-year">2023</div>
+          <div><div class="pub-title">Length and sentiment analysis of reviews about top-level video game genres on the Steam platform</div>
+            <div class="pub-meta">Guzsvinecz, T., Szűcs, J. · Computers in Human Behavior, vol. 149, p. 107955 · Open Access</div>
+            <span class="pub-lens"><span data-en>11 genres · length + NRC emotions</span><span data-hu>11 műfaj · hossz + NRC-érzelmek</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1016/j.chb.2023.107955" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/QFf3oisQnmM" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2023</div>
+          <div><div class="pub-title">The correlation between positive reviews, playtime, design and game mechanics in souls-like role-playing video games</div>
+            <div class="pub-meta">Guzsvinecz, T. · Multimedia Tools and Applications, vol. 82, no. 3, pp. 4641–4670 · Open Access</div>
+            <span class="pub-lens"><span data-en>Souls-like · design factors + NRC</span><span data-hu>Souls-like · dizájn-tényezők + NRC</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1007/s11042-022-12308-1" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/W0BEyAUytwY" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2023</div>
+          <div><div class="pub-title">Sentiment Analysis of Souls-like Role-Playing Video Game Reviews</div>
+            <div class="pub-meta">Guzsvinecz, T. · Acta Polytechnica Hungarica, vol. 20, no. 5, pp. 149–168 · Open Access</div>
+            <span class="pub-lens"><span data-en>Souls-like · NRC emotions</span><span data-hu>Souls-like · NRC-érzelmek</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.12700/APH.20.5.2023.5.10" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/Hmn7XWZhFcs" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2024</div>
+          <div><div class="pub-title">Investigation of Sentiments in Virtual Reality Game Reviews</div>
+            <div class="pub-meta">Guzsvinecz, T., Szűcs, J. · 15th IEEE International Conference on Cognitive Infocommunications (CogInfoCom 2024), Tokyo, Japan, pp. 11–16</div>
+            <span class="pub-lens"><span data-en>VR games · NRC emotions</span><span data-hu>VR-játékok · NRC-érzelmek</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1109/CogInfoCom63007.2024.10894725" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2025</div>
+          <div><div class="pub-title">Reactions to video games that evoke a feeling of liminality</div>
+            <div class="pub-meta">Guzsvinecz, T. · Entertainment Computing, vol. 55, p. 101048 · Open Access</div>
+            <span class="pub-lens"><span data-en>liminal games · sentiment + LDA</span><span data-hu>liminális játékok · szentiment + LDA</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1016/j.entcom.2025.101048" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/KdzegneqDOg" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2026</div>
+          <div><div class="pub-title">Emotions in play: A length and sentiment analysis of steam reviews by player engagement mode</div>
+            <div class="pub-meta">Guzsvinecz, T., Szűcs, J. · Heliyon, vol. 12, no. 13, p. e45258 · Open Access</div>
+            <span class="pub-lens"><span data-en>10 engagement modes · length + NRC</span><span data-hu>10 engagement mode · hossz + NRC</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1016/j.heliyon.2026.e45258" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/CrqrwGvUPmg" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+      </ul>
+    </details>
+    <details class="grp">
+      <summary><span class="grp-name"><span data-en>Transformer-based emotion</span><span data-hu>Transzformer-alapú érzelemelemzés</span></span><span class="grp-n">2</span></summary>
+      <ul class="pubs">
+        <li class="pub">
+          <div class="pub-year">2026</div>
+          <div><div class="pub-title">Transformer-based emotion profiling and clustering of cybersickness narratives in Steam reviews of first-person virtual reality games</div>
+            <div class="pub-meta">Guzsvinecz, T., Nemeth, K., Szűcs, J. · Acta Psychologica, vol. 270, p. 107743 · Open Access</div>
+            <span class="pub-lens"><span data-en>VR FPS cybersickness · emotion profiles + clustering</span><span data-hu>VR FPS cybersickness · érzelemprofilok + klaszterezés</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1016/j.actpsy.2026.107743" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/NTBM2-S6BUM" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2026</div>
+          <div><div class="pub-title">Acute and Accommodated Emotional Profiles in Cybersickness-Related First-Person Virtual Reality Game Reviews</div>
+            <div class="pub-meta">Guzsvinecz, T., Nemeth, K., Szűcs, J. · 2026 IEEE 24th International Symposium on Intelligent Systems and Informatics (SISY 2026), Pula, Croatia, pp. 595–600</div>
+            <span class="pub-lens"><span data-en>VR FPS cybersickness · emotions × playtime</span><span data-hu>VR FPS cybersickness · érzelmek × játékidő</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1109/SISY71351.2026.11738535" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+        </li>
+      </ul>
+    </details>
+    <details class="grp">
+      <summary><span class="grp-name"><span data-en>Text &amp; topic modelling</span><span data-hu>Szöveg- és topikmodellezés</span></span><span class="grp-n">5</span></summary>
+      <ul class="pubs">
+        <li class="pub">
+          <div class="pub-year">2024</div>
+          <div><div class="pub-title">Textual Analysis of Virtual Reality Game Reviews</div>
+            <div class="pub-meta">Guzsvinecz, T., Szűcs, J. · Infocommunications Journal, vol. 16, pp. 84–91 · Open Access</div>
+            <span class="pub-lens"><span data-en>VR games · word frequency + correlation</span><span data-hu>VR-játékok · szófrekvencia + szókorreláció</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.36244/ICJ.2024.5.10" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2024</div>
+          <div><div class="pub-title">A Preliminary Analysis of E-sports Game Reviews</div>
+            <div class="pub-meta">Szűcs, J., Guzsvinecz, T. · 18th IEEE International Symposium on Applied Computational Intelligence and Informatics (SACI 2024), Timisoara, Romania, pp. 377–382</div>
+            <span class="pub-lens"><span data-en>e-sports · length, playtime, words</span><span data-hu>e-sport · hossz, játékidő, szavak</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1109/SACI60582.2024.10619731" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2025</div>
+          <div><div class="pub-title">Topic Modeling of Positive and Negative Reviews of Soulslike Video Games</div>
+            <div class="pub-meta">Guzsvinecz, T. · Computers, vol. 14, p. 339 · Open Access</div>
+            <span class="pub-lens"><span data-en>Soulslike · LDA, positive vs. negative</span><span data-hu>Soulslike · LDA, pozitív és negatív</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.3390/computers14080339" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/pYALoLKK9QA" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2025</div>
+          <div><div class="pub-title">Topic Modeling of Virtual Reality Game Reviews using Latent Dirichlet Allocation</div>
+            <div class="pub-meta">Guzsvinecz, T., Nemeth, K., Szűcs, J. · 2025 IEEE 29th International Conference on Intelligent Engineering Systems (INES)</div>
+            <span class="pub-lens"><span data-en>VR games · frequency-based LDA</span><span data-hu>VR-játékok · frekvencia-alapú LDA</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1109/INES67149.2025.11078210" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+        </li>
+        <li class="pub">
+          <div class="pub-year">2026</div>
+          <div><div class="pub-title">Cybersickness in commercial first-person virtual reality video games: analysis of player experience in steam reviews</div>
+            <div class="pub-meta">Guzsvinecz, T., Nemeth, K., Szűcs, J. · Virtual Reality, vol. 30 · Open Access</div>
+            <span class="pub-lens"><span data-en>VR FPS cybersickness · BERTopic + VADER</span><span data-hu>VR FPS cybersickness · BERTopic + VADER</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1007/s10055-026-01353-y" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a><a class="btn yt" href="https://youtu.be/M0gSbR33qoI" target="_blank" rel="noopener">Video →</a></div>
+        </li>
+      </ul>
+    </details>
+    <details class="grp">
+      <summary><span class="grp-name"><span data-en>Toxicity</span><span data-hu>Toxicitás</span></span><span class="grp-n">1</span></summary>
+      <ul class="pubs">
+        <li class="pub">
+          <div class="pub-year">2026</div>
+          <div><div class="pub-title">Genre Matters: Analyzing Toxicity Patterns in Steam Game Reviews</div>
+            <div class="pub-meta">Guzsvinecz, T., Szűcs, J. · 2026 IEEE 24th World Symposium on Applied Machine Intelligence and Informatics (SAMI 2026), Stará Lesná, Slovakia, pp. 635–640</div>
+            <span class="pub-lens"><span data-en>11 genres · Detoxify</span><span data-hu>11 műfaj · Detoxify</span></span></div>
+          <div class="pub-actions"><a class="btn" href="https://doi.org/10.1109/SAMI68106.2026.11420781" target="_blank" rel="noopener"><span data-en>Paper →</span><span data-hu>Cikk →</span></a></div>
+        </li>
+      </ul>
+    </details>
+  </section>
+</main>
+
+<section class="concepts-more" aria-label="More concepts"><div class="cm-label"><span data-en>More concepts</span><span data-hu>További fogalmak</span></div><div class="cm-grid"><a class="cm-card" href="respawn.html"><span class="cm-name">RESPAWN</span><span class="cm-desc"><span data-en>Reporting checklist and flow-diagram generator for game review research</span><span data-hu>Riportolási checklist és folyamatábra-generátor játék-review kutatásokhoz</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a><a class="cm-card" href="soulsification.html"><span class="cm-name">Soulsification</span><span class="cm-desc"><span data-en>The concept and the research line</span><span data-hu>A fogalom és a kutatási vonal</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a><a class="cm-card" href="post-fairy-tale.html"><span class="cm-name">Post-Fairy-Tale &amp; Therapeutic Ambiguity</span><span class="cm-desc"><span data-en>The post-fairy-tale narrative system and therapeutic ambiguity</span><span data-hu>A post-fairy-tale narratív rendszer és a terápiás kétértelműség</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a></div></section>
+
+<footer>
+  <div class="fc"><span data-en>© 2026 Dr. habil. Tibor Guzsvinecz <span class="sep">·</span> University of Pannonia</span><span data-hu>© 2026 Dr. habil. Guzsvinecz Tibor <span class="sep">·</span> Pannon Egyetem</span></div>
+  <div class="fc"><a href="index.html#publications"><span data-en>All publications →</span><span data-hu>Összes publikáció →</span></a></div>
+  <div class="fc"><span data-en>Last updated: 16 November 2026</span><span data-hu>Utolsó frissítés: 2026. november 16.</span></div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, $=function(id){return document.getElementById(id)};
+  function setTheme(t){root.setAttribute('data-theme',t);$('theme-btn').textContent=t==='dark'?'☀':'☾';try{localStorage.setItem('gt-theme',t)}catch(e){}}
+  function setLang(l){root.setAttribute('data-lang',l);root.lang=l;$('lang-btn').textContent=l==='en'?'HU':'EN';try{localStorage.setItem('gt-lang',l)}catch(e){}}
+  var t='dark', l='en';
+  try{t=localStorage.getItem('gt-theme')||t;l=localStorage.getItem('gt-lang')||l}catch(e){}
+  var q=new URLSearchParams(location.search);
+  if(q.get('lang')==='hu'||q.get('lang')==='en') l=q.get('lang');
+  if(q.get('theme')==='light'||q.get('theme')==='dark') t=q.get('theme');
+  setTheme(t); setLang(l);
+  $('theme-btn').addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+  $('lang-btn').addEventListener('click',function(){setLang(root.getAttribute('data-lang')==='en'?'hu':'en')});
+})();
+</script>
+</body>
+</html>

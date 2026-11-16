@@ -88,10 +88,11 @@ footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-item
 .nav-concepts a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:.2rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
 .nav-concepts a:hover{color:var(--concept);text-decoration:none}
 .nav-concepts a.on{color:var(--concept);border-bottom-color:var(--concept)}
-@media(max-width:820px){.nav-concepts{display:none}}
+@media(max-width:900px){.nav-concepts{display:none}}
 .concepts-more{max-width:1100px;margin:0 auto;padding:0 3rem 3.5rem}
 .cm-label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
-.cm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.cm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media(max-width:1000px){.cm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .cm-card{display:block;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--concept);padding:1rem 1.2rem;transition:background .2s,transform .2s}
 .cm-card:hover{background:var(--surface);transform:translateY(-2px);text-decoration:none}
 .cm-name{display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--concept)}
@@ -120,7 +121,7 @@ footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-item
 
 <nav>
   <a class="nav-home" href="index.html">← guzsvinecz.com</a>
-  <div class="nav-concepts" aria-label="Concepts"><a href="respawn.html">RESPAWN</a><a href="soulsification.html">Soulsification</a><a href="post-fairy-tale.html" class="on" aria-current="page">Post-Fairy-Tale</a></div>
+  <div class="nav-concepts" aria-label="Concepts"><a href="respawn.html">RESPAWN</a><a href="soulsification.html">Soulsification</a><a href="post-fairy-tale.html" class="on" aria-current="page">Post-Fairy-Tale</a><a href="gamerlex.html">GamerLex</a></div>
   <div class="nav-right">
     <button class="ctrl-btn" id="lang-btn" type="button" aria-label="Switch language">HU</button>
     <button class="ctrl-btn" id="theme-btn" type="button" aria-label="Switch theme">☀</button>
@@ -201,12 +202,12 @@ footer{padding:1.6rem 4rem;display:flex;justify-content:space-between;align-item
   </section>
 </main>
 
-<section class="concepts-more" aria-label="More concepts"><div class="cm-label"><span data-en>More concepts</span><span data-hu>További fogalmak</span></div><div class="cm-grid"><a class="cm-card" href="respawn.html"><span class="cm-name">RESPAWN</span><span class="cm-desc"><span data-en>Reporting checklist and flow-diagram generator for game review research</span><span data-hu>Riportolási checklist és folyamatábra-generátor játék-review kutatásokhoz</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a><a class="cm-card" href="soulsification.html"><span class="cm-name">Soulsification</span><span class="cm-desc"><span data-en>The concept and the research line</span><span data-hu>A fogalom és a kutatási vonal</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a></div></section>
+<section class="concepts-more" aria-label="More concepts"><div class="cm-label"><span data-en>More concepts</span><span data-hu>További fogalmak</span></div><div class="cm-grid"><a class="cm-card" href="respawn.html"><span class="cm-name">RESPAWN</span><span class="cm-desc"><span data-en>Reporting checklist and flow-diagram generator for game review research</span><span data-hu>Riportolási checklist és folyamatábra-generátor játék-review kutatásokhoz</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a><a class="cm-card" href="soulsification.html"><span class="cm-name">Soulsification</span><span class="cm-desc"><span data-en>The concept and the research line</span><span data-hu>A fogalom és a kutatási vonal</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a><a class="cm-card" href="gamerlex.html"><span class="cm-name">GamerLex</span><span class="cm-desc"><span data-en>Sentiment lexicon of gaming slang and jargon for player reviews</span><span data-hu>Gamerszleng- és játékzsargon-szentimentlexikon játékosértékelésekhez</span></span><span class="cm-go"><span data-en>Open →</span><span data-hu>Megnyitás →</span></span></a></div></section>
 
 <footer>
   <div class="fc"><span data-en>© 2026 Dr. habil. Tibor Guzsvinecz <span class="sep">·</span> University of Pannonia</span><span data-hu>© 2026 Dr. habil. Guzsvinecz Tibor <span class="sep">·</span> Pannon Egyetem</span></div>
   <div class="fc"><a href="index.html#publications"><span data-en>All publications →</span><span data-hu>Összes publikáció →</span></a></div>
-  <div class="fc"><span data-en>Last updated: 11 November 2026</span><span data-hu>Utolsó frissítés: 2026. november 11.</span></div>
+  <div class="fc"><span data-en>Last updated: 16 November 2026</span><span data-hu>Utolsó frissítés: 2026. november 16.</span></div>
 </footer>
 
 <script>
